@@ -1,0 +1,13 @@
+{
+  "name": "digimon_bot",
+  "version": "0.0.1",
+  "description": "Digimon Bot",
+  "main": "bot.js",
+  "author": "Abby Vruno",
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "mongodb": "^3.1.7",
+    "save": "^2.3.2",
+    "winston": "^3.1.0"
+  }
+}
