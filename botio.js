@@ -13,8 +13,8 @@ const logger = createLogger({
     new transports.File({ 
       json: true,
       level:'debug',
-      maxsize: 1024 * 1024 // 1M
-      filename: 'logs/combined.log' 
+      maxsize: 1024 * 1024, // 1M
+      filename: 'logs/combined.log',
     })
   ]
 })
