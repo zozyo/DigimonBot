@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Digimon Bot",
   "main": "bot.js",
-  "author": "Abby Vruno",
+  "author": "Abby Vruno, Seng Xiong, Zhongyuan Zhu",
   "dependencies": {
     "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
     "mongodb": "^3.1.7",
