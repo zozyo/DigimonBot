@@ -38,9 +38,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
   logger.info("----------");
 
   // Our bot needs to know if it will execute a command
-  // It will listen for messages that will start with `!`
-  if (message.substring(0, 1) == '!') {
-    var args = message.substring(1).split(' ');
+  // It will listen for messages that will start with `d!`
+  if (message.substring(0, 2) == 'd!') {
+    var args = message.substring(2).split(' ');
     var cmd = args[0];
 
     args = args.splice(1);
