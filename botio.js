@@ -80,6 +80,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
           }
         });
       break;
+      case 'help':
+        bot.sendMessage({
+          to: channelID,
+          message: 'Under Construction!'
+        });
+      break;
+      default:
+        bot.sendMessage({
+          to: channelID,
+          message: 'Unknown command! Try d!help for command list!'
+        });
       // Just add any case commands if you want to..
     }// end of switch
   }// end of if
