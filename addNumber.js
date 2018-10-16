@@ -1,8 +1,12 @@
-exports.add = function (a,b) {
-	if (a != null && b != null) {
+exports.add = function add(a,b) {
+	if (!!a && !!b) {
 		a = parseInt(a);
 		b = parseInt(b);
-		return a + b;
+		if (!isNaN(a) && !isNaN(b)) {
+			return a + b;
+		}
+		else
+			return 'Wrong!'
 	}
 	else
 		return 'Error!';
