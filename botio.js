@@ -1,5 +1,6 @@
 var Discord = require('discord.io');
 var auth = require('./auth.json');
+var addNumber = require('./addNumber.js');
 
 // Configure logger settings
 const { createLogger, format, transports } = require('winston');
@@ -86,12 +87,19 @@ bot.on('message', function (user, userID, channelID, message, evt) {
           message: 'Under Construction!'
         });
       break;
+      case 'add':
+        bot.sendMessage({
+          to: channelID,
+          message: addNumber.add(args[0], args[1])
+        });
+      break;
+      // Just add any case commands if you want to..
       default:
         bot.sendMessage({
           to: channelID,
           message: 'Unknown command! Try d!help for command list!'
         });
-      // Just add any case commands if you want to..
+      
     }// end of switch
   }// end of if
 });//end of message on
