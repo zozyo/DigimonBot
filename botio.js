@@ -44,6 +44,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		bot.sendMessage({
 			to: channelID,
 			embed: content
+		});
+		bot.sendMessage({
+			to: channelID,
+			message: content
 		})
 	});
 	
