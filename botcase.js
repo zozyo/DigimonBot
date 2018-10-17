@@ -9,7 +9,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		var cmd = args[0];
 		args = args.splice(1);
 
-		var content, fields1;
+		Object content = new Object();
 		switch(cmd) {
 		// !ping
 		case 'ping':
@@ -20,7 +20,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'hello':
 			content = {
 				"color": 12345678, 
-				"title": 'Your Info'
+				"title": 'Hello world!'
 			};
 		break;
 		// !logo
