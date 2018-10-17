@@ -82,7 +82,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		case 'listplayer':
 			var players = db.listPlayer();
-			console.log(players);
+			console.log(typeof players);
 			content = {
 				"color": 12345678, 
 				"description": players
