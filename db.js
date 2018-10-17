@@ -22,7 +22,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		collectionP.find({}).toArray(function(err, result) { // return all
 			if (err) throw err;
 			console.log(result);
-			console.log(result instanceof Array);
+			console.log(Number(result instanceof Array));
 			return result;
 		});
 	}; 
