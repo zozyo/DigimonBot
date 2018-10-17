@@ -38,6 +38,17 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				}
 			};
 		break;
+		case 'agumon':
+			content = {
+				"color": 12345678,
+				"image": {
+					"url": "https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es"
+				},
+				"image": {
+					"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
+				}
+			}
+		break;
 		case 'greymon':
 		content = {
 			"color": 12345678,
