@@ -43,10 +43,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	botcase.cases(user, userID, channelID, message, evt, function (content) {
 		bot.sendMessage({
 			to: channelID,
-			message: JSON.parse(content),
-			//embed: content
+			message: JSON.parse(content)
+			
 		})
 	});
 	
 
-});//end of message on
+});//end of message on //embed: content
