@@ -23,7 +23,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			if (err) throw err;
 			console.log(result);
 			console.log(Number(result instanceof Array));
-			return 1;
+			return "1";
 			//return JSON.stringify(result);
 		});
 	}; 
