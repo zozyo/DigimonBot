@@ -52,10 +52,6 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					{
 						"name": "channelID",
 						"value": channelID
-					},
-					{
-						"name": "evt",
-						"value": evt
 					}
 				]
 			};
