@@ -11,6 +11,7 @@ const logger = createLogger({
 		timestamp()
 	),
 	transports: [
+		new transports.Console(),
 		new transports.File({ 
 			json: true,
 			level:'debug',
