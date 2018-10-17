@@ -47,7 +47,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 		bot.sendMessage({
 			to: channelID,
-			message: JSON.stringify(content)
+			message: toString(content)
 		});
 	});
 	
