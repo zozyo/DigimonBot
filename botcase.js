@@ -12,7 +12,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		args = args.splice(1);
 
 		var content, fields1;
-		var db = new Database();
+		var dbm = new Database();
 		switch(cmd) {
 		// !ping
 		case 'ping':
@@ -76,10 +76,10 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 		break;
 		case 'addplayer':
-			db.addplayer(userID);
+			dbm.addplayer(userID);
 		break;
 		case 'listplayer':
-			var listPlayer = db.listplayer();
+			var listPlayer = dbm.listplayer();
 			content = {
 				"color": 12345678, 
 				"description": listPlayer
