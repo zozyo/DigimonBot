@@ -1,29 +1,29 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://localhost:27017/digimon";
 
 function database() {  
 
-	this.addPlayer = function(userID) { 
+	exports.addPlayer = function (userID) { 
 		MongoClient.connect(url, function(err, db) {
 			if (err) throw err;
-			var dbo = db.db("digimon");
-			var myobj = { 	
+			var collection = db.collection("player");
+			var player = { 	
 				"_id": userID,
 				"playerDigimon": "Agumon",
 			};
-			dbo.collection("player").insertOne(myobj, function(err, res) {
+			collection.insert(player, function(err, res) {
 				if (err) throw err;
-					console.log("Add Player Succeed!");
+				console.log("Add Player Succeed!");
 				db.close();
 			});
 		});
 	};
 
-	this.listPlayer = function() { 
+	exports.listPlayer = function () { 
 		MongoClient.connect(url, function(err, db) {
 			if (err) throw err;
-			var dbo = db.db("digimon");
-			dbo.collection("player"). find({}).toArray(function(err, result) { // 返回集合中所有数据
+			var collection = db.collection("player");
+			collection. find({}).toArray(function(err, result) { // return all
 				if (err) throw err;
 				return result;
 				db.close();
@@ -31,5 +31,3 @@ function database() {
 		});
 	}; 
 };//end of db
-
-module.exports = database;
