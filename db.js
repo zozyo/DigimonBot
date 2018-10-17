@@ -21,6 +21,7 @@ MongoClient.connect(url, function(err, database) {
 	exports.listPlayer = function () { 
 		collectionP.find({}).toArray(function(err, result) { // return all
 			if (err) throw err;
+			console.log(JSON.stringify(result));
 			return result;
 		});
 	}; 
