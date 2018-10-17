@@ -1,9 +1,10 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/digimon";
+var url = "mongodb://localhost:27017/";
 
-MongoClient.connect(url, function(err, db) {
+MongoClient.connect(url, function(err, database) {
 
 	if (err) throw err;
+	var db = database.db("digimon");
 	var collectionP = db.collection("player");
 
 	exports.addPlayer = function (userID) { 
