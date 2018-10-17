@@ -45,6 +45,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
 				}
 			}
+		break;
 		case 'myinfo':
 			content = {
 				"color": 12345678,
