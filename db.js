@@ -12,15 +12,18 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			"_id": userID,
 			"playerDigimon": "Agumon",
 		};
-		collectionP.insertOne(player, function(err, res) {
+		collectionP.insert(player, function(err, res) {
 			if (err) throw err;
 			console.log("Add Player Succeed!");
 		});
 	};
 
 	exports.listPlayer = function () { 
-		var results = collectionP.find().toArray();// return all;
-		console.log(typeof results);
-		return results;
+		collectionP.find({}).toArray(function(err, result) { // return all
+			if (err) throw err;
+			console.log(result);
+			console.log(result instanceof Array);
+			return result;
+		});
 	}; 
 });//end of db
