@@ -32,7 +32,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			content = {
 				"color": 12345678,
 				"image": {
-					"url": "https://cdn.discordapp.com/embed/avatars/0.png"
+					"url": "./logo.jpg"
 				}
 			};
 		break;
