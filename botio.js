@@ -1,6 +1,6 @@
 var Discord  = require('discord.io');
 var auth     = require('./auth.json');
-var botcases = require('./botcase.js');
+var botcase = require('./botcase.js');
 
 // Configure logger settings
 const { createLogger, format, transports }       = require('winston');
@@ -40,7 +40,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 	bot.sendMessage({
 		to: channelID,
-		embed: botcases.case(user, userID, channelID, message, evt)
+		embed: botcase.case(user, userID, channelID, message, evt)
 	});
 
 });//end of message on
