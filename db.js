@@ -19,17 +19,12 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		});
 	};
 
-	exports.listPlayer = function () { 
-		var res = find();
-		console.log(res);
-		return JSON.stringify(res);		
-	}; 
-
-	this.find = function () {
-		collectionP.find({}).toArray(function(err, result) { // return all
+	exports.listPlayer = function () {
+		collectionP.find().toArray(function(err, result) { // return all
 			if (err) throw err;
 			console.log(result);
 			return result;
 		});
+		return result;
 	};
 });//end of db
