@@ -19,7 +19,7 @@ MongoClient.connect(url, function(err, database) {
 	};
 
 	exports.listPlayer = function () { 
-		collectionP. find({}).toArray(function(err, result) { // return all
+		collectionP.find({}).toArray(function(err, result) { // return all
 			if (err) throw err;
 			return result;
 		});
