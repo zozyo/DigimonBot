@@ -40,10 +40,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	logger.info(message);
 	logger.info("----------");
 
-	botcase.cases(user, userID, channelID, message, evt, function (content, fields1) {
+	botcase.cases(user, userID, channelID, message, evt, function (content) {
+		mes = JSON.parse(content);
 		bot.sendMessage({
 			to: channelID,
-			embed: content
+			embed: mes
 		});
 	});
 	

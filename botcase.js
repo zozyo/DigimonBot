@@ -14,7 +14,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		// !ping
 		case 'ping':
 			fields1 = {"value": 'Pong!'};
-			content = {"color": 12345678, "fields": [fields1]};
+			content = JSON.stringify({"color": 12345678, "fields": [fields1]});
 		break;
 		// !hello
 		case 'hello':
@@ -83,5 +83,5 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		}// end of switch
 	}// end of if
 	
-	callback(content, fields1);
+	callback(content);
 }//end of cases
