@@ -15,7 +15,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'ping':
 			fields1 = '{"value": "Pong!"}';
 			content = {"color": 12345678, "fields": [{"value": "Pong!"}]};
-			callback(content);
+			callback(JSON.parse(JSON.stringify(content)));
 		break;
 		// !hello
 		case 'hello':
