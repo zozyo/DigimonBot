@@ -30,7 +30,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.l = function (callback) {
 		collectionP.find({}).toArray(function(err, result) {
 			if (err) throw err;
-			console.log(JSON.stringify( result ));
 			callback(JSON.stringify( result ));
 		});
 	};

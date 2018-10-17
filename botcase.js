@@ -38,6 +38,13 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				}
 			};
 		break;
+		case 'arumon':
+			content = {
+				"color": 12345678,
+				"image": {
+					"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
+				}
+			}
 		case 'myinfo':
 			content = {
 				"color": 12345678,
@@ -95,18 +102,16 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'l':
 			db.l(function(players) {
 				console.log(JSON.parse(players));
-				function() {
-					content = {
-						"color": 12345678, 
-						"title": "Players",
-						"fields": [
-							{
-								"name": "list",
-								"value": players
-							}
-						]
-					}
-				};
+				content = {
+					"color": 12345678, 
+					"title": "Players",
+					"fields": [
+						{
+							"name": "list",
+							"value": players
+						}
+					]
+				}
 			});
 		break;
 		// Just add any case commands if you want to..
