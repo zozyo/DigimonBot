@@ -1,4 +1,4 @@
-exports.add = function add(a,b) {
+exports.add = function (a,b) {
 	if (!!a && !!b) {
 		a = parseInt(a);
 		b = parseInt(b);
