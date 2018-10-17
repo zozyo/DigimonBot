@@ -9,7 +9,10 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		var cmd = args[0];
 		args = args.splice(1);
 
-		var content;
+		var content = {
+			"color": 12345678, 
+			"description": "Message!"
+		};;
 
 		switch(cmd) {
 		// !ping
