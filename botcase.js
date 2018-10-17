@@ -14,7 +14,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		// !ping
 		case 'ping':
 			fields1 = {"value": "Pong!"};
-			content = {"color": 12345678, "fields": [{"name": "", "value": "Pong!"}]};
+			content = {"color": 12345678, "fields": [{"name": "Pong!", "value": ""}]};
 		break;
 		// !hello
 		case 'hello':
@@ -33,22 +33,22 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'myinfo':
 			content = {
 				"color": 12345678,
-				"title": 'Your Info',
+				"title": "Your Info",
 				"fields": [
 					{
-						"name": 'user',
+						"name": "user",
 						"value": user
 					},
 					{
-						"name": 'userID',
+						"name": "userID",
 						"value": userID
 					},
 					{
-						"name": 'channelID',
+						"name": "channelID",
 						"value": channelID
 					},
 					{
-						"name": 'evt',
+						"name": "evt",
 						"value": evt
 					},
 				],
