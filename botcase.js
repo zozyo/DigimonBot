@@ -9,7 +9,12 @@ exports.case = function (user, userID, channelID, message, evt) {
 		var cmd = args[0];
 		args = args.splice(1);
 
-		var content = {};
+		var content = {
+			"color": 12345678,
+				"fields": [{
+					"value": 'Unknown command! Try d!help for command list!'
+				}],
+		};
 		switch(cmd) {
 		// !ping
 		case 'ping':
