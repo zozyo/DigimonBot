@@ -81,10 +81,9 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 		break;
 		case 'listplayer':
-			var listPlayer = db.listPlayer();
 			content = {
 				"color": 12345678, 
-				"description": JSON.parse(listPlayer)
+				"description": JSON.parse(db.listPlayer())
 			};
 		break;
 		// Just add any case commands if you want to..
