@@ -40,11 +40,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	logger.info(message);
 	logger.info("----------");
 
-	var content = botcase.cases(user, userID, channelID, message, evt);
+	var content = JSON.stringify(botcase.cases(user, userID, channelID, message, evt));
 	console.log(content);
 	bot.sendMessage({
 		to: channelID,
-		embed: {JSON.stringify(content)}
+		embed: {content}
 	});
 
 });//end of message on
