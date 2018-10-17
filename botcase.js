@@ -15,8 +15,8 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		// !ping
 		case 'ping':
 			content = {
-				"to": channelID,
-				"embed": {
+				to: channelID,
+				embed: {
 					"color": 12345678,
 					"fields": [{
 						"value": 'Pong!'
