@@ -14,24 +14,11 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		switch(cmd) {
 		// !ping
 		case 'ping':
-			content = '{
-				"to": channelID,
-				"embed": {
-					"color": 12345678,
-					"fields": [{
-						"value": "Pong!"
-					}]
-				}
-			}';
+			content = '{"to": channelID, "embed": { "color": 12345678, "fields": [{ "value": "Pong!" }]}}';
 		break;
 		// !hello
 		case 'hello':
-			content = '{
-				"color": 12345678,
-				"fields": [{
-					"value": 'Hello world!'
-				}],
-			}';
+			content = '{"color": 12345678, "fields": [{ "value": "Hello world!" }],}';
 		break;
 		// !logo
 		case 'logo':
@@ -92,5 +79,5 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 		}// end of switch
 	}// end of if
-	callback(JSON.stringify(content));
+	callback(content);
 }//end of cases
