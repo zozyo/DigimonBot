@@ -19,6 +19,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.listPlayer = function () { 
+		return "2";
 		collectionP.find({}).toArray(function(err, result) { // return all
 			if (err) throw err;
 			console.log(result);
