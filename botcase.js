@@ -64,7 +64,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
         "inline": true
       }
     ]
-  };}
+  }};
 		break;
 		// !logo
 		case 'logo':
