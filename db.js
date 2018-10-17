@@ -1,8 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-var util = require("util")
-
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	if (err) throw err;
@@ -30,6 +28,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.l = function (callback) {
-		callback(util.inspect(collectionP.find(), {depth:null}));
+		callback(JSON.stringify( collectionP.find().toArray() ));
 	};
 });//end of db
