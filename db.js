@@ -26,6 +26,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			return result;
 		});
 		*/
-		db.collection("player").find().pretty();
+		db.player.find().pretty();
 	}; 
 });//end of db
