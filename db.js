@@ -20,6 +20,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.listPlayer = function () { 
+		return "A";
 		return JSON.stringify(find());		
 	}; 
 
