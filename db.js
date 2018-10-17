@@ -1,5 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
+var results;
 
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
@@ -7,7 +8,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	var db = database.db("digimon");
 	var collectionP = db.collection("player");
 
-var results;
+
 	exports.addPlayer = function (userID) { 
 		var player = { 	
 			"_id": userID,
