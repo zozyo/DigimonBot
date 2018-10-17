@@ -76,10 +76,10 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 		break;
 		case 'addplayer':
-			db.addplayer(userID);
+			db.addPlayer(userID);
 		break;
 		case 'listplayer':
-			var listPlayer = db.listplayer();
+			var listPlayer = db.listPlayer();
 			content = {
 				"color": 12345678, 
 				"description": listPlayer
