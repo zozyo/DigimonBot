@@ -14,21 +14,21 @@ exports.cases = function (user, userID, channelID, message, evt) {
 		switch(cmd) {
 		// !ping
 		case 'ping':
-			content = {
+			content = {{
 				color: 12345678,
 				fields: [{
 					value: 'Pong!'
 				}],
-			};
+			}};
 		break;
 		// !hello
 		case 'hello':
-			content = {
+			content = {{
 				color: 12345678,
 				fields: [{
 					value: 'Hello world!'
 				}],
-			};
+			}};
 		break;
 		// !logo
 		case 'logo':
