@@ -15,7 +15,6 @@ MongoClient.connect(url, function(err, database) {
 		collectionP.insert(player, function(err, res) {
 			if (err) throw err;
 			console.log("Add Player Succeed!");
-			db.close();
 		});
 	};
 
@@ -23,7 +22,6 @@ MongoClient.connect(url, function(err, database) {
 		collectionP. find({}).toArray(function(err, result) { // return all
 			if (err) throw err;
 			return result;
-			db.close();
 		});
 	}; 
 });//end of db
