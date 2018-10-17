@@ -9,29 +9,29 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		var cmd = args[0];
 		args = args.splice(1);
 
-		var content = {};
+		var content;
 
 		switch(cmd) {
 		// !ping
 		case 'ping':
-			content = {
-				to: channelID,
-				embed: {
+			content = '{
+				"to": channelID,
+				"embed": {
 					"color": 12345678,
 					"fields": [{
-						"value": 'Pong!'
-					}],
+						"value": "Pong!"
+					}]
 				}
-			};
+			}';
 		break;
 		// !hello
 		case 'hello':
-			content = {
+			content = '{
 				"color": 12345678,
 				"fields": [{
 					"value": 'Hello world!'
 				}],
-			};
+			}';
 		break;
 		// !logo
 		case 'logo':
