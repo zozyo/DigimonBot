@@ -20,7 +20,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	exports.listPlayer = function () { 
 		var results = collectionP.find().toArray();// return all;
-		console.log(typeOf(results));
+		console.log(typeof results);
 		return results;
 	}; 
 });//end of db
