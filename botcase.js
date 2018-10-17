@@ -95,7 +95,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'l':
 			db.l(function(players) {
 				console.log(JSON.parse(players));
-				function () {
+				function() {
 					content = {
 						"color": 12345678, 
 						"title": "Players",
@@ -106,7 +106,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 							}
 						]
 					}
-				}
+				};
 			});
 		break;
 		// Just add any case commands if you want to..
