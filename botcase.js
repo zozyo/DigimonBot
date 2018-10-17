@@ -1,8 +1,6 @@
 var addNumber = require('./addNumber.js');
 var db  = require('./db.js');
 
-
-
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
 exports.cases = function (user, userID, channelID, message, evt, callback) {
