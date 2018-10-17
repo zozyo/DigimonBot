@@ -1,5 +1,5 @@
 var addNumber = require('./addNumber.js');
-var Database  = require('./db.js');
+var db  = require('./db.js');
 
 
 
@@ -12,7 +12,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		args = args.splice(1);
 
 		var content, fields1;
-		var dbm = new Database();
+
 		switch(cmd) {
 		// !ping
 		case 'ping':
@@ -76,10 +76,10 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 		break;
 		case 'addplayer':
-			dbm.addplayer(userID);
+			db.addplayer(userID);
 		break;
 		case 'listplayer':
-			var listPlayer = dbm.listplayer();
+			var listPlayer = db.listplayer();
 			content = {
 				"color": 12345678, 
 				"description": listPlayer
