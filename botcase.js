@@ -79,5 +79,6 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 		}// end of switch
 	}// end of if
+	JSON.stringify(content);
 	callback(content);
 }//end of cases
