@@ -29,9 +29,8 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'logo':
 			content = {
 				"color": 12345678,
-				"image": {
-					"url": "./logo.jpg"
-				}
+				"image": "./logo.jpg"
+				
 			};
 		break;
 		case 'myinfo':
