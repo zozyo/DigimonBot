@@ -8,7 +8,8 @@ const { combine, timestamp, label, prettyPrint } = format;
 
 const logger = createLogger({
 	format: combine(
-		timestamp()
+		timestamp(),
+		prettyPrint(),
 	),
 	transports: [
 		new transports.Console(),
@@ -17,9 +18,9 @@ const logger = createLogger({
 			level:'debug',
 			maxsize: 1024 * 1024, // 1M
 			filename: 'logs/combined.log',
-		})
-	]
-})
+		}),
+	],
+});
 
 // Initialize Discord Bot
 var bot = new Discord.Client({
@@ -27,7 +28,7 @@ var bot = new Discord.Client({
 	autorun: true
 });
 bot.on('ready', function (evt) {
-	logger.debug('Connected');
+	logger.info('Connected');
 	logger.info('Logged in as: ');
 	logger.info(bot.username + ' - (' + bot.id + ')');
 	logger.info("----------");
@@ -39,9 +40,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	logger.info(message);
 	logger.info("----------");
 
+	var content = botcase.cases(user, userID, channelID, message, evt);
 	bot.sendMessage({
 		to: channelID,
-		embed: botcase.case(user, userID, channelID, message, evt)
+		embed: content
 	});
 
 });//end of message on
