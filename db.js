@@ -20,7 +20,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.listPlayer = function () {
-		return collectionP.find().toArray(function(err, result) { // return all
+		collectionP.find().toArray(function(err, result) { // return all
 			if (err) throw err;
 			console.log(result);
 			return JSON.stringify(result);
@@ -28,6 +28,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.l = function (callback) {
-		callback(JSON.stringify( collectionP.find().toArray() ));
+		var result = collectionP.find().toArray();
+		console.log(JSON.stringify( result ));
+		callback(JSON.stringify( result ));
 	};
 });//end of db
