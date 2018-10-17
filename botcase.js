@@ -38,7 +38,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				}
 			};
 		break;
-		case 'greymon'
+		case 'greymon':
 		content = {
 			"color": 12345678,
 			"image": {
