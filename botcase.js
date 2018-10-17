@@ -18,7 +18,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// !hello
 		case 'hello':
-			content = {"title": 'Your Info'};
+			content = {"color": 12345678, "title": 'Your Info'};
 		break;
 		// !logo
 		case 'logo':
