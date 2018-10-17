@@ -20,10 +20,10 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.listPlayer = function (callback) { 
-		collectionP.find({}).toArray(function(err, result) { // return all
+		var results = collectionP.find({}).toArray(function(err, result) { // return all
 			if (err) throw err;
 			console.log(result);
-			callback(JSON.stringify(results));
 		});
+		callback(JSON.stringify(results));
 	}; 
 });//end of db
