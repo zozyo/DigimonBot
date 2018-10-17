@@ -15,76 +15,76 @@ exports.cases = function (user, userID, channelID, message, evt) {
 		// !ping
 		case 'ping':
 			content = {
-				color: 12345678,
-				fields: [{
-					value: 'Pong!'
+				"color": 12345678,
+				"fields": [{
+					"value": 'Pong!'
 				}],
 			};
 		break;
 		// !hello
 		case 'hello':
 			content = {
-				color: 12345678,
-				fields: [{
-					value: 'Hello world!'
+				"color": 12345678,
+				"fields": [{
+					"value": 'Hello world!'
 				}],
 			};
 		break;
 		// !logo
 		case 'logo':
 			content = {
-				color: 12345678,
-				image: {
-					url: "./logo.jpg"
+				"color": 12345678,
+				"image": {
+					"url": "./logo.jpg"
 				},
 			};
 		break;
 		case 'myinfo':
 			content = {
-				color: 12345678,
-				title: 'Your Info',
-				fields: [
+				"color": 12345678,
+				"title": 'Your Info',
+				"fields": [
 					{
-						name: 'user',
-						value: user
+						"name": 'user',
+						"value": user
 					},
 					{
-						name: 'userID',
-						value: userID
+						"name": 'userID',
+						"value": userID
 					},
 					{
-						name: 'channelID',
-						value: channelID
+						"name": 'channelID',
+						"value": channelID
 					},
 					{
-						name: 'evt',
-						value: evt
+						"name": 'evt',
+						"value": evt
 					},
 				],
 			};
 		break;
 		case 'help':
 			content = {
-				color: 12345678,
-				fields: [{
-					value: 'Under Construction!'
+				"color": 12345678,
+				"fields": [{
+					"value": 'Under Construction!'
 				}],
 			};
 		break;
 		case 'add':
 			content = {
-				color: 12345678,
-				fields: [{
-					value: addNumber.add(args[0], args[1])
+				"color": 12345678,
+				"fields": [{
+					"value": addNumber.add(args[0], args[1])
 				}],
 			};
 		break;
 		// Just add any case commands if you want to..
 		default:
 			content = {
-				color: 12345678,
-				fields: [{
-					value: 'Unknown command! Try d!help for command list!'
+				"color": 12345678,
+				"fields": [{
+					"value": 'Unknown command! Try d!help for command list!'
 				}],
 			};
 		}// end of switch
