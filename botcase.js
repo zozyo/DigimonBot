@@ -14,50 +14,78 @@ exports.case = function (user, userID, channelID, message, evt) {
 		// !ping
 		case 'ping':
 			content = {
-				color: 6826080,
-				message: 'Pong!'  
+				"color": 12345678,
+				"fields": [{
+					"value": 'Pong!'
+				}],
 			};
 		break;
 		// !hello
 		case 'hello':
 			content = {
-				message: 'Hello world!'
+				"color": 12345678,
+				"fields": [{
+					"value": 'Hello world!'
+				}],
 			};
 		break;
 		// !logo
 		case 'logo':
 			content = {
-				image: {
-					'url': './logo.jpg'
+				"color": 12345678,
+				"image": {
+					"url": "./logo.jpg"
 				},
 			};
 		break;
 		case 'myinfo':
 			content = {
-				color: 6826080,
-				fields: [{
-					name: 'Your info',
-					value: 'user: '      + user + '\n' +
-							'userID: '    + userID + '\n' +
-							'channelID: ' + channelID
-				}],
+				"color": 12345678,
+				"title": 'Your Info'
+				"fields": [
+					{
+						"name": 'user',
+						"value": user
+					}
+					{
+						"name": 'userID',
+						"value": userID
+					}
+					{
+						"name": 'channelID',
+						"value": channelID
+					}
+					{
+						"name": 'evt',
+						"value": evt
+					}
+				],
 			};
 		break;
 		case 'help':
 			content = {
-				message: 'Under Construction!'
+				"color": 12345678,
+				"fields": [{
+					"value": 'Under Construction!'
+				}],
 			};
 		break;
 		case 'add':
 			content = {
-				message: addNumber.add(args[0], args[1])
+				"color": 12345678,
+				"fields": [{
+					"value": addNumber.add(args[0], args[1])
+				}],
 			};
 		break;
 		// Just add any case commands if you want to..
 		default:
 			content = {
-				message: 'Unknown command! Try d!help for command list!'
-			};      
+				"color": 12345678,
+				"fields": [{
+					"value": 'Unknown command! Try d!help for command list!'
+				}],
+			};
 		}// end of switch
 	}// end of if
 	return content;
