@@ -81,7 +81,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 		break;
 		case 'listplayer':
-			var players = JSON.parse(db.listPlayer());
+			var players = db.listPlayer();
 			console.log(typeof players);
 			console.log(Number(players instanceof Array));
 			content = {

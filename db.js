@@ -1,6 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
-var results;
 
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
@@ -21,10 +20,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.listPlayer = function () { 
-		results = collectionP.find({}).toArray(function(err, result) { // return all
+		collectionP.find({}).toArray(function(err, result) { // return all
 			if (err) throw err;
-			console.log(result);
+			return console.log(result);
 		});
-		return JSON.stringify(results);
 	}; 
 });//end of db
