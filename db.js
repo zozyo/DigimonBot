@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-function db() {  
+function database() {  
 
 	this.addPlayer = function(userID) { 
 		MongoClient.connect(url, function(err, db) {
@@ -32,4 +32,4 @@ function db() {
 	}; 
 };//end of db
 
-module.exports = db;
+module.exports = database;
