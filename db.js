@@ -19,6 +19,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.listPlayer = function () { 
-		return collectionP.find({}).toArray();// return all;
+		return collectionP.find().toArray();// return all;
 	}; 
 });//end of db
