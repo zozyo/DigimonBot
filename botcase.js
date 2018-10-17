@@ -28,7 +28,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				"color": 12345678,
 				"image": {
 					"url": "./logo.jpg"
-				},
+				}
 			};
 		break;
 		case 'myinfo':
@@ -82,5 +82,5 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		}// end of switch
 	}// end of if
 	
-	callback(JSON.stringify(content));
+	callback(content);
 }//end of cases
