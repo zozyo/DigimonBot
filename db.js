@@ -28,9 +28,11 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.l = function (callback) {
-		var result = collectionP.find({}).toArray();
-		console.log(result);
-		console.log(JSON.stringify( result ));
-		callback(JSON.stringify( result ));
+		collectionP.find({}).toArray(function(err, result) {
+			if (err) throw err;
+			console.log(result);
+			console.log(JSON.stringify( result ));
+			callback(JSON.stringify( result ));
+		});
 	};
 });//end of db
