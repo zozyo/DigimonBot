@@ -1,6 +1,8 @@
 var addNumber = require('./addNumber.js');
-//var db        = require('./db.js');
+var Database  = require('./db.js');
 
+
+var db = new Database();
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
 exports.cases = function (user, userID, channelID, message, evt, callback) {
@@ -15,10 +17,8 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'ping':
 			content = {
 				"color": 12345678, 
-				"fields": [{
-					"name": "Ping!", 
-					"value": "Pong!"
-				}]};
+				"description": "Pong!"
+			};
 		break;
 		// !hello
 		case 'hello':
@@ -69,9 +69,19 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			content = {
 				"color": 12345678,
 				"fields": [{
-					"name": "addNumber",
+					"name": "Addition Calculator",
 					"value": addNumber.add(args[0], args[1])
 				}]
+			};
+		break;
+		case 'addplayer':
+			db.addplayer(userID);
+		break;
+		case 'listplayer':
+			var listPlayer = db.listplayer();
+			content = {
+				"color": 12345678, 
+				"description": listPlayer
 			};
 		break;
 		// Just add any case commands if you want to..
