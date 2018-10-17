@@ -1,6 +1,9 @@
 var addNumber = require('./addNumber.js');
 //var db        = require('./db.js');
 
+
+var fields1;
+var content;
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
 exports.cases = function (user, userID, channelID, message, evt, callback) {
@@ -12,12 +15,12 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		switch(cmd) {
 		// !ping
 		case 'ping':
-			var fields1 = {"value": 'Pong!'};
-			var content = {"color": 12345678, "fields": fields1};
+			fields1 = {"value": 'Pong!'};
+			content = {"color": 12345678, "fields": fields1};
 		break;
 		// !hello
 		case 'hello':
-			var content = {
+			content = {
 				"color": 12345678, 
 				"title": 'Your Info'
 			};
