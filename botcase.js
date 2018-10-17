@@ -38,16 +38,13 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				}
 			};
 		break;
-		case 'agumon':
-			content = {
-				"color": 12345678,
-				"image": {
-					"url": "https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es"
-				},
-				"image": {
-					"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
-				}
+		case 'greymon'
+		content = {
+			"color": 12345678,
+			"image": {
+				"url": "https://vignette.wikia.nocookie.net/digimon-adventure5140/images/c/ca/Greymon_tri.png/revision/latest?cb=20171010042426"
 			}
+		};
 		break;
 		case 'myinfo':
 			content = {
@@ -105,16 +102,11 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		case 'l':
 			db.l(function(players) {
-				console.log(JSON.parse(players));
+				console.log(players);
 				content = {
 					"color": 12345678, 
 					"title": "Players",
-					"fields": [
-						{
-							"name": "list",
-							"value": players
-						}
-					]
+					"description": players
 				}
 			});
 		break;
