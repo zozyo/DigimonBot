@@ -13,7 +13,12 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		switch(cmd) {
 		// !ping
 		case 'ping':
-			content = {"color": 12345678, "fields": [{"name": "Ping!", "value": "Pong!"}]};
+			content = {
+				"color": 12345678, 
+				"fields": [{
+					"name": "Ping!", 
+					"value": "Pong!"
+				}]};
 		break;
 		// !hello
 		case 'hello':
@@ -26,7 +31,9 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'logo':
 			content = {
 				"color": 12345678,
-				"image": "./logo.jpg"
+				"image": {
+					"url": "./logo.jpg"
+				}
 			};
 		break;
 		case 'myinfo':
@@ -50,23 +57,25 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 						"name": "evt",
 						"value": evt
 					},
-				],
+				]
 			};
 		break;
 		case 'help':
 			content = {
 				"color": 12345678,
 				"fields": [{
-					"value": 'Under Construction!'
-				}],
+					"name": "Help",
+					"value": "Under Construction!"
+				}]
 			};
 		break;
 		case 'add':
 			content = {
 				"color": 12345678,
 				"fields": [{
+					"name": "addNumber",
 					"value": addNumber.add(args[0], args[1])
-				}],
+				}]
 			};
 		break;
 		// Just add any case commands if you want to..
@@ -74,8 +83,9 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			content = {
 				"color": 12345678,
 				"fields": [{
-					"value": 'Unknown command! Try d!help for command list!'
-				}],
+					"name": "Unknown command!",
+					"value": "Try d!help for command list!"
+				}]
 			};
 		}// end of switch
 		callback(JSON.stringify(content));
