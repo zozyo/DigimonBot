@@ -7,6 +7,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	var db = database.db("digimon");
 	var collectionP = db.collection("player");
 
+var results;
 	exports.addPlayer = function (userID) { 
 		var player = { 	
 			"_id": userID,
@@ -19,7 +20,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	exports.listPlayer = function () { 
-		var results = collectionP.find({}).toArray(function(err, result) { // return all
+		results = collectionP.find({}).toArray(function(err, result) { // return all
 			if (err) throw err;
 			console.log(result);
 		});
