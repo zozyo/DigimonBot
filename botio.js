@@ -42,7 +42,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 	botcase.cases(user, userID, channelID, message, evt, function(content){
 		bot.sendMessage({
-			to:channelID,
+			to: channelID,
+			message: '',
 			embed: content
 		})
 	});
