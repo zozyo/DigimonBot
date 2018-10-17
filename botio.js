@@ -44,7 +44,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		//var mes = JSON.parse(content);
 		bot.sendMessage({
 			to: channelID,
-			embed: mes
+			embed: content
 		});
 	});
 	
