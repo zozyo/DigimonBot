@@ -58,8 +58,8 @@ exports.case = function (user, userID, channelID, message, evt) {
 					{
 						"name": 'evt',
 						"value": evt
-					},
-				],
+					}
+				]
 			};
 		break;
 		case 'help':
@@ -67,7 +67,7 @@ exports.case = function (user, userID, channelID, message, evt) {
 				"color": 12345678,
 				"fields": [{
 					"value": 'Under Construction!'
-				}],
+				}]
 			};
 		break;
 		case 'add':
@@ -75,7 +75,7 @@ exports.case = function (user, userID, channelID, message, evt) {
 				"color": 12345678,
 				"fields": [{
 					"value": addNumber.add(args[0], args[1])
-				}],
+				}]
 			};
 		break;
 		// Just add any case commands if you want to..
