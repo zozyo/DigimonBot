@@ -12,7 +12,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			"_id": userID,
 			"playerDigimon": "Agumon",
 		};
-		collectionP.insert(player, function(err, res) {
+		collectionP.insertOne(player, function(err, res) {
 			if (err) throw err;
 			console.log("Add Player Succeed!");
 		});
