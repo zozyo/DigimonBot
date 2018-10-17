@@ -18,7 +18,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// !hello
 		case 'hello':
-			content = '{"color": 12345678, "fields": [{ "value": "Hello world!" }]}';
+			content = '"color": 12345678, "fields": [{ "value": "Hello world!" }]';
 		break;
 		// !logo
 		case 'logo':
