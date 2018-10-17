@@ -42,7 +42,7 @@ exports.case = function (user, userID, channelID, message, evt) {
 			content = {
 				"color": 12345678,
 				"title": 'Your Info'
-				"fields": [
+				fields: [
 					{
 						"name": 'user',
 						"value": user
@@ -65,7 +65,7 @@ exports.case = function (user, userID, channelID, message, evt) {
 		case 'help':
 			content = {
 				"color": 12345678,
-				"fields": [{
+				fields: [{
 					"value": 'Under Construction!'
 				}],
 			};
@@ -73,7 +73,7 @@ exports.case = function (user, userID, channelID, message, evt) {
 		case 'add':
 			content = {
 				"color": 12345678,
-				"fields": [{
+				fields: [{
 					"value": addNumber.add(args[0], args[1])
 				}],
 			};
@@ -82,7 +82,7 @@ exports.case = function (user, userID, channelID, message, evt) {
 		default:
 			content = {
 				"color": 12345678,
-				"fields": [{
+				fields: [{
 					"value": 'Unknown command! Try d!help for command list!'
 				}],
 			};
