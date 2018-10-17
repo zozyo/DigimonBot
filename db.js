@@ -22,7 +22,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.listPlayer = function () { 
 		collectionP.find({}).toArray(function(err, result) { // return all
 			if (err) throw err;
-			return String(result);
+			return toString(result);
 		});
 	}; 
 });//end of db
