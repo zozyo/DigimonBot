@@ -92,6 +92,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				}]
 			};
 		break;
+		//testing
 		case 'addplayer':
 			db.addPlayer(userID);
 			content = {
@@ -99,20 +100,11 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				"description": "Added!"
 			};
 		break;
-		case 'listplayer':
-			var players = db.listPlayer();
-			console.log(typeof players);
-			console.log(players);
-			content = {
-				"color": 12345678, 
-				"description": players
-			};
-		break;
 		case 'l':
 			db.l(function(players) {
-				console.log(players);
+				//console.log(players);
 				content = {
-					"color": 12345678, 
+					"color": 14285739, 
 					"title": "Players",
 					"description": players
 				}
