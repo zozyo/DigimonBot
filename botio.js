@@ -9,7 +9,7 @@ const { combine, timestamp, label, prettyPrint } = format;
 const logger = createLogger({
 	format: combine(
 		timestamp(),
-		//prettyPrint(),
+		prettyPrint(),
 	),
 	transports: [
 		new transports.Console(),
