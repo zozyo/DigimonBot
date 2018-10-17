@@ -9,7 +9,7 @@ exports.cases = function (user, userID, channelID, message, evt) {
 		var cmd = args[0];
 		args = args.splice(1);
 
-		var content = {};
+		var content;
 
 		switch(cmd) {
 		// !ping
