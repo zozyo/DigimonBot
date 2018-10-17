@@ -99,7 +99,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				content = {
 					"color": 12345678, 
 					"title": "Players",
-					"description": JSON.parse(players)
+					"description": players
 				}
 			});
 		break;
