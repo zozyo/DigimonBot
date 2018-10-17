@@ -32,7 +32,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			content = {
 				"color": 12345678,
 				"image": {
-					"url": "./logo.jpg"
+					"url": "https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es"
 				}
 			};
 		break;
