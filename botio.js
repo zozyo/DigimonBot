@@ -9,7 +9,7 @@ const { combine, timestamp, label, prettyPrint } = format;
 const logger = createLogger({
 	format: combine(
 		timestamp(),
-		prettyPrint(),
+		//prettyPrint(),
 	),
 	transports: [
 		new transports.Console(),
@@ -40,11 +40,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	logger.info(message);
 	logger.info("----------");
 
-	var content = JSON.stringify(botcase.cases(user, userID, channelID, message, evt));
-	bot.sendMessage({
-		to: channelID,
-		message: '1',
-		embed: {content}
-	});
+	botcase.cases(user, userID, channelID, message, evt, bot.sendMessage(content));
+	
 
 });//end of message on

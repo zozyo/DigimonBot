@@ -3,7 +3,7 @@ var addNumber = require('./addNumber.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
-exports.cases = function (user, userID, channelID, message, evt) {
+exports.cases = function (user, userID, channelID, message, evt, callback) {
 	if (message.substring(0, 2) == 'd!') {
 		var args = message.substring(2).split(' ');
 		var cmd = args[0];
@@ -15,10 +15,13 @@ exports.cases = function (user, userID, channelID, message, evt) {
 		// !ping
 		case 'ping':
 			content = {
-				"color": 12345678,
-				"fields": [{
-					"value": 'Pong!'
-				}],
+				"to": channelID,
+				"embed": {
+					"color": 12345678,
+					"fields": [{
+						"value": 'Pong!'
+					}],
+				}
 			};
 		break;
 		// !hello
@@ -89,5 +92,5 @@ exports.cases = function (user, userID, channelID, message, evt) {
 			};
 		}// end of switch
 	}// end of if
-	return content;
+	callback(content);
 }//end of cases
