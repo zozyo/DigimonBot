@@ -15,77 +15,98 @@ exports.cases = function (user, userID, channelID, message, evt) {
 		// !ping
 		case 'ping':
 			content = {
-				color: 12345678,
-				fields: [{
-					value: 'Pong!'
-				}],
+				to: channelID,
+				embed: {
+					color: 12345678,
+					fields: [{
+						value: 'Pong!'
+					}],
+				}
 			};
 		break;
 		// !hello
 		case 'hello':
 			content = {
-				color: 12345678,
-				fields: [{
-					value: 'Hello world!'
-				}],
+				to: channelID,
+				embed: {
+					color: 12345678,
+					fields: [{
+						value: 'Hello world!'
+					}],
+				}
 			};
 		break;
 		// !logo
 		case 'logo':
 			content = {
-				color: 12345678,
-				image: {
-					url: "./logo.jpg"
-				},
+				to: channelID,
+				embed: {
+					color: 12345678,
+					image: {
+						url: "./logo.jpg"
+					},
+				}
 			};
 		break;
 		case 'myinfo':
 			content = {
-				color: 12345678,
-				title: 'Your Info',
-				fields: [
-					{
-						name: 'user',
-						value: user
-					},
-					{
-						name: 'userID',
-						value: userID
-					},
-					{
-						name: 'channelID',
-						value: channelID
-					},
-					{
-						name: 'evt',
-						value: evt
-					},
-				],
+				to: channelID,
+				embed: {
+					color: 12345678,
+					title: 'Your Info',
+					fields: [
+						{
+							name: 'user',
+							value: user
+						},
+						{
+							name: 'userID',
+							value: userID
+						},
+						{
+							name: 'channelID',
+							value: channelID
+						},
+						{
+							name: 'evt',
+							value: evt
+						},
+					],
+				}
 			};
 		break;
 		case 'help':
 			content = {
-				color: 12345678,
-				fields: [{
-					value: 'Under Construction!'
-				}],
+				to: channelID,
+				embed: {
+					color: 12345678,
+					fields: [{
+						value: 'Under Construction!'
+					}],
+				}
 			};
 		break;
 		case 'add':
 			content = {
-				color: 12345678,
-				fields: [{
-					value: addNumber.add(args[0], args[1])
-				}],
+				to: channelID,
+				embed: {
+					color: 12345678,
+					fields: [{
+						value: addNumber.add(args[0], args[1])
+					}],
+				}
 			};
 		break;
 		// Just add any case commands if you want to..
 		default:
 			content = {
-				color: 12345678,
-				fields: [{
-					value: 'Unknown command! Try d!help for command list!'
-				}],
+				to: channelID,
+				embed: {
+					color: 12345678,
+					fields: [{
+						value: 'Unknown command! Try d!help for command list!'
+					}],
+				}
 			};
 		}// end of switch
 	}// end of if
