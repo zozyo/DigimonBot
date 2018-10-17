@@ -94,7 +94,6 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		case 'l':
 			db.l(function(players) {
-				console.log(players);
 				content = {
 					"color": 12345678, 
 					"title": "Players",
