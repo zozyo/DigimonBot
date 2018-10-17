@@ -41,7 +41,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	logger.info("----------");
 
 	botcase.cases(user, userID, channelID, message, evt, function(content){
-		bot.sendMessage(content);
+		bot.sendMessage({
+			to:channelID,
+			message: content
+		})
 	});
 	
 
