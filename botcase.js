@@ -13,7 +13,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		// !ping
 		case 'ping':
 			var fields1 = {"value": 'Pong!'};
-			var content = {"color": 12345678, "fields": [fields1]};
+			var content = {"color": 12345678, "fields": fields1};
 		break;
 		// !hello
 		case 'hello':
