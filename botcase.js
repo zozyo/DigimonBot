@@ -9,58 +9,53 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		var cmd = args[0];
 		args = args.splice(1);
 
-		var content = {
-			"color": 12345678, 
-			"description": "Message!"
-		};;
-
 		switch(cmd) {
 		// !ping
 		case 'ping':
-			content = {
+			var content = {
 				"color": 12345678, 
 				"description": "Pong!"
 			};
-			callback(JSON.stringify(content));
+			callback(content);
 		break;
 		// !hello
 		case 'hello':
-			content = {
+			var content = {
 				"color": 12345678, 
 				"title": "Hello world!"
 			};
-			callback(JSON.stringify(content));
+			callback(content);
 		break;
 		// !logo
 		case 'logo':
-			content = {
+			var content = {
 				"color": 12345678,
 				"image": {
 					"url": "https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es"
 				}
 			};
-			callback(JSON.stringify(content));
+			callback(content);
 		break;
 		case 'agumon':
-			content = {
+			var content = {
 				"color": 12345678,
 				"image": {
 					"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
 				}
 			}
-			callback(JSON.stringify(content));
+			callback(content);
 		break;
 		case 'greymon':
-			content = {
+			var content = {
 				"color": 12345678,
 				"image": {
 					"url": "https://vignette.wikia.nocookie.net/digimon-adventure5140/images/c/ca/Greymon_tri.png/revision/latest?cb=20171010042426"
 				}
 			};
-			callback(JSON.stringify(content));
+			callback(content);
 		break;
 		case 'myinfo':
-			content = {
+			var content = {
 				"color": 12345678,
 				"title": "Your Info",
 				"fields": [
@@ -78,50 +73,50 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					}
 				]
 			};
-			callback(JSON.stringify(content));
+			callback(content);
 		break;
 		case 'help':
-			content = {
+			var content = {
 				"color": 12345678,
 				"fields": [{
 					"name": "Help",
 					"value": "Under Construction!"
 				}]
 			};
-			callback(JSON.stringify(content));
+			callback(content);
 		break;
 		case 'add':
-			content = {
+			var content = {
 				"color": 12345678,
 				"fields": [{
 					"name": "Addition Calculator",
 					"value": addNumber.add(args[0], args[1])
 				}]
 			};
-			callback(JSON.stringify(content));
+			callback(content);
 		break;
 		//testing
 		case 'addplayer':
 			db.addPlayer(userID);
-			content = {
+			var content = {
 				"color": 12345678, 
 				"description": "Added!"
 			};
-			callback(JSON.stringify(content));
+			callback(content);
 		break;
 		case 'listplayer':
 			db.listPlayer(function(result){
-				content = {
+				var content = {
 					"color": 14285739, 
 					"title": "Players",
 					"description": result
 				};
-				callback(JSON.stringify(content));
+				callback(content);
 			})
 		break;
 		// Just add any case commands if you want to..
 		default:
-			content = {
+			var content = {
 				"color": 12345678,
 				"fields": [{
 					"name": "Unknown command!",
