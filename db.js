@@ -11,7 +11,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	var colP = db.collection("player");
 
 	// temporary
-	// add player info collection "player"
+	// add player into collection "player"
 	exports.addPlayer = function (userID, callback) { 
 		colP.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
@@ -28,7 +28,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				});
 			}
 		});
-	};
+	};// end of addPlayer
 
 	// list all player in collection "player"
 	exports.listPlayer = function (callback) {
@@ -36,5 +36,24 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			if (err) throw err;
 			callback(JSON.stringify( result ));
 		});
-	};
+	};//end of listPlayer
+
+	//delete player in collection "player"
+	exports.addPlayer = function (userID, callback) { 
+		var userID = {"_id":userID};
+		colP.find(userID).toArray(function(err, result) {
+			if (err) throw err;
+			if (result) { // if player exist in database
+				colP.deleteOne(userID, function(err, res) {
+					if (err) throw err;
+					callback("Delete Player Succeed!");
+				}
+			} else { // if new player
+				callback("Player does not Exist!");
+			}
+		});
+	};//end of deleteplayer
+
+	//add more
+
 });// end of db

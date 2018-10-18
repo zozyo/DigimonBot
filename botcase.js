@@ -100,22 +100,34 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 			callback(content);
 		break;
-		// temporary database adding
+		// temporary database insert
 		case 'addplayer':
 			db.addPlayer(userID, function(result){
 				var content = {
-					"color": 12345678, 
+					"color": 19283745,
+					"title": "addplayer",
 					"description": result
 				};
 				callback(content);
 			});
 		break;
-		// temporary database searching
+		// temporary database search
 		case 'listplayer':
 			db.listPlayer(function(result){
 				var content = {
 					"color": 14285739, 
-					"title": "Players",
+					"title": "listplayer",
+					"description": result
+				};
+				callback(content);
+			});
+		break;
+		//temporary database delete
+		case 'deleteplayer':
+			db.deletePlayer(function(result){
+				var content = {
+					"color": 27463591, 
+					"title": "deleteplayer",
 					"description": result
 				};
 				callback(content);
