@@ -10,10 +10,12 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		var cmd = args[0];
 		args = args.splice(1);
 
+		var content = {"title":"Message!"};
+
 		switch(cmd) {
 		// ping
 		case 'ping':
-			var content = {
+			content = {
 				"color": 12345678, 
 				"description": "Pong!"
 			};
@@ -21,7 +23,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// hello
 		case 'hello':
-			var content = {
+			content = {
 				"color": 12345678, 
 				"title": "Hello world!"
 			};
@@ -29,7 +31,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// logo
 		case 'logo':
-			var content = {
+			content = {
 				"color": 12345678,
 				"image": {
 					"url": "https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es"
@@ -39,7 +41,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// testing images
 		case 'agumon':
-			var content = {
+			content = {
 				"color": 12345678,
 				"image": {
 					"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
@@ -48,7 +50,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			callback(content)
 		break;
 		case 'greymon':
-			var content = {
+			content = {
 				"color": 12345678,
 				"image": {
 					"url": "https://vignette.wikia.nocookie.net/digimon-adventure5140/images/c/ca/Greymon_tri.png/revision/latest?cb=20171010042426"
@@ -58,7 +60,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// show user info for database
 		case 'myinfo':
-			var content = {
+			content = {
 				"color": 12345678,
 				"title": "Your Info",
 				"fields": [
@@ -80,7 +82,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// help menu
 		case 'help':
-			var content = {
+			content = {
 				"color": 12345678,
 				"fields": [{
 					"name": "Help",
@@ -91,7 +93,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// Addition Calculator, testing for require
 		case 'add':
-			var content = {
+			content = {
 				"color": 12345678,
 				"fields": [{
 					"name": "Addition Calculator",
@@ -103,7 +105,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		// temporary database insert
 		case 'addplayer':
 			db.addPlayer(userID, function(result){
-				var content = {
+				content = {
 					"color": 19283745,
 					"title": "addplayer",
 					"description": result
@@ -114,8 +116,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		// temporary database search
 		case 'listplayer':
 			db.listPlayer(function(result){
-				console.log(typeof result);
-				var content = {
+				content = {
 					"color": 14285739, 
 					"title": "listplayer",
 					"description": result
@@ -126,7 +127,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		//temporary database delete
 		case 'deleteplayer':
 			db.deletePlayer(userID, function(result){
-				var content = {
+				content = {
 					"color": 27463591, 
 					"title": "deleteplayer",
 					"description": result
@@ -136,7 +137,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// Just add any case commands if you want to..
 		default:
-			var content = {
+			content = {
 				"color": 12345678,
 				"fields": [{
 					"name": "Unknown command!",
