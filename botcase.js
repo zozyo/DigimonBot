@@ -1,5 +1,6 @@
-var addNumber = require('./addNumber.js');
-var db  = require('./db.js');
+//requires
+var addNumber 	= require('./addNumber.js');
+var db			= require('./db.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
@@ -10,7 +11,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		args = args.splice(1);
 
 		switch(cmd) {
-		// !ping
+		// ping
 		case 'ping':
 			var content = {
 				"color": 12345678, 
@@ -18,7 +19,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 			callback(content);
 		break;
-		// !hello
+		// hello
 		case 'hello':
 			var content = {
 				"color": 12345678, 
@@ -26,7 +27,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 			callback(content);
 		break;
-		// !logo
+		// logo
 		case 'logo':
 			var content = {
 				"color": 12345678,
@@ -36,6 +37,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 			callback(content);
 		break;
+		// testing images
 		case 'agumon':
 			var content = {
 				"color": 12345678,
@@ -54,6 +56,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 			callback(content);
 		break;
+		// show user info for database
 		case 'myinfo':
 			var content = {
 				"color": 12345678,
@@ -75,6 +78,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 			callback(content);
 		break;
+		// help menu
 		case 'help':
 			var content = {
 				"color": 12345678,
@@ -85,6 +89,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 			callback(content);
 		break;
+		// Addition Calculator, testing for require
 		case 'add':
 			var content = {
 				"color": 12345678,
@@ -95,7 +100,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 			callback(content);
 		break;
-		//testing
+		// temporary database adding
 		case 'addplayer':
 			db.addPlayer(userID);
 			var content = {
@@ -104,6 +109,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 			callback(content);
 		break;
+		// temporary database searching
 		case 'listplayer':
 			db.listPlayer(function(result){
 				var content = {
@@ -126,4 +132,4 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			callback(content);
 		}// end of switch
 	}// end of if
-}//end of cases
+}// end of cases
