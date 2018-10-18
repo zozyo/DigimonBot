@@ -21,6 +21,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				"color": 12345678, 
 				"description": "Pong!"
 			};
+			callback(JSON.stringify(content));
 		break;
 		// !hello
 		case 'hello':
@@ -28,6 +29,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				"color": 12345678, 
 				"title": "Hello world!"
 			};
+			callback(JSON.stringify(content));
 		break;
 		// !logo
 		case 'logo':
@@ -37,6 +39,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"url": "https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es"
 				}
 			};
+			callback(JSON.stringify(content));
 		break;
 		case 'agumon':
 			content = {
@@ -45,14 +48,16 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
 				}
 			}
+			callback(JSON.stringify(content));
 		break;
 		case 'greymon':
-		content = {
-			"color": 12345678,
-			"image": {
-				"url": "https://vignette.wikia.nocookie.net/digimon-adventure5140/images/c/ca/Greymon_tri.png/revision/latest?cb=20171010042426"
-			}
-		};
+			content = {
+				"color": 12345678,
+				"image": {
+					"url": "https://vignette.wikia.nocookie.net/digimon-adventure5140/images/c/ca/Greymon_tri.png/revision/latest?cb=20171010042426"
+				}
+			};
+			callback(JSON.stringify(content));
 		break;
 		case 'myinfo':
 			content = {
@@ -73,6 +78,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					}
 				]
 			};
+			callback(JSON.stringify(content));
 		break;
 		case 'help':
 			content = {
@@ -82,6 +88,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"value": "Under Construction!"
 				}]
 			};
+			callback(JSON.stringify(content));
 		break;
 		case 'add':
 			content = {
@@ -91,6 +98,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"value": addNumber.add(args[0], args[1])
 				}]
 			};
+			callback(JSON.stringify(content));
 		break;
 		//testing
 		case 'addplayer':
@@ -99,9 +107,10 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				"color": 12345678, 
 				"description": "Added!"
 			};
+			callback(JSON.stringify(content));
 		break;
-		case 'l':
-			db.list(function(result){
+		case 'listplayer':
+			db.listPlayer(function(result){
 				content = {
 					"color": 14285739, 
 					"title": "Players",
@@ -119,7 +128,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"value": "Try d!help for command list!"
 				}]
 			};
-			callback(JSON.stringify(content));
+			callback(content);
 		}// end of switch
 	}// end of if
 }//end of cases

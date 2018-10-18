@@ -19,7 +19,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		});
 	};
 
-	exports.list = function (callback) {
+	exports.listPlayer = function (callback) {
 		collectionP.find({}).toArray(function(err, result) {
 			if (err) throw err;
 			callback(JSON.stringify( result ));
