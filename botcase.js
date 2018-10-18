@@ -104,7 +104,9 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			content = {
 				"color": 14285739, 
 				"title": "Players",
-				"description": db.list().result
+				"description": db.list(function(result){
+					return result;
+				})
 			};
 		break;
 		// Just add any case commands if you want to..
