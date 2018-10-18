@@ -12,14 +12,21 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// temporary
 	// add player info collection "player"
-	exports.addPlayer = function (userID) { 
-		var player = { 	
-			"_id": userID,
-			"playerDigimon": "Agumon",
-		};
-		colP.insert(player, function(err, res) {
+	exports.addPlayer = function (userID, callback) { 
+		colP.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
-			console.log("Add Player Succeed!");
+			if (result) { // if player exist in database
+				callback("Player Already Exist!");
+			} else { // if new player
+				var player = { 	
+					"_id": userID,
+					"playerDigimon": "Agumon",
+				};
+				colP.insert(player, function(err, res) {
+					if (err) throw err;
+					callback("Add Player Succeed!");
+				});
+			}
 		});
 	};
 

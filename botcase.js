@@ -102,12 +102,13 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		// temporary database adding
 		case 'addplayer':
-			db.addPlayer(userID);
-			var content = {
-				"color": 12345678, 
-				"description": "Added!"
+			db.addPlayer(userID, function(result){
+				var content = {
+					"color": 12345678, 
+					"description": result
+				};
+				callback(content);
 			};
-			callback(content);
 		break;
 		// temporary database searching
 		case 'listplayer':
