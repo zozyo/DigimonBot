@@ -47,7 +47,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				colP.deleteOne(userID, function(err, res) {
 					if (err) throw err;
 					callback("Delete Player Succeed!");
-				}
+				};
 			} else { // if new player
 				callback("Player does not Exist!");
 			}
