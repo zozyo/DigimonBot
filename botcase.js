@@ -101,14 +101,14 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 			};
 		break;
 		case 'l':
-			var desc = db.list(function(result){
-					desc = result
-				})
-			content = {
-				"color": 14285739, 
-				"title": "Players",
-				"description": desc
-			};
+			db.list(function(result){
+				content = {
+					"color": 14285739, 
+					"title": "Players",
+					"description": result
+				};
+				callback(JSON.stringify(content));
+			})
 		break;
 		// Just add any case commands if you want to..
 		default:
@@ -119,7 +119,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"value": "Try d!help for command list!"
 				}]
 			};
+			callback(JSON.stringify(content));
 		}// end of switch
-		callback(JSON.stringify(content));
 	}// end of if
 }//end of cases
