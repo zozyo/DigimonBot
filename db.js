@@ -15,17 +15,17 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.addPlayer = function (userID, callback) { 
 		colP.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
-			if (result) { // if player exist in database
+			if (result === []) { // if player exist in database
 				callback("Player Already Exist!");
 			} else { // if new player
 				var player = { 	
 					"_id": userID,
-					"playerDigimon": "Agumon",
+					"playerDigimon": "Agumon"
 				};
 				colP.insert(player, function(err, res) {
 					if (err) throw err;
 					callback("Add Player Succeed!");
-				});
+				})
 			}
 		});
 	};// end of addPlayer
@@ -47,7 +47,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				colP.deleteOne(userID, function(err, res) {
 					if (err) throw err;
 					callback("Delete Player Succeed!");
-				});
+				})
 			} else { // if new player
 				callback("Player does not Exist!");
 			}
