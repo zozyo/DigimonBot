@@ -1,28 +1,33 @@
+// database config
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	if (err) throw err;
+
+	// setup database
 	var db = database.db("digimon");
-	var collectionP = db.collection("player");
+	var colP = db.collection("player");
 
-
+	// temporary
+	// add player info collection "player"
 	exports.addPlayer = function (userID) { 
 		var player = { 	
 			"_id": userID,
 			"playerDigimon": "Agumon",
 		};
-		collectionP.insert(player, function(err, res) {
+		colP.insert(player, function(err, res) {
 			if (err) throw err;
 			console.log("Add Player Succeed!");
 		});
 	};
 
+	// list all player in collection "player"
 	exports.listPlayer = function (callback) {
-		collectionP.find({}).toArray(function(err, result) {
+		colP.find({}).toArray(function(err, result) {
 			if (err) throw err;
 			callback(JSON.stringify( result ));
 		});
 	};
-});//end of db
+});// end of db

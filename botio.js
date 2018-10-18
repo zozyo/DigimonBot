@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 var Discord  	= require('discord.io');
 var auth     	= require('./auth.json');
 var botcase 	= require('./botcase.js');
+=======
+//requires
+var Discord = require('discord.io');
+var auth	= require('./auth.json');
+var botcase = require('./botcase.js');
+>>>>>>> master
 
 // Configure logger settings
 const { createLogger, format, transports }       = require('winston');
@@ -12,12 +19,12 @@ const logger = createLogger({
 		prettyPrint()
 	),
 	transports: [
-		new transports.Console(),
-		new transports.File({ 
+		new transports.Console(), //show logs in console
+		new transports.File({ // save logs to file
 			json: true,
 			level:'debug',
-			maxsize: 1024 * 1024, // 1M
-			filename: 'logs/combined.log',
+			maxsize: 1024 * 1024, // 1M per log
+			filename: 'logs/combined.log', // log file path
 		}),
 	],
 });
@@ -27,19 +34,22 @@ var bot = new Discord.Client({
 	token: auth.token,
 	autorun: true
 });
+// bot ready
 bot.on('ready', function (evt) {
 	logger.info('Connected');
 	logger.info('Logged in as: ');
 	logger.info(bot.username + ' - (' + bot.id + ')');
 	logger.info("----------");
 });
+// message listener
 bot.on('message', function (user, userID, channelID, message, evt) {
-	//log
+	//logs
 	logger.info(user + " - " + userID);
 	logger.info("in " + channelID);
 	logger.info(message);
 	logger.info("----------");
 
+	// bot replay in different cases
 	botcase.cases(user, userID, channelID, message, evt, function (content) {
 		bot.sendMessage({
 			to: channelID,
