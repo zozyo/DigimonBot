@@ -17,7 +17,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				"color": 12345678, 
 				"description": "Pong!"
 			};
-			callback(content);
+			callback(content)
 		break;
 		// hello
 		case 'hello':
@@ -25,7 +25,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 				"color": 12345678, 
 				"title": "Hello world!"
 			};
-			callback(content);
+			callback(content)
 		break;
 		// logo
 		case 'logo':
@@ -35,7 +35,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"url": "https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es"
 				}
 			};
-			callback(content);
+			callback(content)
 		break;
 		// testing images
 		case 'agumon':
@@ -45,7 +45,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
 				}
 			}
-			callback(content);
+			callback(content)
 		break;
 		case 'greymon':
 			var content = {
@@ -54,7 +54,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"url": "https://vignette.wikia.nocookie.net/digimon-adventure5140/images/c/ca/Greymon_tri.png/revision/latest?cb=20171010042426"
 				}
 			};
-			callback(content);
+			callback(content)
 		break;
 		// show user info for database
 		case 'myinfo':
@@ -76,7 +76,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					}
 				]
 			};
-			callback(content);
+			callback(content)
 		break;
 		// help menu
 		case 'help':
@@ -87,7 +87,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"value": "Under Construction!"
 				}]
 			};
-			callback(content);
+			callback(content)
 		break;
 		// Addition Calculator, testing for require
 		case 'add':
@@ -98,7 +98,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"value": addNumber.add(args[0], args[1])
 				}]
 			};
-			callback(content);
+			callback(content)
 		break;
 		// temporary database insert
 		case 'addplayer':
@@ -108,7 +108,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"title": "addplayer",
 					"description": result
 				};
-				callback(content);
+				callback(content)
 			});
 		break;
 		// temporary database search
@@ -119,7 +119,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"title": "listplayer",
 					"description": result
 				};
-				callback(content);
+				callback(content)
 			});
 		break;
 		//temporary database delete
@@ -130,7 +130,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"title": "deleteplayer",
 					"description": result
 				};
-				callback(content);
+				callback(content)
 			});
 		break;
 		// Just add any case commands if you want to..
@@ -142,7 +142,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 					"value": "Try d!help for command list!"
 				}]
 			};
-			callback(content);
+			callback(content)
 		}// end of switch
 	}// end of if
 }// end of cases
