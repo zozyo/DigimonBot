@@ -124,7 +124,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		break;
 		//temporary database delete
 		case 'deleteplayer':
-			db.deletePlayer(function(result){
+			db.deletePlayer(userID, function(result){
 				var content = {
 					"color": 27463591, 
 					"title": "deleteplayer",
