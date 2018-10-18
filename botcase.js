@@ -106,7 +106,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'addplayer':
 			db.addPlayer(userID, function(result){
 				content = {
-					"color": 19283745,
+					"color": 12345678,
 					"title": "addplayer",
 					"description": result
 				};
@@ -128,7 +128,7 @@ exports.cases = function (user, userID, channelID, message, evt, callback) {
 		case 'deleteplayer':
 			db.deletePlayer(userID, function(result){
 				content = {
-					"color": 27463591, 
+					"color": 12345678, 
 					"title": "deleteplayer",
 					"description": result
 				};
