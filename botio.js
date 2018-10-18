@@ -1,6 +1,6 @@
-var Discord  = require('discord.io');
-var auth     = require('./auth.json');
-var botcase = require('./botcase.js');
+var Discord  	= require('discord.io');
+var auth     	= require('./auth.json');
+var botcase 	= require('./botcase.js');
 
 // Configure logger settings
 const { createLogger, format, transports }       = require('winston');
@@ -46,6 +46,4 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			embed: content
 		});
 	});
-	
-
 });//end of message on

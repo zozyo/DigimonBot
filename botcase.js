@@ -1,5 +1,6 @@
-var addNumber = require('./addNumber.js');
-var db  = require('./db.js');
+var addNumber 	= require('./addNumber.js'),
+	db  		= require('./db.js'),
+	routes 		= require('./routes');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
