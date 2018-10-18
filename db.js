@@ -44,13 +44,13 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		var userID = {"_id":userID};
 		colP.find(userID).toArray(function(err, result) {
 			if (err) throw err;
-			if (result) { // if player exist in database
+			if (result === undefined || result.length == 0) { // if no player found
+				callback("Player does not Exist!")
+			} else { // if player exist in database
 				colP.deleteOne(userID, function(err, res) {
 					if (err) throw err;
 					callback("Delete Player Succeed!");
 				})
-			} else { // if new player
-				callback("Player does not Exist!")
 			}
 		})
 	};//end of deleteplayer
