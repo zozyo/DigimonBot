@@ -15,7 +15,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.addPlayer = function (userID, callback) { 
 		colP.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
-			if (result == []) { // if new player
+			if (result.length) { // if new player
 				var player = { 	
 					"_id": userID,
 					"playerDigimon": "Agumon",
