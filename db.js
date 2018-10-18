@@ -15,9 +15,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.addPlayer = function (userID, callback) { 
 		colP.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
-			if (result) { // if player exist in database
-				callback("Player Already Exist!");
-			} else { // if new player
+			if (result === []) { // if new player
 				var player = { 	
 					"_id": userID,
 					"playerDigimon": "Agumon",
@@ -26,6 +24,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					if (err) throw err;
 					callback("Add Player Succeed!");
 				});
+				
+			} else { // if player exist in database
+				callback("Player Already Exist!");
 			}
 		});
 	};// end of addPlayer
