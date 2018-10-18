@@ -39,7 +39,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};//end of listPlayer
 
 	//delete player in collection "player"
-	exports.addPlayer = function (userID, callback) { 
+	exports.deletePlayer = function (userID, callback) { 
 		var userID = {"_id":userID};
 		colP.find(userID).toArray(function(err, result) {
 			if (err) throw err;
