@@ -39,7 +39,7 @@ bot.on('ready', function (evt) {
 bot.on('message', function (user, userID, channelID, message, evt) {
 	if (message.substring(0, 2) == 'd!') {
 		//logs
-		logger.info(user + " - " + userID + "in " + channelID);
+		logger.info(user + " - " + userID + " in " + channelID);
 		logger.info(message);
 
 		// bot replay in different cases
@@ -73,8 +73,9 @@ function splitMessage(message) {
 	const cmd = msg[0];
 	const args = msg.splice(1);
 
+	console.log(Cases.cmd);
 	// check the command exists
-	if (typeof Cases[cmd] === 'function') {
+	if (typeof Cases.cmd === 'function') {
 		return { cmd, args };
 	} else {
 		return null;
