@@ -76,6 +76,7 @@ function splitMessage(message) {
 	console.log(cmd);
 	console.log(Cases.ping);
 	console.log(Cases[cmd]);
+	console.log(typeof Cases[cmd]);
 	// check the command exists
 	if (typeof Cases.cmd === 'function') {
 		return { cmd, args };
