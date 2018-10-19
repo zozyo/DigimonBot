@@ -4,7 +4,7 @@ var db = require('./db.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
-exports.Cases.prototype = function() {
+exports.Cases.prototype = {
 	// ping
 	ping = function(user, userID, channelID, args, callback){
 		var content = {
