@@ -1,7 +1,7 @@
 //requires
-var Discord = require('discord.io');
-var auth	= require('./auth.json');
-var botcase = require('./botcase.js');
+import Discord 	from 'discord.io';
+import auth		from './auth.json';
+import Cases 	from './botcase.js';
 
 // Configure logger settings
 const { createLogger, format, transports }       = require('winston');
@@ -37,17 +37,45 @@ bot.on('ready', function (evt) {
 });
 // message listener
 bot.on('message', function (user, userID, channelID, message, evt) {
-	//logs
-	logger.info(user + " - " + userID);
-	logger.info("in " + channelID);
-	logger.info(message);
-	logger.info("----------");
+	if (message.substring(0, 2) == 'd!') {
+		//logs
+		logger.info(user + " - " + userID + "in " + channelID);
+		logger.info(message);
 
-	// bot replay in different cases
-	botcase.cases(user, userID, channelID, message, evt, function (content) {
-		bot.sendMessage({
-			to: channelID,
-			embed: content
-		});
-	});
+		// bot replay in different cases
+		const commands = splitMessage(message);
+		if (commands) {
+			Cases[commands.cmd](user, userID, channelID, commands.args, function (content) {
+				bot.sendMessage({
+					to: channelID,
+					embed: content
+				});
+			});
+		} else {
+			bot.sendMessage({
+				to: channelID,
+				embed: {
+					"color": 12345678,
+					"fields": [{
+						"name": "Unknown command!",
+						"value": "Try d!help for command list!"
+					}]
+				}
+			});
+		}
+	}
 });//end of message on
+
+function splitMessage(message) {
+	//split message
+	const msg = message.substring(2).split(' ');
+	const cmd = args[0];
+	const args = args.splice(1);
+
+	// check the command exists
+	if (typeof Cases[cmd] === 'function') {
+		return { cmd, args };
+	} else {
+		return null;
+	}
+}
