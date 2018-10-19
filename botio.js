@@ -73,6 +73,7 @@ function splitMessage(message) {
 	const cmd = msg[0];
 	const args = msg.splice(1);
 
+	console.log(cmd);
 	console.log(Cases);
 	console.log(Cases.cmd);
 	// check the command exists
