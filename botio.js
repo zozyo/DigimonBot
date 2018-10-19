@@ -44,7 +44,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 		// bot replay in different cases
 		const commands = splitMessage(message);
-		console.log(commands);
 		if (commands) {
 			Cases[commands.cmd](user, userID, channelID, commands.args, function (content) {
 				bot.sendMessage({
@@ -73,10 +72,6 @@ function splitMessage(message) {
 	const cmd = msg[0];
 	const args = msg.splice(1);
 
-	console.log(cmd);
-	console.log(Cases.ping);
-	console.log(Cases[cmd]);
-	console.log(typeof Cases[cmd]);
 	// check the command exists
 	if (typeof Cases[cmd] === "function") {
 		return { cmd, args };

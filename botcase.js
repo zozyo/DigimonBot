@@ -13,9 +13,9 @@ module.exports = {
 		};
 		callback(content);
 	}
-/*
+
 	//hello
-	var hello = function(user, userID, channelID, args, callback){
+	hello: function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678, 
 			"title": "Hello world!"
@@ -24,7 +24,7 @@ module.exports = {
 	}
 
 	//logo
-	var logo = function(user, userID, channelID, args, callback){
+	logo: function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"image": {
@@ -35,7 +35,7 @@ module.exports = {
 	}
 
 	//testing images
-	var agumon = function(user, userID, channelID, args, callback){
+	agumon: function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"image": {
@@ -45,7 +45,7 @@ module.exports = {
 		callback(content);
 	}
 
-	var greymon = function(user, userID, channelID, args, callback){
+	greymon: function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"image": {
@@ -56,7 +56,7 @@ module.exports = {
 	}
 
 	// show user info for future use in database
-	var myinfo = function(user, userID, channelID, args, callback){
+	myinfo: function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"title": "Your Info",
@@ -79,7 +79,7 @@ module.exports = {
 	}
 
 	// help menu
-	var help = function(user, userID, channelID, args, callback){
+	help: function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"fields": [{
@@ -91,7 +91,7 @@ module.exports = {
 	}
 
 	// Addition Calculator, testing for require
-	var add = function(user, userID, channelID, args, callback){
+	add: function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"fields": [{
@@ -103,7 +103,7 @@ module.exports = {
 	}
 
 	// temporary database insert
-	var addplayer = function(user, userID, channelID, args, callback){
+	addplayer: function(user, userID, channelID, args, callback){
 		db.addPlayer(userID, function(result){
 			var content = {
 				"color": 12345678,
@@ -115,7 +115,7 @@ module.exports = {
 	}
 
 	// temporary database search
-	var listplayer = function(user, userID, channelID, args, callback){
+	listplayer: function(user, userID, channelID, args, callback){
 		db.listPlayer(function(result){
 			var content = {
 				"color": 14285739, 
@@ -127,7 +127,7 @@ module.exports = {
 	}
 
 	//temporary database delete
-	var deleteplayer = function(user, userID, channelID, args, callback){
+	deleteplayer: function(user, userID, channelID, args, callback){
 		db.deletePlayer(userID, function(result){
 			var content = {
 				"color": 12345678, 
@@ -136,5 +136,5 @@ module.exports = {
 			};
 			callback(content)
 		});
-	}*/
+	}
 }// end of cases
