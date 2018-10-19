@@ -70,7 +70,7 @@ function splitMessage(message) {
 	//split message
 	const msg = message.substring(2).split(' ');
 	const cmd = msg[0];
-	const args = args.splice(1);
+	const args = msg.splice(1);
 
 	// check the command exists
 	if (typeof Cases[cmd] === 'function') {
