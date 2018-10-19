@@ -12,7 +12,7 @@ module.exports = {
 			"description": "Pong!"
 		};
 		callback(content);
-	}
+	},
 
 	//hello
 	hello: function(user, userID, channelID, args, callback){
@@ -21,7 +21,7 @@ module.exports = {
 			"title": "Hello world!"
 		};
 		callback(content)
-	}
+	},
 
 	//logo
 	logo: function(user, userID, channelID, args, callback){
@@ -32,7 +32,7 @@ module.exports = {
 			}
 		};
 		callback(content);
-	}
+	},
 
 	//testing images
 	agumon: function(user, userID, channelID, args, callback){
@@ -43,7 +43,7 @@ module.exports = {
 			}
 		};
 		callback(content);
-	}
+	},
 
 	greymon: function(user, userID, channelID, args, callback){
 		var content = {
@@ -53,7 +53,7 @@ module.exports = {
 			}
 		};
 		callback(content);
-	}
+	},
 
 	// show user info for future use in database
 	myinfo: function(user, userID, channelID, args, callback){
@@ -76,7 +76,7 @@ module.exports = {
 			]
 		};
 		callback(content);
-	}
+	},
 
 	// help menu
 	help: function(user, userID, channelID, args, callback){
@@ -88,7 +88,7 @@ module.exports = {
 			}]
 		};
 		callback(content);
-	}
+	},
 
 	// Addition Calculator, testing for require
 	add: function(user, userID, channelID, args, callback){
@@ -100,7 +100,7 @@ module.exports = {
 			}]
 		};
 		callback(content);
-	}
+	},
 
 	// temporary database insert
 	addplayer: function(user, userID, channelID, args, callback){
@@ -112,7 +112,7 @@ module.exports = {
 			};
 			callback(content)
 		});
-	}
+	},
 
 	// temporary database search
 	listplayer: function(user, userID, channelID, args, callback){
@@ -124,7 +124,7 @@ module.exports = {
 			};
 			callback(content)
 		});
-	}
+	},
 
 	//temporary database delete
 	deleteplayer: function(user, userID, channelID, args, callback){
