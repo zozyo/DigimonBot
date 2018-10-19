@@ -5,6 +5,10 @@ var db = require('./db.js');
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
 module.exports = {
+	ping: function(){
+		console.log("ping")
+	}
+	/*
 	// ping
 	ping: function(user, userID, channelID, args, callback){
 		var content = {
@@ -13,7 +17,7 @@ module.exports = {
 		};
 		callback(content);
 	}
-/*
+
 	//hello
 	var hello = function(user, userID, channelID, args, callback){
 		var content = {
