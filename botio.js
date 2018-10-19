@@ -44,6 +44,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 		// bot replay in different cases
 		const commands = splitMessage(message);
+		console.log(commands);
 		if (commands) {
 			Cases[commands.cmd](user, userID, channelID, commands.args, function (content) {
 				bot.sendMessage({
