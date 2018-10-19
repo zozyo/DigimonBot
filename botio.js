@@ -74,7 +74,7 @@ function splitMessage(message) {
 	const args = msg.splice(1);
 
 	console.log(cmd);
-	console.log(Cases.ping(1,2,3,4,function(a){}));
+	console.log(Cases.ping(1,2,3,4,function(a){return "a"}));
 	console.log(Cases.cmd);
 	// check the command exists
 	if (typeof Cases.cmd === 'function') {
