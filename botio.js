@@ -1,7 +1,7 @@
 //requires
-import Discord 	from 'discord.io';
-import auth		from './auth.json';
-import Cases 	from './botcase.js';
+var Discord = require('discord.io');
+var auth = require('./auth.json');
+var Cases = require('./botcase.js');
 
 // Configure logger settings
 const { createLogger, format, transports }       = require('winston');
