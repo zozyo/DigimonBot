@@ -1,7 +1,7 @@
 //requires
 var Discord = require('discord.io');
 var auth = require('./auth.json');
-var Cases = require('./botcase.js');
+var Cases = require('./models/botcase.js');
 
 // Configure logger settings
 const { createLogger, format, transports }       = require('winston');
