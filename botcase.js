@@ -1,12 +1,12 @@
 //requires
-import addNumber from './addNumber.js';
-import db  		 from './db.js';
+var addNumber = require('./addNumber.js');
+var db = require('./db.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
-export default class Cases {
+exports.Cases = function() {
 	// ping
-	static ping(user, userID, channelID, args, callback){
+	var ping = function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678, 
 			"description": "Pong!"
@@ -15,7 +15,7 @@ export default class Cases {
 	}
 
 	//hello
-	static hello(user, userID, channelID, args, callback){
+	var hello = function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678, 
 			"title": "Hello world!"
@@ -24,7 +24,7 @@ export default class Cases {
 	}
 
 	//logo
-	static logo(user, userID, channelID, args, callback){
+	var logo = function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"image": {
@@ -35,7 +35,7 @@ export default class Cases {
 	}
 
 	//testing images
-	static agumon(user, userID, channelID, args, callback){
+	var agumon = function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"image": {
@@ -45,7 +45,7 @@ export default class Cases {
 		callback(content);
 	}
 
-	static greymon(user, userID, channelID, args, callback){
+	var greymon = function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"image": {
@@ -56,7 +56,7 @@ export default class Cases {
 	}
 
 	// show user info for future use in database
-	static myinfo(user, userID, channelID, args, callback){
+	var myinfo = function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"title": "Your Info",
@@ -79,7 +79,7 @@ export default class Cases {
 	}
 
 	// help menu
-	static help(user, userID, channelID, args, callback){
+	var help = function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"fields": [{
@@ -91,7 +91,7 @@ export default class Cases {
 	}
 
 	// Addition Calculator, testing for require
-	static add(user, userID, channelID, args, callback){
+	var add = function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
 			"fields": [{
@@ -103,7 +103,7 @@ export default class Cases {
 	}
 
 	// temporary database insert
-	static addplayer(user, userID, channelID, args, callback){
+	var addplayer = function(user, userID, channelID, args, callback){
 		db.addPlayer(userID, function(result){
 			var content = {
 				"color": 12345678,
@@ -115,7 +115,7 @@ export default class Cases {
 	}
 
 	// temporary database search
-	static listplayer(user, userID, channelID, args, callback){
+	var listplayer = function(user, userID, channelID, args, callback){
 		db.listPlayer(function(result){
 			var content = {
 				"color": 14285739, 
@@ -127,7 +127,7 @@ export default class Cases {
 	}
 
 	//temporary database delete
-	static deleteplayer(user, userID, channelID, args, callback){
+	var deleteplayer = function(user, userID, channelID, args, callback){
 		db.deletePlayer(userID, function(result){
 			var content = {
 				"color": 12345678, 
