@@ -6,7 +6,7 @@ var db = require('./db.js');
 // It will listen for messages that will start with `d!`
 exports.Cases.prototype = {
 	// ping
-	ping = function(user, userID, channelID, args, callback){
+	ping(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678, 
 			"description": "Pong!"
