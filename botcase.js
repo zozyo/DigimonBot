@@ -13,7 +13,7 @@ exports.Cases.prototype = {
 		};
 		callback(content);
 	}
-
+/*
 	//hello
 	var hello = function(user, userID, channelID, args, callback){
 		var content = {
@@ -136,5 +136,5 @@ exports.Cases.prototype = {
 			};
 			callback(content)
 		});
-	}
+	}*/
 }// end of cases
