@@ -15,7 +15,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.addDigimon = function (userID, args, callback) { 
 		searchDigimon(userID, args[0], function(result) {
 			if (result) { // found
-				callback("Digimon Already Exist!");
+				callback("Digimon " + args[0] + " Already Exist!");
 			} else { // not found
 				var digimon = { 	
 					"name": 	args[0],
@@ -26,7 +26,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				};
 				col.insertOne(digimon, function(err, res) {
 					if (err) throw err;
-					callback("Add Digimon" + args[0] + "Succeed!");
+					callback("Add Digimon " + args[0] + " Succeed!");
 				});
 			}
 		});
@@ -67,10 +67,10 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			if (result) { // found
 				col.deleteOne({"name": args[0]}, function(err, res) {
 					if (err) throw err;
-					callback("Delete Digimon" + args[0] + "Succeed!");
+					callback("Delete Digimon " + args[0] + " Succeed!");
 				});
 			} else { // not found
-				callback("Digimon" + args[0] + "does not Exist!");
+				callback("Digimon " + args[0] + " does not Exist!");
 			}
 		});
 	};//end of deleteDigimon
