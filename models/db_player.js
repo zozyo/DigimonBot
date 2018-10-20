@@ -8,7 +8,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// setup database
 	var db = database.db("digimon");
-	var colP = db.collection("player");
+	var col = db.collection("player");
 
 	// temporary
 	// add player into collection "player"
@@ -21,7 +21,11 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					"_id": userID,
 					"playerDigimon": "Agumon",
 				};
+<<<<<<< HEAD:models/db.js
 				colP.insertOne(player, function(err, res) {
+=======
+				col.insertOne(player, function(err, res) {
+>>>>>>> testroutes:models/db_player.js
 					if (err) throw err;
 					callback("Add Player Succeed!");
 				});
@@ -31,7 +35,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// list all player in collection "player"
 	exports.listPlayer = function (callback) {
-		colP.find({}).toArray(function(err, result) {
+		col.find({}).toArray(function(err, result) {
 			if (err) throw err;
 			callback(JSON.stringify( result ))
 		})
@@ -41,7 +45,11 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.deletePlayer = function (userID, callback) { 
 		searchPlayer(userID, function(result) {
 			if (result) { // found
+<<<<<<< HEAD:models/db.js
 				colP.deleteOne({"_id": userID}, function(err, res) {
+=======
+				col.deleteOne({"_id": userID}, function(err, res) {
+>>>>>>> testroutes:models/db_player.js
 					if (err) throw err;
 					callback("Delete Player Succeed!");
 				});
@@ -53,8 +61,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	//searchPlayer
 	var searchPlayer = function (userID, callback) {
-		var userID = {"_id":userID};
-		colP.find(userID).toArray(function(err, result) {
+		col.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
 			if (result === undefined || result.length == 0) {
 				callback(false);
@@ -66,4 +73,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	//add more
 
+<<<<<<< HEAD:models/db.js
 });// end of db
+=======
+});// end of db_player
+>>>>>>> testroutes:models/db_player.js
