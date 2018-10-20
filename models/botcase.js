@@ -141,7 +141,7 @@ module.exports = {
 
 	//adddigimon
 	adddigimon: function(userID, userID,channelID, args, callback){
-		dbd.adddigimon(userID, args, function(result){
+		dbd.addDigimon(userID, args, function(result){
 			var content = {
 				"color": 12345678,
 				"title": "adddigimon",
