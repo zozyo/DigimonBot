@@ -8,28 +8,11 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// setup database
 	var db = database.db("digimon");
-	var colP = db.collection("player");
+	var col = db.collection("player");
 
 	// temporary
 	// add player into collection "player"
 	exports.addPlayer = function (userID, callback) { 
-/*
-		colP.find({"_id":userID}).toArray(function(err, result) {
-			if (err) throw err;
-			if (result === undefined || result.length == 0) { // if new player
-				var player = { 	
-					"_id": userID,
-					"playerDigimon": "Agumon",
-				};
-				colP.insert(player, function(err, res) {
-					if (err) throw err;
-					callback("Add Player Succeed!");
-				});
-			} else { // if player exist in database
-				callback("Player Already Exist!");
-			}
-		});
-*/
 		searchPlayer(userID, function(result) {
 			if (result) { // found
 				callback("Player Already Exist!");
@@ -38,7 +21,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					"_id": userID,
 					"playerDigimon": "Agumon",
 				};
-				colP.insert(player, function(err, res) {
+				col.insertOne(player, function(err, res) {
 					if (err) throw err;
 					callback("Add Player Succeed!");
 				});
@@ -48,7 +31,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// list all player in collection "player"
 	exports.listPlayer = function (callback) {
-		colP.find({}).toArray(function(err, result) {
+		col.find({}).toArray(function(err, result) {
 			if (err) throw err;
 			callback(JSON.stringify( result ))
 		})
@@ -56,24 +39,21 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	//delete player in collection "player"
 	exports.deletePlayer = function (userID, callback) { 
-		var userID = {"_id":userID};
-		colP.find(userID).toArray(function(err, result) {
-			if (err) throw err;
-			if (result === undefined || result.length == 0) { // if no player found
-				callback("Player does not Exist!")
-			} else { // if player exist in database
-				colP.deleteOne(userID, function(err, res) {
+		searchPlayer(userID, function(result) {
+			if (result) { // found
+				col.deleteOne({"_id": userID}, function(err, res) {
 					if (err) throw err;
 					callback("Delete Player Succeed!");
-				})
+				});
+			} else { // not found
+				callback("Player does not Exist!");
 			}
-		})
-	};//end of deleteplayer
+		});
+	};//end of deletePlayer
 
-	//add more
+	//searchPlayer
 	var searchPlayer = function (userID, callback) {
-		var userID = {"_id":userID};
-		colP.find(userID).toArray(function(err, result) {
+		col.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
 			if (result === undefined || result.length == 0) {
 				callback(false);
@@ -81,5 +61,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				callback(true);
 			}
 		})
-	};
-});// end of db
+	};//end of searchPlayer
+
+	//add more
+
+});// end of db_player

@@ -1,6 +1,7 @@
 //requires
-var addNumber = require('./addNumber.js');
-var db = require('./db.js');
+var addNumber = require('./addNumber.js')
+	, dbp = require('./db_player.js')
+	, dbd = require('./db_digimon.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
@@ -104,7 +105,7 @@ module.exports = {
 
 	// temporary database insert
 	addplayer: function(user, userID, channelID, args, callback){
-		db.addPlayer(userID, function(result){
+		dbp.addPlayer(userID, function(result){
 			var content = {
 				"color": 12345678,
 				"title": "addplayer",
@@ -116,7 +117,7 @@ module.exports = {
 
 	// temporary database search
 	listplayer: function(user, userID, channelID, args, callback){
-		db.listPlayer(function(result){
+		dbp.listPlayer(function(result){
 			var content = {
 				"color": 14285739, 
 				"title": "listplayer",
@@ -128,7 +129,7 @@ module.exports = {
 
 	//temporary database delete
 	deleteplayer: function(user, userID, channelID, args, callback){
-		db.deletePlayer(userID, function(result){
+		dbp.deletePlayer(userID, function(result){
 			var content = {
 				"color": 12345678, 
 				"title": "deleteplayer",
@@ -136,5 +137,31 @@ module.exports = {
 			};
 			callback(content)
 		});
-	}
+	},
+
+	//adddigimon
+	adddigimon: function(userID, userID,channelID, args, callback){
+		dbd.adddigimon(userID, args, function(result){
+			var content = {
+				"color": 12345678,
+				"title": "adddigimon",
+				"description": result
+			};
+			callback(content)
+		})
+	},
+
+	//listdigimon
+	listdigimon: function(user, userID, channelID, args, callback){
+		dbd.listDigimon(function(result){
+			var content = {
+				"color": 14285739, 
+				"title": "listdigimon",
+				"description": result
+			};
+			callback(content)
+		});
+	},
+
+	//add more
 }// end of cases
