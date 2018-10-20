@@ -49,9 +49,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				callback("Player does not Exist!");
 			}
 		});
-	};//end of deleteplayer
+	};//end of deletePlayer
 
-	//add more
+	//searchPlayer
 	var searchPlayer = function (userID, callback) {
 		var userID = {"_id":userID};
 		colP.find(userID).toArray(function(err, result) {
@@ -62,5 +62,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				callback(true);
 			}
 		})
-	};
+	};//end of searchPlayer
+
+	//add more
+
 });// end of db
