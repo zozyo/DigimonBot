@@ -163,5 +163,16 @@ module.exports = {
 		});
 	},
 
+	//deletedigimon
+	deletedigimon: function(user, userID, channelID, args, callback){
+		dbd.deleteDigimon(userID, function(result){
+			var content = {
+				"color": 12345678, 
+				"title": "deletedigimonr",
+				"description": result
+			};
+			callback(content)
+		});
+	}
 	//add more
 }// end of cases
