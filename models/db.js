@@ -41,12 +41,12 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.deletePlayer = function (userID, callback) { 
 		searchPlayer(userID, function(result) {
 			if (result) { // found
-				colP.deleteOne(userID, function(err, res) {
+				colP.deleteOne({"_id": userID}, function(err, res) {
 					if (err) throw err;
 					callback("Delete Player Succeed!");
-				})
+				});
 			} else { // not found
-				callback("Player does not Exist!")
+				callback("Player does not Exist!");
 			}
 		});
 	};//end of deleteplayer
