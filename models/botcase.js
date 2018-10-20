@@ -165,7 +165,7 @@ module.exports = {
 
 	//deletedigimon
 	deletedigimon: function(user, userID, channelID, args, callback){
-		dbd.deleteDigimon(userID, function(result){
+		dbd.deleteDigimon(userID, args, function(result){
 			var content = {
 				"color": 12345678, 
 				"title": "deletedigimonr",
