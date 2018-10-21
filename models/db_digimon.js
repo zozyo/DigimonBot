@@ -19,9 +19,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			} else { // not found
 				var digimon = { 	
 					"name": 	args[0],
-					"HP": 		args[1],
-					"Atk": 		args[2],
-					"Def": 		args[3],
+					"HP": 		parseInt(args[1]),
+					"Atk": 		parseInt(args[2]),
+					"Def": 		parseInt(args[3]),
 					"picURL": 	args[4],
 				};
 				col.insertOne(digimon, function(err, res) {
