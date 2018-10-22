@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git@github.com:zozyo/DigimonBot.git"
   },
-  "main": "bot.js",
+  "main": "botio.js",
   "scripts": {
     "start": "node botio.js"
   },
