@@ -18,7 +18,7 @@ module.exports = {
 
 	// show user info for future use in database
 	myinfo: function(user, userID, channelID, args, callback){
-		dbp.showPlayer(userID, function(result){
+		dbp.showPlayer(user, userID, function(result){
 			var content = {
 				"color": 12345678,
 				"title": "Player " + user + " Info",

@@ -36,6 +36,20 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		});
 	};// end of addPlayer
 
+	// show player in collection "player"
+	exports.showPlayer = function (user, userID, callback) {
+		searchPlayer(userID, function(result) {
+			if (result) { // found
+				col.find({"_id": userID}).toArray(function(err, res) {
+					if (err) throw err;
+					callback(res[0])
+				})
+			} else {
+				console.log("Player " + user + " Does Not Exist!");
+			}
+		});
+	};//end of showPlayer
+
 	// list all player in collection "player"
 	exports.listPlayer = function (callback) {
 		col.find({}).toArray(function(err, result) {
