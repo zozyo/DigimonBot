@@ -30,7 +30,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				};
 				col.insertOne(player, function(err, res) {
 					if (err) throw err;
-					callback("Add Player Succeed!");
+					callback("Choose Digimon Succeed!");
 				});
 			}
 		});

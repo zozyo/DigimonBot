@@ -99,11 +99,19 @@ module.exports = {
 					}
 				})
 			} else { // digimon not found
-				var content = {
-					"color": 12345678,
-					"description": "Digimon " + args[0] + " does not Exist!"
-				};
-				callback(content)
+				if(args[0] != undefined){
+					var content = {
+						"color": 12345678,
+						"description": "Digimon " + args[0] + " does not Exist!"
+					};
+					callback(content)
+				} else {
+					var content = {
+						"color": 12345678,
+						"description": "Please type a Digimon Name!"
+					};
+					callback(content)
+				}
 			}
 		});
 	},
