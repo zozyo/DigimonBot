@@ -56,9 +56,12 @@ module.exports = {
 				};
 				callback(content);
 			} else {
-				callback("You haven't chosen any digimon yet! Type d!choose [digimon] to choose one!");
-			}
-			
+				var content = {
+					"color": 12345678,
+					"description": "You haven't chosen any digimon yet! Type d!choose [digimon] to choose one!"
+				};
+				callback(content);
+			}		
 		});
 	},
 
