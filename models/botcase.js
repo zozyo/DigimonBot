@@ -139,13 +139,57 @@ module.exports = {
 		});
 	},
 
-	//adddigimon
+	//adddigimon name HP Atk Def picURL
 	adddigimon: function(userID, userID,channelID, args, callback){
 		dbd.addDigimon(userID, args, function(result){
 			var content = {
 				"color": 12345678,
 				"title": "adddigimon",
 				"description": result
+			};
+			callback(content)
+		})
+	},
+
+	//setdigimondv name DV1 DV2 DV3 DV4
+	setdigimondv: function(userID, userID,channelID, args, callback){
+		dbd.setDigimonDV(userID, args, function(result){
+			var content = {
+				"color": 12345678,
+				"title": "setdigimondv",
+				"description": result
+			};
+			callback(content)
+		})
+	},
+
+	//showdigimon name
+	showdigimon: function(userID, userID,channelID, args, callback){
+		dbd.showDigimon(args, function(result){
+			var content = {
+				"color": 12345678,
+				"title": "searchdigimon",
+				"fields": [
+					{
+						"name": "name",
+						"value": result["name"]
+					},
+					{
+						"name": "HP",
+						"value": result["HP"]
+					},
+					{
+						"name": "Atk",
+						"value": result["Atk"]
+					},
+					{
+						"name": "Def",
+						"value": result["Def"]
+					}
+				],
+				"image": {
+					"url": result["picURL"]
+				}
 			};
 			callback(content)
 		})
@@ -163,7 +207,7 @@ module.exports = {
 		});
 	},
 
-	//deletedigimon
+	//deletedigimon name
 	deletedigimon: function(user, userID, channelID, args, callback){
 		dbd.deleteDigimon(userID, args, function(result){
 			var content = {

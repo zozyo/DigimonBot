@@ -21,11 +21,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					"_id": userID,
 					"playerDigimon": "Agumon",
 				};
-<<<<<<< HEAD:models/db.js
-				colP.insertOne(player, function(err, res) {
-=======
 				col.insertOne(player, function(err, res) {
->>>>>>> testroutes:models/db_player.js
 					if (err) throw err;
 					callback("Add Player Succeed!");
 				});
@@ -45,11 +41,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.deletePlayer = function (userID, callback) { 
 		searchPlayer(userID, function(result) {
 			if (result) { // found
-<<<<<<< HEAD:models/db.js
-				colP.deleteOne({"_id": userID}, function(err, res) {
-=======
 				col.deleteOne({"_id": userID}, function(err, res) {
->>>>>>> testroutes:models/db_player.js
 					if (err) throw err;
 					callback("Delete Player Succeed!");
 				});
@@ -73,8 +65,4 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	//add more
 
-<<<<<<< HEAD:models/db.js
-});// end of db
-=======
 });// end of db_player
->>>>>>> testroutes:models/db_player.js

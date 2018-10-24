@@ -53,6 +53,14 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		});
 	};
 
+	// show digimon in collection "digimon"
+	exports.showDigimon = function (args, callback) {
+		col.find({args[0]}).toArray(function(err, result) {
+			if (err) throw err;
+			callback(result)
+		})
+	};//end of showdigimon
+
 	// list all digimon in collection "digimon"
 	exports.listDigimon = function (callback) {
 		col.find({}).toArray(function(err, result) {
