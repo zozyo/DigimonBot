@@ -79,7 +79,7 @@ module.exports = {
 				"description": result
 				};
 				callback(content)
-			}
+			})
 		});
 	},
 
