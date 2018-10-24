@@ -26,27 +26,33 @@ module.exports = {
 					"fields": [
 						{
 							"name": "Digimon Name",
-							"value": result["digimonName"]
+							"value": result["digimonName"],
+							"inline": true
 						},
 						{
 							"name": "Level",
-							"value": result["level"]
+							"value": result["level"],
+							"inline": true
 						},
 						{
 							"name": "XP",
-							"value": result["XP"] + "/" + result["maxXP"]
+							"value": result["XP"] + "/" + result["maxXP"],
+							"inline": true
 						},
 						{
 							"name": "HP",
-							"value": result["HP"]
+							"value": result["HP"],
+							"inline": true
 						},
 						{
 							"name": "Atk",
-							"value": result["Atk"]
+							"value": result["Atk"],
+							"inline": true
 						},
 						{
 							"name": "Def",
-							"value": result["Def"]
+							"value": result["Def"],
+							"inline": true
 						}
 					],
 					"image": {
@@ -174,19 +180,23 @@ module.exports = {
 				"fields": [
 					{
 						"name": "Digimon Name",
-						"value": result["name"]
+						"value": result["name"],
+						"inline": true
 					},
 					{
 						"name": "HP",
-						"value": result["HP"]
+						"value": result["HP"],
+						"inline": true
 					},
 					{
 						"name": "Atk",
-						"value": result["Atk"]
+						"value": result["Atk"],
+						"inline": true
 					},
 					{
 						"name": "Def",
-						"value": result["Def"]
+						"value": result["Def"],
+						"inline": true
 					}
 				],
 				"image": {
