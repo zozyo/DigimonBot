@@ -55,10 +55,15 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// show digimon in collection "digimon"
 	exports.showDigimon = function (args, callback) {
-		col.find({"name": args[0]}).toArray(function(err, result) {
-			if (err) throw err;
-			callback(result)
-		})
+		searchDigimon(userID, args[0], function(result) {
+			if (result) { // found
+				col.find({"name": args[0]}).toArray(function(err, res) {
+					if (err) throw err;
+					callback(res)
+				})
+			} else {
+				callback("Digimon " + args[0] + " Does Not Exist!");
+			}
 	};//end of showdigimon
 
 	// list all digimon in collection "digimon"
