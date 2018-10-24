@@ -14,45 +14,50 @@ module.exports = {
 		callback(content);
 	},
 
-	//logo https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es
+	//logo https://i.loli.net/2018/10/25/5bd0e3adec2a2.gif
 
-	// show user info for future use in database
+	// show user info
 	myinfo: function(user, userID, channelID, args, callback){
 		dbp.showPlayer(user, userID, function(result){
-			var content = {
-				"color": 12345678,
-				"title": "Player " + user + " Info",
-				"fields": [
-					{
-						"name": "Digimon Name",
-						"value": result["digimonName"]
-					},
-					{
-						"name": "Level",
-						"value": result["level"]
-					},
-					{
-						"name": "XP",
-						"value": result["XP"] + "/" + result["maxXP"]
-					},
-					{
-						"name": "HP",
-						"value": result["HP"]
-					},
-					{
-						"name": "Atk",
-						"value": result["Atk"]
-					},
-					{
-						"name": "Def",
-						"value": result["Def"]
+			if(result != null){
+				var content = {
+					"color": 12345678,
+					"title": "Player " + user + " Info",
+					"fields": [
+						{
+							"name": "Digimon Name",
+							"value": result["digimonName"]
+						},
+						{
+							"name": "Level",
+							"value": result["level"]
+						},
+						{
+							"name": "XP",
+							"value": result["XP"] + "/" + result["maxXP"]
+						},
+						{
+							"name": "HP",
+							"value": result["HP"]
+						},
+						{
+							"name": "Atk",
+							"value": result["Atk"]
+						},
+						{
+							"name": "Def",
+							"value": result["Def"]
+						}
+					],
+					"image": {
+						"url": result["picURL"]
 					}
-				],
-				"image": {
-					"url": result["picURL"]
-				}
-			};
-			callback(content);
+				};
+				callback(content);
+			} else {
+				callback("You haven't chosen any digimon yet! Type d!choose [digimon] to choose one!");
+			}
+			
 		});
 	},
 
@@ -68,22 +73,22 @@ module.exports = {
 		callback(content);
 	},
 
-	// temporary database insert
-	//addplayer digimonName
-	addplayer: function(user, userID, channelID, args, callback){	
+	// choose digimonName
+	choose: function(user, userID, channelID, args, callback){	
 		dbd.showDigimon(userID, args, function(result){
 			dbp.addPlayer(userID, result,function(result){
 				var content = {
-				"color": 12345678,
-				"title": "addplayer",
-				"description": result
+					"color": 12345678,
+					"title": "addplayer",
+					"description": result
 				};
 				callback(content)
 			})
 		});
 	},
 
-	// temporary database search
+	//for testing
+	// listplayer
 	listplayer: function(user, userID, channelID, args, callback){
 		dbp.listPlayer(function(result){
 			var content = {
@@ -95,8 +100,8 @@ module.exports = {
 		});
 	},
 
-	//temporary database delete
-	deleteplayer: function(user, userID, channelID, args, callback){
+	// deleteme
+	deleteme: function(user, userID, channelID, args, callback){
 		dbp.deletePlayer(userID, function(result){
 			var content = {
 				"color": 12345678, 
@@ -163,6 +168,7 @@ module.exports = {
 		})
 	},
 
+	//for testing
 	//listdigimon
 	listdigimon: function(user, userID, channelID, args, callback){
 		dbd.listDigimon(function(result){

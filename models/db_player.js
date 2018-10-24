@@ -45,7 +45,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					callback(res[0])
 				})
 			} else {
-				console.log("Player " + user + " Does Not Exist!");
+				callback(null);
 			}
 		});
 	};//end of showPlayer
