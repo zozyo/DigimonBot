@@ -174,36 +174,52 @@ module.exports = {
 	//showdigimon name
 	showdigimon: function(userID, userID,channelID, args, callback){
 		dbd.showDigimon(userID, args, function(result){
-			var content = {
-				"color": 12345678,
-				"title": "searchdigimon",
-				"fields": [
-					{
-						"name": "Digimon Name",
-						"value": result["name"],
-						"inline": true
-					},
-					{
-						"name": "HP",
-						"value": result["HP"],
-						"inline": true
-					},
-					{
-						"name": "Atk",
-						"value": result["Atk"],
-						"inline": true
-					},
-					{
-						"name": "Def",
-						"value": result["Def"],
-						"inline": true
+			if(result != null){
+				var content = {
+					"color": 12345678,
+					"title": "searchdigimon",
+					"fields": [
+						{
+							"name": "Digimon Name",
+							"value": result["name"],
+							"inline": true
+						},
+						{
+							"name": "HP",
+							"value": result["HP"],
+							"inline": true
+						},
+						{
+							"name": "Atk",
+							"value": result["Atk"],
+							"inline": true
+						},
+						{
+							"name": "Def",
+							"value": result["Def"],
+							"inline": true
+						}
+					],
+					"image": {
+						"url": result["picURL"]
 					}
-				],
-				"image": {
-					"url": result["picURL"]
+				};
+				callback(content)
+			} else { // digimon not found
+				if(args[0] != undefined){
+					var content = {
+						"color": 12345678,
+						"description": "Digimon " + args[0] + " does not Exist!"
+					};
+					callback(content)
+				} else {
+					var content = {
+						"color": 12345678,
+						"description": "Please type a Digimon Name!"
+					};
+					callback(content)
 				}
-			};
-			callback(content)
+			}
 		})
 	},
 
