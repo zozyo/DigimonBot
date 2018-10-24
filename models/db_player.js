@@ -12,14 +12,21 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// temporary
 	// add player into collection "player"
-	exports.addPlayer = function (userID, callback) { 
+	exports.addPlayer = function (userID, args, callback) { 
 		searchPlayer(userID, function(result) {
 			if (result) { // found
 				callback("Player Already Exist!");
 			} else { // not found
 				var player = { 	
 					"_id": userID,
-					"playerDigimon": "Agumon",
+					"digimonName": args["name"],
+					"level": 1,
+					"XP": 0,
+					"maxXP": 10,
+					"HP": args["HP"],
+					"Atk": args["Atk"],
+					"Def": args["Def"],
+					"picURL": args["picURL"]
 				};
 				col.insertOne(player, function(err, res) {
 					if (err) throw err;
@@ -52,7 +59,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};//end of deletePlayer
 
 	//searchPlayer
-	var searchPlayer = function (userID, callback) {
+	exports.searchPlayer = function (userID, callback) {
 		col.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
 			if (result === undefined || result.length == 0) {

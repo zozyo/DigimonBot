@@ -19,9 +19,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			} else { // not found
 				var digimon = { 	
 					"name": 	args[0],
-					"HP": 		parseInt(args[1]),
-					"Atk": 		parseInt(args[2]),
-					"Def": 		parseInt(args[3]),
+					"HP": 		args[1],
+					"Atk": 		args[2],
+					"Def": 		args[3],
 					"picURL": 	args[4],
 				};
 				col.insertOne(digimon, function(err, res) {
@@ -59,7 +59,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			if (result) { // found
 				col.find({"name": args[0]}).toArray(function(err, res) {
 					if (err) throw err;
-					callback(res)
+					callback(res[0])
 				})
 			} else {
 				console.log("Digimon " + args[0] + " Does Not Exist!");
@@ -90,7 +90,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};//end of deleteDigimon
 
 	//searchDigimon
-	var searchDigimon = function (userID, digimonName, callback) {
+	exports.searchDigimon = function (userID, digimonName, callback) {
 		col.find({"name": digimonName}).toArray(function(err, result) {
 			if (err) throw err;
 			if (result === undefined || result.length == 0) {

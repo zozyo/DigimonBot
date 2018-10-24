@@ -18,25 +18,42 @@ module.exports = {
 
 	// show user info for future use in database
 	myinfo: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678,
-			"title": "Your Info",
-			"fields": [
-				{
-					"name": "user",
-					"value": user
-				},
-				{
-					"name": "userID",
-					"value": userID
-				},
-				{
-					"name": "channelID",
-					"value": channelID
+		dbp.showPlayer(userID, function(result){
+			var content = {
+				"color": 12345678,
+				"title": "Player " + user + " Info",
+				"fields": [
+					{
+						"name": "Digimon Name",
+						"value": result["digimonName"]
+					},
+					{
+						"name": "Level",
+						"value": result["level"]
+					},
+					{
+						"name": "XP",
+						"value": result["XP"] + "/" + result["maxXP"]
+					},
+					{
+						"name": "HP",
+						"value": result["HP"]
+					},
+					{
+						"name": "Atk",
+						"value": result["Atk"]
+					},
+					{
+						"name": "Def",
+						"value": result["Def"]
+					}
+				],
+				"image": {
+					"url": result["picURL"]
 				}
-			]
-		};
-		callback(content);
+			};
+			callback(content);
+		});
 	},
 
 	// help menu
@@ -52,14 +69,17 @@ module.exports = {
 	},
 
 	// temporary database insert
-	addplayer: function(user, userID, channelID, args, callback){
-		dbp.addPlayer(userID, function(result){
-			var content = {
+	//addplayer digimonName
+	addplayer: function(user, userID, channelID, args, callback){	
+		dbd.showDigimon(userID, args, function(result){
+			dbp.addPlayer(userID, result,function(result){
+				var content = {
 				"color": 12345678,
 				"title": "addplayer",
 				"description": result
-			};
-			callback(content)
+				};
+				callback(content)
+			}
 		});
 	},
 
@@ -119,24 +139,24 @@ module.exports = {
 				"title": "searchdigimon",
 				"fields": [
 					{
-						"name": "name",
-						"value": result[0]["name"]
+						"name": "Digimon Name",
+						"value": result["name"]
 					},
 					{
 						"name": "HP",
-						"value": result[0]["HP"]
+						"value": result["HP"]
 					},
 					{
 						"name": "Atk",
-						"value": result[0]["Atk"]
+						"value": result["Atk"]
 					},
 					{
 						"name": "Def",
-						"value": result[0]["Def"]
+						"value": result["Def"]
 					}
 				],
 				"image": {
-					"url": result[0]["picURL"]
+					"url": result["picURL"]
 				}
 			};
 			callback(content)
