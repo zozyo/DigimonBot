@@ -55,7 +55,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// show digimon in collection "digimon"
 	exports.showDigimon = function (args, callback) {
-		col.find({args[0]}).toArray(function(err, result) {
+		col.find({"name": args[0]}).toArray(function(err, result) {
 			if (err) throw err;
 			callback(result)
 		})
