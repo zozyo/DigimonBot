@@ -19,6 +19,7 @@ module.exports = {
 	// show user info
 	myinfo: function(user, userID, channelID, args, callback){
 		dbp.showPlayer(user, userID, function(result){
+			console.log(result);
 			if(result != null){
 				var content = {
 					"color": 12345678,

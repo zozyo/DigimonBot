@@ -44,7 +44,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					if (err) throw err;
 					callback(res[0])
 				})
-			} else {
+			} else { // not found
 				callback(null);
 			}
 		});
