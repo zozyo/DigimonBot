@@ -1,6 +1,5 @@
 //requires
-var addNumber = require('./addNumber.js')
-	, dbp = require('./db_player.js')
+var dbp = require('./db_player.js')
 	, dbd = require('./db_digimon.js');
 
 // Our bot needs to know if it will execute a command
@@ -15,46 +14,7 @@ module.exports = {
 		callback(content);
 	},
 
-	//hello
-	hello: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678, 
-			"title": "Hello world!"
-		};
-		callback(content)
-	},
-
-	//logo
-	logo: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678,
-			"image": {
-				"url": "https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es"
-			}
-		};
-		callback(content);
-	},
-
-	//testing images
-	agumon: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678,
-			"image": {
-				"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
-			}
-		};
-		callback(content);
-	},
-
-	greymon: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678,
-			"image": {
-				"url": "https://vignette.wikia.nocookie.net/digimon-adventure5140/images/c/ca/Greymon_tri.png/revision/latest?cb=20171010042426"
-			}
-		};
-		callback(content);
-	},
+	//logo https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es
 
 	// show user info for future use in database
 	myinfo: function(user, userID, channelID, args, callback){
@@ -86,18 +46,6 @@ module.exports = {
 			"fields": [{
 				"name": "Help",
 				"value": "Under Construction!"
-			}]
-		};
-		callback(content);
-	},
-
-	// Addition Calculator, testing for require
-	add: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678,
-			"fields": [{
-				"name": "Addition Calculator",
-				"value": addNumber.add(args[0], args[1])
 			}]
 		};
 		callback(content);
