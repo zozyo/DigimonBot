@@ -90,7 +90,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};//end of deleteDigimon
 
 	//searchDigimon
-	exports.searchDigimon = function (userID, digimonName, callback) {
+	var searchDigimon = function (userID, digimonName, callback) {
 		col.find({"name": digimonName}).toArray(function(err, result) {
 			if (err) throw err;
 			if (result === undefined || result.length == 0) {

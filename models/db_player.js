@@ -73,7 +73,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};//end of deletePlayer
 
 	//searchPlayer
-	exports.searchPlayer = function (userID, callback) {
+	var searchPlayer = function (userID, callback) {
 		col.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
 			if (result === undefined || result.length == 0) {
