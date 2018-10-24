@@ -64,6 +64,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			} else {
 				callback("Digimon " + args[0] + " Does Not Exist!");
 			}
+		});
 	};//end of showdigimon
 
 	// list all digimon in collection "digimon"
