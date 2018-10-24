@@ -19,8 +19,7 @@ module.exports = {
 	// show user info
 	myinfo: function(user, userID, channelID, args, callback){
 		dbp.showPlayer(user, userID, function(result){
-			console.log(result);
-			if(result != null){
+			if(result != null){ // player exists
 				var content = {
 					"color": 12345678,
 					"title": "Player " + user + " Info",
@@ -55,7 +54,7 @@ module.exports = {
 					}
 				};
 				callback(content);
-			} else {
+			} else { // new player
 				var content = {
 					"color": 12345678,
 					"description": "You haven't chosen any digimon yet! Type d!choose [digimon] to choose one!"
@@ -80,14 +79,32 @@ module.exports = {
 	// choose digimonName
 	choose: function(user, userID, channelID, args, callback){	
 		dbd.showDigimon(userID, args, function(result){
-			dbp.addPlayer(userID, result,function(result){
+			if(result != null){ // digimon exists
+				dbp.showPlayer(user, userID, function(result){
+					if(result != null){ // player exists
+						var content = {
+							"color": 12345678,
+							"description": "You have already chosen a digimon! Type d!myinfo to view!"
+						};
+						callback(content)
+					} else { // new player
+						dbp.addPlayer(userID, result,function(result){
+							var content = {
+								"color": 12345678,
+								"title": "addplayer",
+								"description": result
+							};
+							callback(content)
+						})
+					}
+				})
+			} else { // digimon not found
 				var content = {
 					"color": 12345678,
-					"title": "addplayer",
-					"description": result
+					"description": "Digimon " + args[0] + " does not Exist!"
 				};
 				callback(content)
-			})
+			}
 		});
 	},
 

@@ -61,8 +61,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					if (err) throw err;
 					callback(res[0])
 				})
-			} else {
-				console.log("Digimon " + args[0] + " Does Not Exist!");
+			} else { //not found
+				callback(null);
 			}
 		});
 	};//end of showdigimon
