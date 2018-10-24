@@ -166,6 +166,10 @@ module.exports = {
 	//showdigimon name
 	showdigimon: function(userID, userID,channelID, args, callback){
 		dbd.showDigimon(userID, args, function(result){
+			console.log(result);
+			console.log(typeof result);
+			console.log(result[0]);
+			console.log(result[0]["name"]);
 			var content = {
 				"color": 12345678,
 				"title": "searchdigimon",
