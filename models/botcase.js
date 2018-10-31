@@ -147,24 +147,12 @@ module.exports = {
 		});
 	},
 
-	//adddigimon name HP Atk Def picURL
+	//adddigimon name next HP Atk Def picURL
 	adddigimon: function(userID, userID,channelID, args, callback){
 		dbd.addDigimon(userID, args, function(result){
 			var content = {
 				"color": 12345678,
 				"title": "adddigimon",
-				"description": result
-			};
-			callback(content)
-		})
-	},
-
-	//setdigimondv name DV1 DV2 DV3 DV4
-	setdigimondv: function(userID, userID,channelID, args, callback){
-		dbd.setDigimonDV(userID, args, function(result){
-			var content = {
-				"color": 12345678,
-				"title": "setdigimondv",
 				"description": result
 			};
 			callback(content)
@@ -182,6 +170,11 @@ module.exports = {
 						{
 							"name": "Digimon Name",
 							"value": result["name"],
+							"inline": true
+						},
+						{
+							"name": "next Digivolution",
+							"value": result["next"],
 							"inline": true
 						},
 						{

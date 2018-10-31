@@ -19,10 +19,11 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			} else { // not found
 				var digimon = { 	
 					"name": 	args[0],
-					"HP": 		args[1],
-					"Atk": 		args[2],
-					"Def": 		args[3],
-					"picURL": 	args[4],
+					"next": 	args[1],
+					"HP": 		args[2],
+					"Atk": 		args[3],
+					"Def": 		args[4],
+					"picURL": 	args[5],
 				};
 				col.insertOne(digimon, function(err, res) {
 					if (err) throw err;
@@ -31,27 +32,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			}
 		});
 	};// end of addDigimon
-
-	exports.setDigimonDV = function (userID, args, callback) {
-		searchDigimon(userID, args[0], function(result) {
-			if (result) { // found
-				var digimonDV = {
-					"nextDV": {
-						"DV1": 	args[1],
-						"DV2": 	args[2],
-						"DV3": 	args[3],
-						"DV4": 	args[4],
-					}
-				};
-				col.update({"name": args[0]}, digimonDV, {upsert: true}, function(err, res) {
-					if (err) throw err;
-					callback("Set Digimon " + args[0] + " Digivolution Succeed!");
-				});
-			} else { // not found
-				callback("Digimon " + args[0] + " Does Not Exist!");
-			}
-		});
-	};
 
 	// show digimon in collection "digimon"
 	exports.showDigimon = function (userID, args, callback) {
