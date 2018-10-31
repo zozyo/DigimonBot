@@ -173,7 +173,7 @@ module.exports = {
 							"inline": true
 						},
 						{
-							"name": "next Digivolution",
+							"name": "Next Digivolution",
 							"value": result["next"],
 							"inline": true
 						},
