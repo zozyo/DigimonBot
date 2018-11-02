@@ -1,6 +1,5 @@
 //requires
-var addNumber = require('./addNumber.js')
-	, dbp = require('./db_player.js')
+var dbp = require('./db_player.js')
 	, dbd = require('./db_digimon.js');
 
 // Our bot needs to know if it will execute a command
@@ -15,37 +14,9 @@ module.exports = {
 		callback(content);
 	},
 
-	//hello
-	hello: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678, 
-			"title": "Hello world!"
-		};
-		callback(content)
-	},
+	//logo https://i.loli.net/2018/10/25/5bd0e3adec2a2.gif
 
-	//logo
-	logo: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678,
-			"image": {
-				"url": "https://vignette.wikia.nocookie.net/doblaje/images/3/3a/Digimon.gif/revision/latest?cb=20150830013427&path-prefix=es"
-			}
-		};
-		callback(content);
-	},
-
-	//testing images
-	agumon: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678,
-			"image": {
-				"url": "https://orig00.deviantart.net/20d3/f/2015/347/f/5/digimon_adventure_tri____agumon_render_by_sou_the_cat-d9jzysc.png"
-			}
-		};
-		callback(content);
-	},
-
+<<<<<<< HEAD
 	greymon: function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
@@ -182,26 +153,60 @@ module.exports = {
 		callback(content);
 	},
 	// show user info for future use in database
+=======
+	// show user info
+>>>>>>> test
 	myinfo: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678,
-			"title": "Your Info",
-			"fields": [
-				{
-					"name": "user",
-					"value": user
-				},
-				{
-					"name": "userID",
-					"value": userID
-				},
-				{
-					"name": "channelID",
-					"value": channelID
-				}
-			]
-		};
-		callback(content);
+		dbp.showPlayer(user, userID, function(result){
+			if(result != null){ // player exists
+				var content = {
+					"color": 12345678,
+					"title": "Player " + user + " Info",
+					"fields": [
+						{
+							"name": "Digimon Name",
+							"value": result["digimonName"],
+							"inline": true
+						},
+						{
+							"name": "Level",
+							"value": result["level"],
+							"inline": true
+						},
+						{
+							"name": "XP",
+							"value": result["XP"] + "/" + result["maxXP"],
+							"inline": true
+						},
+						{
+							"name": "HP",
+							"value": result["HP"],
+							"inline": true
+						},
+						{
+							"name": "Atk",
+							"value": result["Atk"],
+							"inline": true
+						},
+						{
+							"name": "Def",
+							"value": result["Def"],
+							"inline": true
+						}
+					],
+					"image": {
+						"url": result["picURL"]
+					}
+				};
+				callback(content);
+			} else { // new player
+				var content = {
+					"color": 12345678,
+					"description": "You haven't chosen any digimon yet! Type d!choose [digimon] to choose one!"
+				};
+				callback(content);
+			}		
+		});
 	},
 
 	// help menu
@@ -216,31 +221,48 @@ module.exports = {
 		callback(content);
 	},
 
-	// Addition Calculator, testing for require
-	add: function(user, userID, channelID, args, callback){
-		var content = {
-			"color": 12345678,
-			"fields": [{
-				"name": "Addition Calculator",
-				"value": addNumber.add(args[0], args[1])
-			}]
-		};
-		callback(content);
-	},
-
-	// temporary database insert
-	addplayer: function(user, userID, channelID, args, callback){
-		dbp.addPlayer(userID, function(result){
-			var content = {
-				"color": 12345678,
-				"title": "addplayer",
-				"description": result
-			};
-			callback(content)
+	// choose digimonName
+	choose: function(user, userID, channelID, args, callback){	
+		dbd.showDigimon(userID, args, function(result){
+			if(result != null){ // digimon exists
+				dbp.showPlayer(user, userID, function(result){
+					if(result != null){ // player exists
+						var content = {
+							"color": 12345678,
+							"description": "You have already chosen a digimon! Type d!myinfo to view!"
+						};
+						callback(content)
+					} else { // new player
+						dbp.addPlayer(userID, result,function(result){
+							var content = {
+								"color": 12345678,
+								"title": "addplayer",
+								"description": result
+							};
+							callback(content)
+						})
+					}
+				})
+			} else { // digimon not found
+				if(args[0] != undefined){
+					var content = {
+						"color": 12345678,
+						"description": "Digimon " + args[0] + " does not Exist!"
+					};
+					callback(content)
+				} else {
+					var content = {
+						"color": 12345678,
+						"description": "Please type a Digimon Name!"
+					};
+					callback(content)
+				}
+			}
 		});
 	},
 
-	// temporary database search
+	//for testing
+	// listplayer
 	listplayer: function(user, userID, channelID, args, callback){
 		dbp.listPlayer(function(result){
 			var content = {
@@ -252,8 +274,8 @@ module.exports = {
 		});
 	},
 
-	//temporary database delete
-	deleteplayer: function(user, userID, channelID, args, callback){
+	// deleteme
+	deleteme: function(user, userID, channelID, args, callback){
 		dbp.deletePlayer(userID, function(result){
 			var content = {
 				"color": 12345678, 
@@ -264,7 +286,7 @@ module.exports = {
 		});
 	},
 
-	//adddigimon
+	//adddigimon name next HP Atk Def picURL
 	adddigimon: function(userID, userID,channelID, args, callback){
 		dbd.addDigimon(userID, args, function(result){
 			var content = {
@@ -276,6 +298,64 @@ module.exports = {
 		})
 	},
 
+	//showdigimon name
+	showdigimon: function(userID, userID,channelID, args, callback){
+		dbd.showDigimon(userID, args, function(result){
+			if(result != null){
+				var content = {
+					"color": 12345678,
+					"title": "searchdigimon",
+					"fields": [
+						{
+							"name": "Digimon Name",
+							"value": result["name"],
+							"inline": true
+						},
+						{
+							"name": "Next Digivolution",
+							"value": result["next"],
+							"inline": true
+						},
+						{
+							"name": "HP",
+							"value": result["HP"],
+							"inline": true
+						},
+						{
+							"name": "Atk",
+							"value": result["Atk"],
+							"inline": true
+						},
+						{
+							"name": "Def",
+							"value": result["Def"],
+							"inline": true
+						}
+					],
+					"image": {
+						"url": result["picURL"]
+					}
+				};
+				callback(content)
+			} else { // digimon not found
+				if(args[0] != undefined){
+					var content = {
+						"color": 12345678,
+						"description": "Digimon " + args[0] + " does not Exist!"
+					};
+					callback(content)
+				} else {
+					var content = {
+						"color": 12345678,
+						"description": "Please type a Digimon Name!"
+					};
+					callback(content)
+				}
+			}
+		})
+	},
+
+	//for testing
 	//listdigimon
 	listdigimon: function(user, userID, channelID, args, callback){
 		dbd.listDigimon(function(result){
@@ -288,7 +368,7 @@ module.exports = {
 		});
 	},
 
-	//deletedigimon
+	//deletedigimon name
 	deletedigimon: function(user, userID, channelID, args, callback){
 		dbd.deleteDigimon(userID, args, function(result){
 			var content = {
