@@ -242,7 +242,7 @@ module.exports = {
 		});
 	},
 
-	//add
+	//add random digimon
 	insert: function(userID, userID,channelID, args, callback){
 		dbr.addDigimon(userID, args, function(result){
 			var content = {
@@ -252,6 +252,73 @@ module.exports = {
 			};
 			callback(content)
 		})
-	}
+	},
+
+	show: function(userID, userID,channelID, args, callback){
+		dbr.showDigimon(userID, args, function(result){
+			if(result != null){
+				var content = {
+					"color": 12345678,
+					"title": "search random digimon",
+					"fields": [
+						{
+							"name": "Digimon Name",
+							"value": result["name"],
+							"inline": true
+						},
+						{
+							"name": "Stage",
+							"value": result["stage"],
+							"inline": true
+						},
+						{
+							"name": "HP",
+							"value": result["HP"],
+							"inline": true
+						},
+						{
+							"name": "Atk",
+							"value": result["Atk"],
+							"inline": true
+						},
+						{
+							"name": "Def",
+							"value": result["Def"],
+							"inline": true
+						}
+					],
+					"image": {
+						"url": result["picURL"]
+					}
+				};
+				callback(content)
+			} else { // digimon not found
+				if(args[0] != undefined){
+					var content = {
+						"color": 12345678,
+						"description": "Digimon " + args[0] + " does not Exist!"
+					};
+					callback(content)
+				} else {
+					var content = {
+						"color": 12345678,
+						"description": "Please type a Digimon Name!"
+					};
+					callback(content)
+				}
+			}
+		})
+	},
+
+	delete: function(user, userID, channelID, args, callback){
+		dbr.deleteDigimon(userID, args, function(result){
+			var content = {
+				"color": 12345678, 
+				"title": "delete random digimon",
+				"description": result
+			};
+			callback(content)
+		});
+	},
 	//add more
 }// end of cases
