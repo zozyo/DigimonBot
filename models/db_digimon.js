@@ -49,7 +49,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// list all digimon in collection "digimon"
 	exports.listDigimon = function (callback) {
-		col.find({}).toArray(function(err, result) {
+		col.find({}, {name : 1}).toArray(function(err, result) {
 			if (err) throw err;
 			callback(JSON.stringify( result ))
 		})
