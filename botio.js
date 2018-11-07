@@ -35,7 +35,7 @@ bot.on('ready', function (evt) {
 	logger.info(bot.username + ' - (' + bot.id + ')');
 	logger.info("----------");
 
-	setInterval(bot.sendMessage({
+	setInterval(function(){bot.sendMessage({
 				to: 492043342004224012,
 				embed: {
 					"color":1395845,
@@ -44,7 +44,7 @@ bot.on('ready', function (evt) {
 						"value": "5000ms!"
 					}]
 				}
-			}), 5000
+			})}, 5000
 	)
 
 });
