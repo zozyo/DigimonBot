@@ -242,9 +242,11 @@ module.exports = {
 		});
 	},
 
+
+	//random digimon database
 	//add random digimon
 	insert: function(userID, userID,channelID, args, callback){
-		dbr.addDigimon(userID, args, function(result){
+		dbrandom.addDigimon(userID, args, function(result){
 			var content = {
 				"color": 12345678,
 				"title": "add random digimon",
@@ -255,7 +257,7 @@ module.exports = {
 	},
 
 	show: function(userID, userID,channelID, args, callback){
-		dbr.showDigimon(userID, args, function(result){
+		dbrandom.showDigimon(userID, args, function(result){
 			if(result != null){
 				var content = {
 					"color": 12345678,
@@ -311,7 +313,7 @@ module.exports = {
 	},
 
 	delete: function(user, userID, channelID, args, callback){
-		dbr.deleteDigimon(userID, args, function(result){
+		dbrandom.deleteDigimon(userID, args, function(result){
 			var content = {
 				"color": 12345678, 
 				"title": "delete random digimon",
@@ -320,5 +322,17 @@ module.exports = {
 			callback(content)
 		});
 	},
+
+	list: function(user, userID, channelID, args, callback){
+		dbrandom.listDigimon(function(result){
+			var content = {
+				"color": 14285739, 
+				"title": "listdigimon",
+				"description": result
+			};
+			callback(content)
+		});
+	},
+
 	//add more
 }// end of cases
