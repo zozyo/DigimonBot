@@ -34,6 +34,19 @@ bot.on('ready', function (evt) {
 	logger.info('Logged in as: ');
 	logger.info(bot.username + ' - (' + bot.id + ')');
 	logger.info("----------");
+
+	setInterval(bot.sendMessage({
+				to: channelID,
+				embed: {
+					"color":1395845,
+					"fields": [{
+						"name": "Timer!",
+						"value": "5000ms!"
+					}]
+				}
+			}), 5000
+	)
+
 });
 // message listener
 bot.on('message', function (user, userID, channelID, message, evt) {

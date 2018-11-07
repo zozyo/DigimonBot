@@ -23,8 +23,7 @@ module.exports = {
 			"fields": [
 				{
 					"name": "Welcome",
-					"value": "Welcome to Digimon World",
-					"inline": true
+					"value": "Welcome to Digimon World"
 				}
 			],
 			"image": {
@@ -45,32 +44,26 @@ module.exports = {
 						{
 							"name": "Digimon Name",
 							"value": result["digimonName"],
-							"inline": true
 						},
 						{
 							"name": "Level",
 							"value": result["level"],
-							"inline": true
 						},
 						{
 							"name": "XP",
 							"value": result["XP"] + "/" + result["maxXP"],
-							"inline": true
 						},
 						{
 							"name": "HP",
 							"value": result["HP"],
-							"inline": true
 						},
 						{
 							"name": "Atk",
 							"value": result["Atk"],
-							"inline": true
 						},
 						{
 							"name": "Def",
 							"value": result["Def"],
-							"inline": true
 						}
 					],
 					"image": {
@@ -188,27 +181,22 @@ module.exports = {
 						{
 							"name": "Digimon Name",
 							"value": result["name"],
-							"inline": true
 						},
 						{
 							"name": "Next Digivolution",
 							"value": result["next"],
-							"inline": true
 						},
 						{
 							"name": "HP",
 							"value": result["HP"],
-							"inline": true
 						},
 						{
 							"name": "Atk",
 							"value": result["Atk"],
-							"inline": true
 						},
 						{
 							"name": "Def",
 							"value": result["Def"],
-							"inline": true
 						}
 					],
 					"image": {
@@ -284,27 +272,22 @@ module.exports = {
 						{
 							"name": "Digimon Name",
 							"value": result["name"],
-							"inline": true
 						},
 						{
 							"name": "Stage",
 							"value": result["stage"],
-							"inline": true
 						},
 						{
 							"name": "HP",
 							"value": result["HP"],
-							"inline": true
 						},
 						{
 							"name": "Atk",
 							"value": result["Atk"],
-							"inline": true
 						},
 						{
 							"name": "Def",
 							"value": result["Def"],
-							"inline": true
 						}
 					],
 					"image": {
