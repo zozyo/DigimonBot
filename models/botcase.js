@@ -94,7 +94,8 @@ module.exports = {
 						};
 						callback(content)
 					} else { // new player
-						dbp.addPlayer(userID, result,function(result){
+						console.log(result);
+						dbp.addPlayer(userID, result, function(result){
 							var content = {
 								"color": 12345678,
 								"title": "addplayer",
