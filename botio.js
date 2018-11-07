@@ -35,18 +35,6 @@ bot.on('ready', function (evt) {
 	logger.info(bot.username + ' - (' + bot.id + ')');
 	logger.info("----------");
 
-	setInterval(function(){bot.sendMessage({
-				to: 492043342004224012,
-				embed: {
-					"color":1395845,
-					"fields": [{
-						"name": "Timer!",
-						"value": "5000ms!"
-					}]
-				}
-			})}, 5000
-	)
-
 });
 // message listener
 bot.on('message', function (user, userID, channelID, message, evt) {
@@ -77,6 +65,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 		}
 	}
+
+	setInterval(
+		function(){
+			bot.sendMessage({
+				to: channelID,
+				embed: {
+					"color":1395845,
+					"fields": [{
+						"name": "Timer!",
+						"value": "5000ms!"
+					}]
+				}
+			})
+		}, 5000
+	)
 });//end of message on
 
 function splitMessage(message) {
