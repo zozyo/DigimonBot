@@ -245,6 +245,7 @@ module.exports = {
 
 	//random digimon database
 	//add random digimon
+	//insert name stage HP Atk Def picURL
 	insert: function(userID, userID,channelID, args, callback){
 		dbrandom.addDigimon(userID, args, function(result){
 			var content = {
