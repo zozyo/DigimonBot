@@ -26,6 +26,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					"HP": args["HP"],
 					"Atk": args["Atk"],
 					"Def": args["Def"],
+					"Critical": args["Critical"],
+					"Evade": args["Evade"],
 					"picURL": args["picURL"]
 				};
 				col.insertOne(player, function(err, res) {

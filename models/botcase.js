@@ -64,6 +64,14 @@ module.exports = {
 						{
 							"name": "Def",
 							"value": result["Def"],
+						},
+						{
+							"name": "Critical",
+							"value": result["Critical"],
+						},
+						{
+							"name": "Evade",
+							"value": result["Evade"],
 						}
 					],
 					"image": {
@@ -197,6 +205,14 @@ module.exports = {
 						{
 							"name": "Def",
 							"value": result["Def"],
+						},
+						{
+							"name": "Critical",
+							"value": result["Critical"],
+						},
+						{
+							"name": "Evade",
+							"value": result["Evade"],
 						}
 					],
 					"image": {
@@ -292,6 +308,14 @@ module.exports = {
 						{
 							"name": "Def",
 							"value": result["Def"],
+						},
+						{
+							"name": "Critical",
+							"value": result["Critical"],
+						},
+						{
+							"name": "Evade",
+							"value": result["Evade"],
 						}
 					],
 					"image": {

@@ -24,7 +24,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					"HP": 		args[3],
 					"Atk": 		args[4],
 					"Def": 		args[5],
-					"picURL": 	args[6]
+					"Critical": args[6],
+					"Evade":    args[7],
+					"picURL": 	args[8]
 				};
 				col.insertOne(digimon, function(err, res) {
 					if (err) throw err;
