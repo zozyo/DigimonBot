@@ -8,7 +8,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// setup database
 	var db = database.db("digimon");
-	var col = db.collection("digimon");
+	var col = db.collection("randomDigimon");
 
 	// temporary
 	// add digimon into collection "digimon"
@@ -19,7 +19,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			} else { // not found
 				var digimon = { 	
 					"name": 	args[0],
-					"next": 	args[1],
+					"stage": 	args[1],
 					"HP": 		args[2],
 					"Atk": 		args[3],
 					"Def": 		args[4],
