@@ -15,7 +15,24 @@ module.exports = {
 		callback(content);
 	},
 
-	//logo https://i.loli.net/2018/10/25/5bd0e3adec2a2.gif
+	//start
+	start: function(user, userID, channelID, args, callback){
+		var content = {
+			"color": 12345678,
+			"title": "start",
+			"fields": [
+				{
+					"name": "Welcome",
+					"value": "Welcome to Digimon World",
+					"inline": true
+				}
+			],
+			"image": {
+				"url": "https://i.loli.net/2018/10/25/5bd0e3adec2a2.gif"
+			}
+		};
+		callback(content)
+	},
 
 	// show user info
 	myinfo: function(user, userID, channelID, args, callback){
