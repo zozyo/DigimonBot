@@ -1,7 +1,7 @@
 //requires
 var dbp = require('./db_player.js')
 	, dbd = require('./db_digimon.js')
-	, dbr = require('./db_random_digimon.js');
+	, dbrandom = require('./db_random_digimon.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
