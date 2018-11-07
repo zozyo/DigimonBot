@@ -278,6 +278,10 @@ module.exports = {
 							"value": result["stage"],
 						},
 						{
+							"name": "Level",
+							"value": result["level"],
+						},
+						{
 							"name": "HP",
 							"value": result["HP"],
 						},
