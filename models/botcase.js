@@ -84,22 +84,21 @@ module.exports = {
 
 	// choose digimonName
 	choose: function(user, userID, channelID, args, callback){	
-		dbd.showDigimon(userID, args, function(result){
-			if(result != null){ // digimon exists
-				dbp.showPlayer(user, userID, function(result){
-					if(result != null){ // player exists
+		dbd.showDigimon(userID, args, function(dResult){
+			if(dResult != null){ // digimon exists
+				dbp.showPlayer(user, userID, function(pResult){
+					if(pResult != null){ // player exists
 						var content = {
 							"color": 12345678,
 							"description": "You have already chosen a digimon! Type d!myinfo to view!"
 						};
 						callback(content)
 					} else { // new player
-						console.log(result);
-						dbp.addPlayer(userID, result, function(result){
+						dbp.addPlayer(userID, dResult, function(mResult){
 							var content = {
 								"color": 12345678,
 								"title": "addplayer",
-								"description": result
+								"description": mResult
 							};
 							callback(content)
 						})
