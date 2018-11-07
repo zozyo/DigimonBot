@@ -20,10 +20,11 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				var digimon = { 	
 					"name": 	args[0],
 					"stage": 	args[1],
-					"HP": 		args[2],
-					"Atk": 		args[3],
-					"Def": 		args[4],
-					"picURL": 	args[5],
+					"level":    args[2],
+					"HP": 		args[3],
+					"Atk": 		args[4],
+					"Def": 		args[5],
+					"picURL": 	args[6]
 				};
 				col.insertOne(digimon, function(err, res) {
 					if (err) throw err;
