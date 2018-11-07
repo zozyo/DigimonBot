@@ -65,21 +65,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 		}
 	}
-
-	setInterval(
-		function(){
-			bot.sendMessage({
-				to: channelID,
-				embed: {
-					"color":1395845,
-					"fields": [{
-						"name": "Timer!",
-						"value": "5000ms!"
-					}]
-				}
-			})
-		}, 5000
-	)
 });//end of message on
 
 function splitMessage(message) {
