@@ -67,11 +67,11 @@ module.exports = {
 						},
 						{
 							"name": "Critical",
-							"value": result["Critical"],
+							"value": result["Critical"] + "%",
 						},
 						{
 							"name": "Evade",
-							"value": result["Evade"],
+							"value": result["Evade"] + "%",
 						}
 					],
 					"image": {
@@ -208,11 +208,11 @@ module.exports = {
 						},
 						{
 							"name": "Critical",
-							"value": result["Critical"],
+							"value": result["Critical"] + "%",
 						},
 						{
 							"name": "Evade",
-							"value": result["Evade"],
+							"value": result["Evade"] + "%",
 						}
 					],
 					"image": {
@@ -266,7 +266,7 @@ module.exports = {
 
 	//random digimon database
 	//add random digimon
-	//insert name stage HP Atk Def picURL
+	//insert name stage HP Atk Def Critical Evade picURL
 	insert: function(userID, userID,channelID, args, callback){
 		dbrandom.addDigimon(userID, args, function(result){
 			var content = {
@@ -311,11 +311,11 @@ module.exports = {
 						},
 						{
 							"name": "Critical",
-							"value": result["Critical"],
+							"value": result["Critical"] + "%",
 						},
 						{
 							"name": "Evade",
-							"value": result["Evade"],
+							"value": result["Evade"] + "%",
 						}
 					],
 					"image": {
