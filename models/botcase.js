@@ -23,7 +23,7 @@ module.exports = {
 			"fields": [
 				{
 					"name": "Welcome",
-					"value": "Welcome to Digimon World"
+					"value": "Welcome to Digimon \" gg \" World"
 				}
 			],
 			"image": {
