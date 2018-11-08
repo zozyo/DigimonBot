@@ -19,11 +19,11 @@ module.exports = {
 	start: function(user, userID, channelID, args, callback){
 		var content = {
 			"color": 12345678,
-			"title": "start",
+			"title": "Welcome to the Digimon World!",
 			"fields": [
 				{
-					"name": "Welcome",
-					"value": "Welcome to Digimon World"
+					"name": "Choose your digimon",
+					"value": "Please select a digimon from the following: Palmon, Biyomon, Agumon, Patamon, Gabumon, Gomamon, Tentomon, Gatomon. They are pictured in order below. To make your selection, type \"d!choose \" followed by the digimon's name, capitalizing the first letter. Example: d!choose Agumon"
 				}
 			],
 			"image": {
