@@ -22,13 +22,8 @@ module.exports = {
 			"title": "Welcome to the Digimon World!",
 			"fields": [
 				{
-<<<<<<< HEAD
 					"name": "Choose your digimon",
 					"value": "Please select a digimon from the following: Palmon, Biyomon, Agumon, Patamon, Gabumon, Gomamon, Tentomon, Gatomon. They are pictured in order below. To make your selection, type \"d!choose \" followed by the digimon's name, capitalizing the first letter. Example: d!choose Agumon"
-=======
-					"name": "Welcome",
-					"value": "Welcome to Digimon \" gg \" World"
->>>>>>> e2c8856f314105822a2283f47f606ea7dff55856
 				}
 			],
 			"image": {
