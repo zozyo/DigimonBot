@@ -372,6 +372,7 @@ module.exports = {
 				"title": "list random digimon page " + args[0],
 				"description": result
 			};
+			console.log(result);
 			callback(content)
 		});
 	},
