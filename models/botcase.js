@@ -1,7 +1,8 @@
 //requires
 var dbp = require('./db_player.js')
 	, dbd = require('./db_digimon.js')
-	, dbrandom = require('./db_random_digimon.js');
+	, dbrandom = require('./db_random_digimon.js')
+	, randomGen = require('./random_gen.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
@@ -363,5 +364,16 @@ module.exports = {
 		});
 	},
 
+	//rendom gen set
+	settimer: function(user, userID, channelID, args, callback){
+		randomGen.setTime(userID, args, function(result){
+			var content = {
+				"color": 14285739, 
+				"title": "list random digimon page " + args[0],
+				"description": result
+			};
+			callback(content)
+		});
+	},
 	//add more
 }// end of cases
