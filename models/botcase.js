@@ -369,12 +369,12 @@ module.exports = {
 		randomGen.setTime(userID, args, function(result){
 			var content = {
 				"color": 14285739, 
-				"title": "list random digimon page " + args[0],
+				"title": "Random Gen",
 				"description": result
 			};
-			console.log(result);
 			callback(content)
 		});
 	},
+
 	//add more
 }// end of cases
