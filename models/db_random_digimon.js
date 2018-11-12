@@ -54,7 +54,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.listDigimon = function (userID, args, callback) {
 		col.find({}, {projection: {_id: 0, picURL: 0}})
 			.sort({name: 1})
-			.skip(parseInt(args[0]) * 10)
+			.skip((parseInt(args[0]) + 1) * 10)
 			.limit(10)
 			.toArray(function(err, result) {
 				if (err) throw err;
