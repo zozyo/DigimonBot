@@ -353,7 +353,7 @@ module.exports = {
 	},
 
 	list: function(user, userID, channelID, args, callback){
-		dbrandom.listDigimon(function(result){
+		dbrandom.listDigimon(userID, args, function(result){
 			var content = {
 				"color": 14285739, 
 				"title": "listdigimon",
