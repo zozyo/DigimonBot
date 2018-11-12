@@ -69,7 +69,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 function splitMessage(message) {
 	//split message
-	const msg = message.substring(2).split(' ');
+	const msg = message.substring(2).replace(/\s+/g, ",").split(',');
 	const cmd = msg[0];
 	const args = msg.splice(1);
 
