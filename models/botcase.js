@@ -356,7 +356,7 @@ module.exports = {
 		dbrandom.listDigimon(userID, args, function(result){
 			var content = {
 				"color": 14285739, 
-				"title": "listdigimon",
+				"title": "list random digimon page " + args[0],
 				"description": result
 			};
 			callback(content)
