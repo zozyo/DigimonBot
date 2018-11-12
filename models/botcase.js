@@ -352,17 +352,6 @@ module.exports = {
 		});
 	},
 
-	deletetp: function(user, userID, channelID, args, callback){
-		dbrandom.deleteDigimonTP(userID, args, function(result){
-			var content = {
-				"color": 12345678, 
-				"title": "delete random digimon",
-				"description": result
-			};
-			callback(content)
-		});
-	},
-
 	list: function(user, userID, channelID, args, callback){
 		dbrandom.listDigimon(function(result){
 			var content = {

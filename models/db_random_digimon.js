@@ -71,12 +71,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			}
 		});
 	};//end of deleteDigimon
-	exports.deleteDigimonTP = function (userID, args, callback) { 
-				col.deleteOne({"stage": args[0]}, function(err, res) {
-					if (err) throw err;
-					callback("Delete Digimon " + args[0] + " Succeed!");
-				});
-	};//end of deleteDigimon
 
 	//searchDigimon
 	var searchDigimon = function (userID, digimonName, callback) {
