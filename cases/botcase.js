@@ -17,80 +17,80 @@ module.exports = {
 
 	//start
 	start: function(user, userID, channelID, args, callback){
-		Player[start](userID, callback);
+		Player["start"](userID, callback);
 	},
 
 	// show user info
 	myinfo: function(user, userID, channelID, args, callback){
-		Player[myInfo](userID, callback);
+		Player["myInfo"](userID, callback);
 	},
 
 	// help menu
 	help: function(user, userID, channelID, args, callback){
-		Player[help](callback);
+		Player["help"](callback);
 	},
 
 	// choose digimonName
 	choose: function(user, userID, channelID, args, callback){	
-		Player[choose](userID, args, callback);
+		Player["choose"](userID, args, callback);
 	},
 
 	// deleteme
 	deleteme: function(user, userID, channelID, args, callback){
-		Player[deleteme](callback);
+		Player["deleteme"](callback);
 	},
 
 //test cases
 	// listplayer
 	plist: function(user, userID, channelID, args, callback){
-		Test[plist](userID, args, callback);
+		Test["plist"](userID, args, callback);
 	},
 
 	// listdigimon
 	dlist: function(user, userID, channelID, args, callback){
-		Test[dlist](userID, callback);
+		Test["dlist"](userID, callback);
 	},
 
 	// listrandomdigimon
 	rlist: function(user, userID, channelID, args, callback){
-		Test[rlist](userID, args, callback);
+		Test["rlist"](userID, args, callback);
 	},
 
 //digimon database cases
 	//adddigimon name next HP Atk Def picURL
 	dadd: function(user, userID, channelID, args, callback){
-		BaseDigimon[dadd](userID, args, callback);
+		BaseDigimon["dadd"](userID, args, callback);
 	},
 
 	//showdigimon name
 	dshow: function(user, userID, channelID, args, callback){
-		BaseDigimon[dshow](userID, args, callback);
+		BaseDigimon["dshow"](userID, args, callback);
 	},
 
 	//deletedigimon name
 	ddel: function(user, userID, channelID, args, callback){
-		BaseDigimon[ddel](userID, args, callback);
+		BaseDigimon["ddel"](userID, args, callback);
 	},
 
 //random digimon database cases
 	//add random digimon
 	//insert name stage HP Atk Def Critical Evade picURL
 	radd: function(user, userID, channelID, args, callback){
-		RandomDigimon[radd](userID, args, callback);
+		RandomDigimon["radd"](userID, args, callback);
 	},
 
 	rshow: function(user, userID, channelID, args, callback){
-		RandomDigimon[rshow](userID, args, callback);
+		RandomDigimon["rshow"](userID, args, callback);
 	},
 
 	rdel: function(user, userID, channelID, args, callback){
-		RandomDigimon[rdel](userID, args, callback);
+		RandomDigimon["rdel"](userID, args, callback);
 	},
 
 //admin cases
 	//rendom gen set
 	settimer: function(user, userID, channelID, args, callback){
-		Admin[settimer](userID, args, callback);
+		Admin["settimer"](userID, args, callback);
 	},
 
 	//add more
