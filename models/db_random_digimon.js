@@ -88,7 +88,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		})
 	};//end of searchDigimon
 
-	//add more
+	//random gen digimon
 	exports.randomGen = function (callback){
 		col.find({}).count(function(err,count){
 			var randomNum = Math.floor(count*Math.random());
