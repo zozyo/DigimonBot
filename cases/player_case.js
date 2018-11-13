@@ -154,7 +154,7 @@ module.exports = {
 	},
 
 	//deleteme
-	deleteme: function(callback){
+	deleteme: function(userID, callback){
 		dbPlayer.deletePlayer(userID, function(result){
 			var content = {
 				"color": 12345678, 
