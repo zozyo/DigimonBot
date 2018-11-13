@@ -5,13 +5,22 @@ var dbDigimon = require('../models/db_digimon.js');
 module.exports = {
 	//adddigimon name next HP Atk Def picURL
 	dadd: function(userID, args, callback){
-		dbDigimon.addDigimon(args, function(result){
-			var content = {
-				"color": 12345678,
-				"title": "adddigimon",
-				"description": result
-			};
-			callback(content)
+		dbDigimon.addDigimon(args, function(res){
+			if(res){
+				var content = {
+					"color": 12345678,
+					"title": "adddigimon",
+					"description": "Add Digimon " + args[0] + " Succeed!"
+				};
+				callback(content)
+			} else {
+				var content = {
+					"color": 12345678,
+					"title": "adddigimon",
+					"description": "Digimon " + args[0] + " Already Exist!"
+				};
+				callback(content)
+			}
 		})
 	},
 
@@ -77,13 +86,22 @@ module.exports = {
 
 	//deletedigimon name
 	ddel: function(userID, args, callback){
-		dbDigimon.deleteDigimon(args, function(result){
-			var content = {
-				"color": 12345678, 
-				"title": "deletedigimon",
-				"description": result
-			};
-			callback(content)
+		dbDigimon.deleteDigimon(args, function(res){
+			if(res){
+				var content = {
+					"color": 12345678, 
+					"title": "deletedigimon",
+					"description": "Delete Digimon " + args[0] + " Succeed!"
+				};
+				callback(content)
+			} else {
+				var content = {
+					"color": 12345678, 
+					"title": "deletedigimon",
+					"description": "Digimon " + args[0] + " does not Exist!"
+				};
+				callback(content)
+			}
 		});
 	},
 }

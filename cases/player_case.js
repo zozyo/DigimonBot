@@ -125,13 +125,23 @@ module.exports = {
 						};
 						callback(content)
 					} else { // new player
-						dbPlayer.addPlayer(userID, dResult, function(mResult){
-							var content = {
-								"color": 12345678,
-								"title": "addplayer",
-								"description": mResult
-							};
-							callback(content)
+						dbPlayer.addPlayer(userID, dResult, function(res){
+							if(res){
+								var content = {
+									"color": 12345678,
+									"title": "addplayer",
+									"description": "Choose Digimon Succeed!"
+								};
+								callback(content)
+							} else {
+								var content = {
+									"color": 12345678,
+									"title": "addplayer",
+									"description": "Player Already Exist!"
+								};
+								callback(content)
+							}
+							
 						})
 					}
 				})
@@ -155,13 +165,22 @@ module.exports = {
 
 	//deleteme
 	deleteme: function(userID, callback){
-		dbPlayer.deletePlayer(userID, function(result){
-			var content = {
-				"color": 12345678, 
-				"title": "deleteplayer",
-				"description": result
-			};
-			callback(content)
+		dbPlayer.deletePlayer(userID, function(res){
+			if(res){
+				var content = {
+					"color": 12345678, 
+					"title": "deleteplayer",
+					"description": "Delete Player Succeed!"
+				};
+				callback(content)
+			} else {
+				var content = {
+					"color": 12345678, 
+					"title": "deleteplayer",
+					"description": "Player does not Exist!"
+				};
+				callback(content)
+			}
 		});
 	},
 	//battle

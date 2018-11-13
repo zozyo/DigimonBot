@@ -15,7 +15,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.addPlayer = function (userID, args, callback) { 
 		searchPlayer(userID, function(result) {
 			if (result) { // found
-				callback("Player Already Exist!");
+				callback(false);
 			} else { // not found
 				var player = { 	
 					"_id": userID,
@@ -32,7 +32,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				};
 				col.insertOne(player, function(err, res) {
 					if (err) throw err;
-					callback("Choose Digimon Succeed!");
+					callback(true);
 				});
 			}
 		});
@@ -66,10 +66,10 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			if (result) { // found
 				col.deleteOne({"_id": userID}, function(err, res) {
 					if (err) throw err;
-					callback("Delete Player Succeed!");
+					callback(true);
 				});
 			} else { // not found
-				callback("Player does not Exist!");
+				callback(false);
 			}
 		});
 	};//end of deletePlayer
