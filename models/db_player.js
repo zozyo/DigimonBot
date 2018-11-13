@@ -39,7 +39,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};// end of addPlayer
 
 	// show player in collection "player"
-	exports.showPlayer = function (user, userID, callback) {
+	exports.showPlayer = function (userID, callback) {
 		searchPlayer(userID, function(result) {
 			if (result) { // found
 				col.find({"_id": userID}).toArray(function(err, res) {
