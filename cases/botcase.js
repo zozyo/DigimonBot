@@ -12,7 +12,7 @@ module.exports = {
 //player cases
 	// ping
 	ping: function(user, userID, channelID, args, callback){
-		Player[ping](callback);
+		Player["ping"](callback);
 	},
 
 	//start
