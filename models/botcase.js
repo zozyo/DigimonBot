@@ -264,7 +264,6 @@ module.exports = {
 		});
 	},
 
-
 	//random digimon database
 	//add random digimon
 	//insert name stage HP Atk Def Critical Evade picURL
