@@ -12,8 +12,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// temporary
 	// add digimon into collection "digimon"
-	exports.addDigimon = function (userID, args, callback) { 
-		searchDigimon(userID, args[0], function(result) {
+	exports.addDigimon = function (args, callback) { 
+		searchDigimon(args[0], function(result) {
 			if (result) { // found
 				callback("Digimon " + args[0] + " Already Exist!");
 			} else { // not found
@@ -36,8 +36,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};// end of addDigimon
 
 	// show digimon in collection "digimon"
-	exports.showDigimon = function (userID, args, callback) {
-		searchDigimon(userID, args[0], function(result) {
+	exports.showDigimon = function (args, callback) {
+		searchDigimon(args[0], function(result) {
 			if (result) { // found
 				col.find({"name": args[0]}).toArray(function(err, res) {
 					if (err) throw err;
@@ -58,8 +58,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};//end of listPlayer
 
 	//delete digimon in collection "digimon"
-	exports.deleteDigimon = function (userID, args, callback) { 
-		searchDigimon(userID, args[0], function(result) {
+	exports.deleteDigimon = function (args, callback) { 
+		searchDigimon(args[0], function(result) {
 			if (result) { // found
 				col.deleteOne({"name": args[0]}, function(err, res) {
 					if (err) throw err;
@@ -72,7 +72,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};//end of deleteDigimon
 
 	//searchDigimon
-	var searchDigimon = function (userID, digimonName, callback) {
+	var searchDigimon = function (digimonName, callback) {
 		col.find({"name": digimonName}).toArray(function(err, result) {
 			if (err) throw err;
 			if (result === undefined || result.length == 0) {

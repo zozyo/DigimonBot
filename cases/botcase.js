@@ -1,5 +1,9 @@
 //requires
-var player = require('./player_case.js');
+var player = require('./player_case.js')
+	,admin = require('./admin_case.js')
+	,test  = require('./test_case.js')
+	,baseDigimon = require('./base_digimon_case.js')
+	,randomDigimon = require('./random_digimon_case.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
@@ -39,204 +43,48 @@ module.exports = {
 //test cases
 	// listplayer
 	plist: function(user, userID, channelID, args, callback){
-		test[plist](callback);
+		test[plist](userID, args, callback);
 	},
 
 	// listdigimon
 	dlist: function(user, userID, channelID, args, callback){
-		test[dlist](callback);
+		test[dlist](userID, callback);
 	},
 
 	// listrandomdigimon
 	rlist: function(user, userID, channelID, args, callback){
-		test[rlist](callback);
+		test[rlist](userID, args, callback);
 	},
 
 //digimon database cases
 	//adddigimon name next HP Atk Def picURL
-	adddigimon: function(userID, userID,channelID, args, callback){
-		dbd.addDigimon(userID, args, function(result){
-			var content = {
-				"color": 12345678,
-				"title": "adddigimon",
-				"description": result
-			};
-			callback(content)
-		})
+	dadd: function(user, userID, channelID, args, callback){
+		baseDigimon[dadd](userID, args, callback);
 	},
 
 	//showdigimon name
-	showdigimon: function(userID, userID,channelID, args, callback){
-		dbd.showDigimon(userID, args, function(result){
-			if(result != null){
-				var content = {
-					"color": 12345678,
-					"title": "searchdigimon",
-					"fields": [
-						{
-							"name": "Digimon Name",
-							"value": result["name"],
-						},
-						{
-							"name": "Next Digivolution",
-							"value": result["next"],
-						},
-						{
-							"name": "HP",
-							"value": result["HP"],
-						},
-						{
-							"name": "Atk",
-							"value": result["Atk"],
-						},
-						{
-							"name": "Def",
-							"value": result["Def"],
-						},
-						{
-							"name": "Critical",
-							"value": result["Critical"] + "%",
-						},
-						{
-							"name": "Evade",
-							"value": result["Evade"] + "%",
-						}
-					],
-					"image": {
-						"url": result["picURL"]
-					}
-				};
-				callback(content)
-			} else { // digimon not found
-				if(args[0] != undefined){
-					var content = {
-						"color": 12345678,
-						"description": "Digimon " + args[0] + " does not Exist!"
-					};
-					callback(content)
-				} else {
-					var content = {
-						"color": 12345678,
-						"description": "Please type a Digimon Name!"
-					};
-					callback(content)
-				}
-			}
-		})
+	dshow: function(user, userID, channelID, args, callback){
+		baseDigimon[dshow](userID, args, callback);
 	},
-
-	//for testing
-
 
 	//deletedigimon name
-	deletedigimon: function(user, userID, channelID, args, callback){
-		dbd.deleteDigimon(userID, args, function(result){
-			var content = {
-				"color": 12345678, 
-				"title": "deletedigimon",
-				"description": result
-			};
-			callback(content)
-		});
+	ddel: function(user, userID, channelID, args, callback){
+		baseDigimon[ddel](userID, args, callback);
 	},
 
-	//random digimon database
+//random digimon database cases
 	//add random digimon
 	//insert name stage HP Atk Def Critical Evade picURL
-	insert: function(userID, userID,channelID, args, callback){
-		dbrandom.addDigimon(userID, args, function(result){
-			var content = {
-				"color": 12345678,
-				"title": "add random digimon",
-				"description": result
-			};
-			callback(content)
-		})
+	radd: function(user, userID, channelID, args, callback){
+		randomDigimon[radd](userID, args, callback);
 	},
 
-	show: function(userID, userID,channelID, args, callback){
-		dbrandom.showDigimon(userID, args, function(result){
-			if(result != null){
-				var content = {
-					"color": 12345678,
-					"title": "search random digimon",
-					"fields": [
-						{
-							"name": "Digimon Name",
-							"value": result["name"],
-						},
-						{
-							"name": "Stage",
-							"value": result["stage"],
-						},
-						{
-							"name": "Level",
-							"value": result["level"],
-						},
-						{
-							"name": "HP",
-							"value": result["HP"],
-						},
-						{
-							"name": "Atk",
-							"value": result["Atk"],
-						},
-						{
-							"name": "Def",
-							"value": result["Def"],
-						},
-						{
-							"name": "Critical",
-							"value": result["Critical"] + "%",
-						},
-						{
-							"name": "Evade",
-							"value": result["Evade"] + "%",
-						}
-					],
-					"image": {
-						"url": result["picURL"]
-					}
-				};
-				callback(content)
-			} else { // digimon not found
-				if(args[0] != undefined){
-					var content = {
-						"color": 12345678,
-						"description": "Digimon " + args[0] + " does not Exist!"
-					};
-					callback(content)
-				} else {
-					var content = {
-						"color": 12345678,
-						"description": "Please type a Digimon Name!"
-					};
-					callback(content)
-				}
-			}
-		})
+	rshow: function(user, userID, channelID, args, callback){
+		randomDigimon[rshow](userID, args, callback);
 	},
 
-	delete: function(user, userID, channelID, args, callback){
-		dbrandom.deleteDigimon(userID, args, function(result){
-			var content = {
-				"color": 12345678, 
-				"title": "delete random digimon",
-				"description": result
-			};
-			callback(content)
-		});
-	},
-
-	list: function(user, userID, channelID, args, callback){
-		dbrandom.listDigimon(userID, args, function(result){
-			var content = {
-				"color": 14285739, 
-				"title": "list random digimon page " + args[0],
-				"description": result
-			};
-			callback(content)
-		});
+	rdel: function(user, userID, channelID, args, callback){
+		randomDigimon[rdel](userID, args, callback);
 	},
 
 //admin cases

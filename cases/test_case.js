@@ -1,17 +1,16 @@
 //requires
-var dbp = require('../models/db_player.js')
-	, dbd = require('../models/db_digimon.js')
-	, dbrandom = require('../models/db_random_digimon.js')
-	, randomGen = require('../models/random_gen.js');
+var dbPlayer = require('../models/db_player.js')
+	, dbDigimon = require('../models/db_digimon.js')
+	, dbRandom = require('../models/db_random_digimon.js');
 
 //test cases
 module.exports = {
 	// listplayer
-	plist: function(user, userID, channelID, args, callback){
-		dbp.listPlayer(function(result){
+	plist: function(userID, args, callback){
+		dbPlayer.listPlayer(args, function(result){
 			var content = {
 				"color": 14285739, 
-				"title": "listplayer",
+				"title": "listplayer" + args[0],
 				"description": result
 			};
 			callback(content)
@@ -19,8 +18,8 @@ module.exports = {
 	},
 
 	// listdigimon
-	dlist: function(user, userID, channelID, args, callback){
-		dbd.listDigimon(function(result){
+	dlist: function(userID, callback){
+		dbDigimon.listDigimon(function(result){
 			var content = {
 				"color": 14285739, 
 				"title": "listdigimon",
@@ -31,8 +30,8 @@ module.exports = {
 	},
 
 	// listrandomdigimon
-	rlist: function(user, userID, channelID, args, callback){
-		dbrandom.listDigimon(userID, args, function(result){
+	rlist: function(userID, args, callback){
+		dbRandom.listDigimon(userID, args, function(result){
 			var content = {
 				"color": 14285739, 
 				"title": "list random digimon page " + args[0],

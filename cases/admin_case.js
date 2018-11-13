@@ -1,13 +1,10 @@
 //requires
-var dbp = require('../models/db_player.js')
-	, dbd = require('../models/db_digimon.js')
-	, dbrandom = require('../models/db_random_digimon.js')
-	, randomGen = require('../models/random_gen.js');
+var randomGen = require('../models/random_gen.js');
 
 //admin cases
 module.exports = {
 	//settimer
-	settimer: function(user, userID, channelID, args, callback){
+	settimer: function(userID, args, callback){
 		randomGen.setTime(userID, args, function(result){
 			var content = {
 				"color": 14285739, 
