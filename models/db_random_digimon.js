@@ -89,10 +89,10 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};//end of searchDigimon
 
 	//add more
-	exports.randomGen = function (){
+	exports.randomGen = function (callback){
 		col.aggregate([{$sample: {size: 1}}]).toArray(function(err, res) {
 			if (err) throw err;
-			return(res[0]);
+			callback(res[0]);
 		})
 	}
 
