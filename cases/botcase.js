@@ -37,7 +37,7 @@ module.exports = {
 
 	// deleteme
 	deleteme: function(user, userID, channelID, args, callback){
-		Player["deleteme"](callback);
+		Player["deleteme"](userID, callback);
 	},
 
 //test cases
