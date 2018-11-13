@@ -46,7 +46,7 @@ module.exports = {
 	},
 
 	//myinfo
-	myInfo: function(userID, callback){
+	myInfo: function(user, userID, callback){
 		dbPlayer.showPlayer(userID, function(result){
 			if(result != null){ // player exists
 				var content = {
