@@ -115,7 +115,7 @@ module.exports = {
 
 	//choose
 	choose: function(userID, args, callback){
-		dbDigimon.showDigimon(userID, args, function(dResult){
+		dbDigimon.showDigimon(args, function(dResult){
 			if(dResult != null){ // digimon exists
 				dbPlayer.showPlayer(userID, function(pResult){
 					if(pResult != null){ // player exists
