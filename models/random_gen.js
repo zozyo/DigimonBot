@@ -4,7 +4,7 @@ var schedule = require('node-schedule')
 var rule = new schedule.RecurrenceRule();
 
 exports.setTime = function (userID, args, callback){
-	rule.second = parseInt(args[0]);
+	rule.minute = parseInt(args[0]);
 	schedule.scheduleJob(rule, function(){
 		dbrandom.randomGen(function(res){
 			callback(res);
