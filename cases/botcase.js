@@ -22,7 +22,7 @@ module.exports = {
 
 	// show user info
 	myinfo: function(user, userID, channelID, args, callback){
-		Player["myInfo"](userID, callback);
+		Player["myInfo"](user, userID, callback);
 	},
 
 	// help menu
