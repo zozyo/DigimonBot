@@ -90,9 +90,16 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	//add more
 	exports.randomGen = function (callback){
-		col.aggregate([{$sample: {size: 1}}]).toArray(function(err, res) {
-			if (err) throw err;
-			callback(res[0]);
+		col.find({}).count(function(err,count){
+			var randomNum = Math.floor(count*Math.random());
+			col.find({})
+				.sort({name: 1})
+				.skip(randomNum)
+				.limit(1)
+				.toArray(function(err, res) {
+					if (err) throw err;
+					callback(res[0])
+				})
 		})
 	}
 
