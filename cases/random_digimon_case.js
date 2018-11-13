@@ -5,13 +5,23 @@ var dbRandom = require('../models/db_random_digimon.js');
 module.exports = {
 	//radd name stage HP Atk Def Critical Evade picURL
 	radd: function(userID, args, callback){
-		dbRandom.addDigimon(args, function(result){
-			var content = {
-				"color": 12345678,
-				"title": "add random digimon",
-				"description": result
-			};
-			callback(content)
+		dbRandom.addDigimon(args, function(res){
+			if(res){
+				var content = {
+					"color": 12345678,
+					"title": "add random digimon",
+					"description": "Add Digimon " + args[0] + " Succeed!"
+				};
+				callback(content)
+			} else {
+				var content = {
+					"color": 12345678,
+					"title": "add random digimon",
+					"description": "Digimon " + args[0] + " Already Exist!"
+				};
+				callback(content)
+			}
+			
 		})
 	},
 
@@ -81,13 +91,23 @@ module.exports = {
 
 	//rdel
 	rdel: function(userID, args, callback){
-		dbRandom.deleteDigimon(args, function(result){
-			var content = {
-				"color": 12345678, 
-				"title": "delete random digimon",
-				"description": result
-			};
-			callback(content)
+		dbRandom.deleteDigimon(args, function(res){
+			if(res){
+				var content = {
+					"color": 12345678, 
+					"title": "delete random digimon",
+					"description": "Delete Digimon " + args[0] + " Succeed!"
+				};
+				callback(content)
+			} else {
+				var content = {
+					"color": 12345678, 
+					"title": "delete random digimon",
+					"description": "Digimon " + args[0] + " does not Exist!"
+				};
+				callback(content)
+			}
+			
 		});
 	},
 
