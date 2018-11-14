@@ -3,7 +3,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
 //requires
-var dbp = require('./db_player.js')
+var dbp = require('./db_player.js');
 
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
@@ -18,7 +18,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			"_id": 0,
 			"playerA": {},
 			"playerB": {},
-			"time": 
+			"time": Date()
 		};
 		col.insertOne(field, function(err, res) {
 			if (err) throw err;

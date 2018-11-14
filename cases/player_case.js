@@ -8,7 +8,10 @@ module.exports = {
 	ping: function(callback){
 		var content = {
 			"color": 12345678, 
-			"description": "Pong!"
+			"description": "Pong!",
+			"footer": {
+				"text": Date()
+			}
 		};
 		callback(content);
 	},
