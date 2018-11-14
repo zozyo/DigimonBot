@@ -10,7 +10,7 @@ module.exports = {
 			"color": 12345678, 
 			"description": "Pong!",
 			"footer": {
-				"text": Date()
+				"text": Date.UTC()
 			}
 		};
 		callback(content);

@@ -3,7 +3,7 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
 //requires
-var dbp = require('./db_player.js');
+var dbPlayer = require('./db_player.js');
 
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
@@ -11,22 +11,28 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// setup database
 	var db = database.db("digimon");
-	var col = db.collection("battlePlayer");
+	var col = db.collection("battleField");
 
-	var newBattle = function (callback) {
+	var newPlayerBattle = function (callback) {
 		var field = { 
 			"_id": 0,
 			"playerA": {},
 			"playerB": {},
-			"time": Date()
+			"time": Date.UTC()
 		};
-		col.insertOne(field, function(err, res) {
+		col.updateOne({"_id" = 0}, {$set: field}, {upsert: true}, function(err, res) {
 			if (err) throw err;
 			callback(true);
 		});
 	}
 
-	exports.addPlayer = function (userID, args, callback) { 
-		
+	exports.startBattle = function (userID, args, callback) { 
+		var playerA = dbPlayer.showPlayer(userID);
+		var BID = args[0].substring(2).replace(>$, "");
+		var playerB = dbPlayer.showPlayer(BID);
+
+		console.log(playerA);
+		console.log(playerB);
+
 	}
 });// end of db_digimon
