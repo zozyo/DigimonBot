@@ -4,9 +4,9 @@ var dbRandom = require('../models/db_random_digimon.js');
 //random digimon cases
 module.exports = {
 	//radd name stage HP Atk Def Critical Evade picURL
-	radd: function(userID, args, callback){
-		dbRandom.addDigimon(args, function(res){
-			if(res){
+	radd: function(userID, args, callback) {
+		dbRandom.addDigimon(args, function(res) {
+			if(res) {
 				var content = {
 					"color": 12345678,
 					"title": "add random digimon",
@@ -21,14 +21,13 @@ module.exports = {
 				};
 				callback(content)
 			}
-			
 		})
 	},
 
 	//rshow
-	rshow: function(userID, args, callback){
-		dbRandom.showDigimon(args, function(result){
-			if(result != null){
+	rshow: function(userID, args, callback) {
+		dbRandom.showDigimon(args, function(result) {
+			if(result != null) {
 				var content = {
 					"color": 12345678,
 					"title": "search random digimon",
@@ -72,7 +71,7 @@ module.exports = {
 				};
 				callback(content)
 			} else { // digimon not found
-				if(args[0] != undefined){
+				if(args[0] != undefined) {
 					var content = {
 						"color": 12345678,
 						"description": "Digimon " + args[0] + " does not Exist!"
@@ -90,9 +89,9 @@ module.exports = {
 	},
 
 	//rdel
-	rdel: function(userID, args, callback){
-		dbRandom.deleteDigimon(args, function(res){
-			if(res){
+	rdel: function(userID, args, callback) {
+		dbRandom.deleteDigimon(args, function(res) {
+			if (res) {
 				var content = {
 					"color": 12345678, 
 					"title": "delete random digimon",
@@ -106,8 +105,7 @@ module.exports = {
 					"description": "Digimon " + args[0] + " does not Exist!"
 				};
 				callback(content)
-			}
-			
+			}	
 		});
 	},
 

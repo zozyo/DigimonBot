@@ -11,85 +11,85 @@ module.exports = {
 
 //player cases
 	// ping
-	ping: function(user, userID, channelID, args, callback){
+	ping: function(user, userID, channelID, args, callback) {
 		Player["ping"](callback);
 	},
 
 	//start
-	start: function(user, userID, channelID, args, callback){
+	start: function(user, userID, channelID, args, callback) {
 		Player["start"](userID, callback);
 	},
 
 	// show user info
-	myinfo: function(user, userID, channelID, args, callback){
+	myinfo: function(user, userID, channelID, args, callback) {
 		Player["myInfo"](user, userID, callback);
 	},
 
 	// help menu
-	help: function(user, userID, channelID, args, callback){
+	help: function(user, userID, channelID, args, callback) {
 		Player["help"](callback);
 	},
 
 	// choose digimonName
-	choose: function(user, userID, channelID, args, callback){	
+	choose: function(user, userID, channelID, args, callback) {	
 		Player["choose"](userID, args, callback);
 	},
 
 	// deleteme
-	deleteme: function(user, userID, channelID, args, callback){
+	deleteme: function(user, userID, channelID, args, callback) {
 		Player["deleteme"](userID, callback);
 	},
 
 //test cases
 	// listplayer
-	plist: function(user, userID, channelID, args, callback){
+	plist: function(user, userID, channelID, args, callback) {
 		Test["plist"](userID, args, callback);
 	},
 
 	// listdigimon
-	dlist: function(user, userID, channelID, args, callback){
+	dlist: function(user, userID, channelID, args, callback) {
 		Test["dlist"](userID, callback);
 	},
 
 	// listrandomdigimon
-	rlist: function(user, userID, channelID, args, callback){
+	rlist: function(user, userID, channelID, args, callback) {
 		Test["rlist"](userID, args, callback);
 	},
 
 //digimon database cases
 	//adddigimon name next HP Atk Def picURL
-	dadd: function(user, userID, channelID, args, callback){
+	dadd: function(user, userID, channelID, args, callback) {
 		BaseDigimon["dadd"](userID, args, callback);
 	},
 
 	//showdigimon name
-	dshow: function(user, userID, channelID, args, callback){
+	dshow: function(user, userID, channelID, args, callback) {
 		BaseDigimon["dshow"](userID, args, callback);
 	},
 
 	//deletedigimon name
-	ddel: function(user, userID, channelID, args, callback){
+	ddel: function(user, userID, channelID, args, callback) {
 		BaseDigimon["ddel"](userID, args, callback);
 	},
 
 //random digimon database cases
 	//add random digimon
 	//insert name stage HP Atk Def Critical Evade picURL
-	radd: function(user, userID, channelID, args, callback){
+	radd: function(user, userID, channelID, args, callback) {
 		RandomDigimon["radd"](userID, args, callback);
 	},
 
-	rshow: function(user, userID, channelID, args, callback){
+	rshow: function(user, userID, channelID, args, callback) {
 		RandomDigimon["rshow"](userID, args, callback);
 	},
 
-	rdel: function(user, userID, channelID, args, callback){
+	rdel: function(user, userID, channelID, args, callback) {
 		RandomDigimon["rdel"](userID, args, callback);
 	},
 
 //admin cases
 	//rendom gen set
-	settimer: function(user, userID, channelID, args, callback){
+	settimer: function(user, userID, channelID, args, callback) {
 		Admin["settimer"](userID, args, callback);
 	},
 
