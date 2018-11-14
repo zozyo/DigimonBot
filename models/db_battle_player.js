@@ -13,7 +13,20 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	var db = database.db("digimon");
 	var col = db.collection("battlePlayer");
 
+	var newBattle = function (callback) {
+		var field = { 
+			"_id": 0,
+			"playerA": {},
+			"playerB": {},
+			"time": 
+		};
+		col.insertOne(field, function(err, res) {
+			if (err) throw err;
+			callback(true);
+		});
+	}
+
 	exports.addPlayer = function (userID, args, callback) { 
-		//to do
+		
 	}
 });// end of db_digimon

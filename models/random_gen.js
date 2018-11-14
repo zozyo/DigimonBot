@@ -15,7 +15,7 @@ exports.setTime = function (userID, args, callback){
 		dbrandom.randomGen(function(res){
 			//insert digimon into battle_random
 			// To Do
-
+			
 
 			//print the digimon
 			callback(res);
