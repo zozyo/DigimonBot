@@ -27,12 +27,12 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	}
 
 	exports.startBattle = function (userID, args, callback) { 
-		var playerA = dbPlayer.showPlayer(userID);
+		dbPlayer.showPlayer(userID, function(res){
+			console.log(res);
+		});
 		var BID = args[0].substring(2).replace(">", "");
-		var playerB = dbPlayer.showPlayer(BID);
-
-		console.log(playerA);
-		console.log(playerB);
-
+		var playerB = dbPlayer.showPlayer(BID, function(res){
+			console.log(res);
+		});
 	}
 });// end of db_digimon
