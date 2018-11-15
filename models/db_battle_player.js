@@ -28,16 +28,25 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	exports.startBattle = function (userID, args, callback) { 
 		dbPlayer.showPlayer(userID, function(resA){
-			dbPlayer.showPlayer(args[0].substring(2).replace(">", ""), function(resB){
-				newPlayerBattle(resA, resB, function(result){
-					if(result){
-						col.find({"_id": 0}).toArray(function(err, res) {
-							if (err) throw err;
-							console.log(res[0]);
+			if (resA != null) { // if playerA exists
+				dbPlayer.showPlayer(args[0].substring(2).replace(">", ""), function(resB){
+					if (resB != null) { // if playerB exists
+						newPlayerBattle(resA, resB, function(result){
+							if(result){ // if create field successed
+								col.find({"_id": 0}).toArray(function(err, res) {
+									if (err) throw err;
+									console.log(res[0]);
+									callback("s");
+								})
+							}
 						})
+					} else {
+						callback("b")
 					}
-				})
-			});
+				});
+			} else {
+				callback("a")
+			}
 		});
 		
 
