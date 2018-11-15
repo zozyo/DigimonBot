@@ -7,7 +7,7 @@ module.exports = {
 	bp: function(user, userID, args, callback) {
 		dbBattlePlayer.startBattle(userID, args, function(res){
 			//callback(res);
-		}
+		});
 	}
 
 
