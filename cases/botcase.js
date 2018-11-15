@@ -3,7 +3,8 @@ var Player = require('./player_case.js')
 	,Admin = require('./admin_case.js')
 	,Test  = require('./test_case.js')
 	,BaseDigimon = require('./base_digimon_case.js')
-	,RandomDigimon = require('./random_digimon_case.js');
+	,RandomDigimon = require('./random_digimon_case.js')
+	,Battle = require('./battle_case.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
@@ -93,5 +94,11 @@ module.exports = {
 		Admin["settimer"](userID, args, callback);
 	},
 
-	//add more
+//battle cases
+	//bp
+	bp: function(user, userID, channelID, args, callback) {
+		Battle["bp"](user, userID, args, callback);
+	},
+
+
 }// end of cases
