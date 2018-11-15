@@ -13,6 +13,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	var db = database.db("digimon");
 	var col = db.collection("battleField");
 
+	//newPlayerBattle
 	var newPlayerBattle = function (pA, pB, callback) {
 		var field = { 
 			"_id": 0,
@@ -26,12 +27,13 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		});
 	}
 
+	//startBattle
 	exports.startBattle = function (userID, args, callback) { 
-		dbPlayer.showPlayer(userID, function(resA){
+		dbPlayer.showPlayer(userID, function(resA){ //serach playerA
 			if (resA != null) { // if playerA exists
-				dbPlayer.showPlayer(args[0].substring(2).replace(">", ""), function(resB){
+				dbPlayer.showPlayer(args[0].substring(2).replace(">", ""), function(resB){ // search playerB
 					if (resB != null) { // if playerB exists
-						newPlayerBattle(resA, resB, function(result){
+						newPlayerBattle(resA, resB, function(result){ // create battle field
 							if(result){ // if create field successed
 								col.find({"_id": 0}).toArray(function(err, res) {
 									if (err) throw err;
@@ -41,16 +43,12 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 							}
 						})
 					} else {
-						callback("b")
+						callback("b") // if playerB not found
 					}
 				});
 			} else {
-				callback("a")
+				callback("a") // if playerA not found
 			}
 		});
-		
-
-		
-
 	}
 });// end of db_digimon
