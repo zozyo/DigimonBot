@@ -9,9 +9,10 @@ module.exports = {
 		var content = {
 			"color": 12345678, 
 			"description": "Pong!",
-			"footer": {
-				"text": Date.UTC()
-			}
+			"fields": [{
+				"name": "Time",
+				"value": Date.UTC()
+			}]
 		};
 		callback(content);
 	},
