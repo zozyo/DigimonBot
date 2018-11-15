@@ -28,7 +28,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	exports.startBattle = function (userID, args, callback) { 
 		var playerA = dbPlayer.showPlayer(userID);
-		var BID = args[0].substring(2).replace(>$, "");
+		var BID = args[0].substring(2).replace(\>$, "");
 		var playerB = dbPlayer.showPlayer(BID);
 
 		console.log(playerA);
