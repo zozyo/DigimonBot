@@ -54,9 +54,13 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// list all player in collection "player"
 	exports.listPlayer = function (callback) {
-		col.find({}, { projection: { _id: 1 } }).toArray(function(err, result) {
-			if (err) throw err;
-			callback(JSON.stringify( result ))
+		col.find({}, {projection: { _id: 1 }})
+			.sort({ _id: 1 })
+			.skip((parseInt(args[0]) - 1) * 10)
+			.limit(10)
+			.toArray(function(err, result) {
+				if (err) throw err;
+				callback(JSON.stringify( result ))
 		})
 	};//end of listPlayer
 
