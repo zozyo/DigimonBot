@@ -13,11 +13,11 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	var db = database.db("digimon");
 	var col = db.collection("battleField");
 
-	var newPlayerBattle = function (callback) {
+	var newPlayerBattle = function (pA, pB, callback) {
 		var field = { 
 			"_id": 0,
-			"playerA": {},
-			"playerB": {},
+			"playerA": pA,
+			"playerB": pB,
 			"time": Date.UTC()
 		};
 		col.updateOne({"_id": 0}, {$set: field}, {upsert: true}, function(err, res) {
@@ -27,12 +27,25 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	}
 
 	exports.startBattle = function (userID, args, callback) { 
+		var playerA, playerB;
+
 		dbPlayer.showPlayer(userID, function(res){
-			console.log(res);
+			playerA = res;
 		});
+
 		var BID = args[0].substring(2).replace(">", "");
-		var playerB = dbPlayer.showPlayer(BID, function(res){
-			console.log(res);
+		dbPlayer.showPlayer(BID, function(res){
+			playerB = res;
 		});
+
+		newPlayerBattle(playerA, playerB, function(result){
+			if(result){
+				col.find({"_id": 0}).toArray(function(err, res) {
+					if (err) throw err;
+					console.log(res[0]);
+				})
+			}
+		})
+
 	}
 });// end of db_digimon
