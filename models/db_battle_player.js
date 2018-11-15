@@ -19,7 +19,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			"_id": 0,
 			"playerA": pA,
 			"playerB": pB,
-			"time": Date()
+			"time": new Date().toUTCString()
 		};
 		col.updateOne({"_id": 0}, {$set: field}, {upsert: true}, function(err, res) {
 			if (err) throw err;
