@@ -186,10 +186,9 @@ module.exports = {
 			}
 		});
 	},
-	//battle
 
 	//top10
-
+	
 
 }//end
 

@@ -51,4 +51,5 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			}
 		});
 	}
+	
 });// end of db_digimon
