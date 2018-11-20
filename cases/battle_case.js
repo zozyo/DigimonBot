@@ -35,8 +35,42 @@ module.exports = {
 				callback(content);
 			}
 		});
-	}
+	},
 
-	
+	//accept
+	accept: function(user, userID, callback) {
+		dbBattlePlayer.acceptBattle(userID, function(res){
+			if (res === "s") {
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Accpet Battle",
+						"value": "Digimon Battle Start!"
+					}]
+				};
+				callback(content);
+			} else if (res === "t") {
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Timeout!",
+						"value": "Accept Battle Timeout!"
+					}]
+				};
+				callback(content);
+			} else if (res === "n") {
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Oops",
+						"value": "No battle for you!"
+					}]
+				};
+				callback(content);
+			}
+		});
+	},
+
+
 
 }//end

@@ -100,5 +100,9 @@ module.exports = {
 		Battle["bp"](user, userID, args, callback);
 	},
 
+	accept: function(user, userID, channelID, args, callback) {
+		Battle["accept"](user, userID, callback);
+	},
+
 
 }// end of cases
