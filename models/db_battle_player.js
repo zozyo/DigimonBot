@@ -56,8 +56,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.acceptBattle = function (userID, callback) {
 		col.find({"_id": 0}).toArray(function(err, res) {
 			if (err) throw err;
-			if (res[0]["playerB"]["_id"] === userID) {
-				if (new Date() - res[0]["time"] < 180000) { // if accept in 3 min
+			if (res[0]["playerB"]["_id"] === userID) { // found battle
+				if (new Date() - res[0]["time"] < 100000) { // if accept in 100 sec
 					callback("s"); // accepted
 				} else {
 					callback("t"); // timeout

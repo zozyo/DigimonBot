@@ -10,8 +10,8 @@ module.exports = {
 				var content = {
 					"color": 12345678,
 					"fields": [{
-						"name": "Battle with",
-						"value": "<@" + args[0].substring(2).replace(">", "") + ">"
+						"name": "Battle with" + "<@" + args[0].substring(2).replace(">", "") + ">",
+						"value": "Please accept battle in 100 seconds!"
 					}]
 				};
 				callback(content);
