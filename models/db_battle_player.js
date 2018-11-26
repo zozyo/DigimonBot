@@ -2,7 +2,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
-//requires
+// requires
 var dbPlayer = require('./db_player.js');
 
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
@@ -13,7 +13,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	var db = database.db("digimon");
 	var col = db.collection("battleField");
 
-	//newPlayerBattle
+	// newPlayerBattle
 	var newPlayerBattle = function (pA, pB, callback) {
 		var field = { 
 			"_id": 0,
@@ -21,6 +21,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			"playerB": pB,
 			"time": new Date()
 		};
+		// insert player A & B into field
 		col.updateOne({"_id": 0}, {$set: field}, {upsert: true}, function(err, res) {
 			if (err) throw err;
 			callback(true);
@@ -35,11 +36,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					if (resB != null) { // if playerB exists
 						newPlayerBattle(resA, resB, function(result){ // create battle field
 							if(result){ // if create field successed
-								col.find({"_id": 0}).toArray(function(err, res) {
-									if (err) throw err;
-									console.log(res[0]); // print battle field in console, delete later
-									callback("s");
-								})
+								callback("s");
 							}
 						})
 					} else {
@@ -54,7 +51,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	//acceptBattle
 	exports.acceptBattle = function (userID, callback) {
-		col.find({"_id": 0}).toArray(function(err, res) {
+		col.find({"_id": 0}).toArray(function(err, res) { // search battle field
 			if (err) throw err;
 			if (res[0]["playerB"]["_id"] === userID) { // found battle
 				if (new Date() - res[0]["time"] < 100000) { // if accept in 100 sec
@@ -68,4 +65,4 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		})
 	};
 
-});// end of db_digimon
+});// end

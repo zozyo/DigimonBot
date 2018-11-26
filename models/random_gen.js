@@ -1,6 +1,7 @@
 //requires
 var schedule = require('node-schedule')
-	, dbrandom = require('./db_random_digimon.js');
+	, dbrandom = require('./db_random_digimon.js')
+	, dbBattleRandom = require('../models/db_battle_random.js');
 
 //new schedule
 var rule = new schedule.RecurrenceRule();
@@ -14,9 +15,7 @@ exports.setTime = function (userID, args, callback){
 		//random gen a digimon
 		dbrandom.randomGen(function(res){
 			//insert digimon into battle_random
-			// To Do
-			
-
+			dbBattleRandom.newRandom(res);
 			//print the digimon
 			callback(res);
 		})

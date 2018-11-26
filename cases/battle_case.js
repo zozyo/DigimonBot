@@ -1,16 +1,18 @@
-//requires
-var dbBattlePlayer = require('../models/db_battle_player.js');
+// requires
+var dbBattlePlayer = require('../models/db_battle_player.js')
+	,dbBattleRandom = require('../models/db_battle_random.js');;
 
-//battle cases
+// battle cases
 module.exports = {
-	//bp
+// with player
+	// bp
 	bp: function(user, userID, args, callback) {
 		dbBattlePlayer.startBattle(userID, args, function(res){
 			if (res === "s") { // if field create success
 				var content = {
 					"color": 12345678,
 					"fields": [{
-						"name": "Battle with" + "<@" + args[0].substring(2).replace(">", "") + ">",
+						"name": "Player " + user + " wants to battle with you! " + "<@" + args[0].substring(2).replace(">", "") + ">",
 						"value": "Please accept battle in 100 seconds!"
 					}]
 				};
@@ -37,10 +39,10 @@ module.exports = {
 		});
 	},
 
-	//accept
+	// accept
 	accept: function(user, userID, callback) {
 		dbBattlePlayer.acceptBattle(userID, function(res){
-			if (res === "s") {
+			if (res === "s") { // success
 				var content = {
 					"color": 12345678,
 					"fields": [{
@@ -49,7 +51,7 @@ module.exports = {
 					}]
 				};
 				callback(content);
-			} else if (res === "t") {
+			} else if (res === "t") { // timeout
 				var content = {
 					"color": 12345678,
 					"fields": [{
@@ -58,7 +60,7 @@ module.exports = {
 					}]
 				};
 				callback(content);
-			} else if (res === "n") {
+			} else if (res === "n") { // not found
 				var content = {
 					"color": 12345678,
 					"fields": [{
@@ -72,5 +74,38 @@ module.exports = {
 	},
 
 
-
+// with random digimon
+	// br
+	br: function(user, userID, callback) {
+		dbBattleRandom.startBattle(userID, function(res){
+			if (res === "s") { // success
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Accpet Battle",
+						"value": "Random Digimon Battle Start!"
+					}]
+				};
+				callback(content);
+			} else if (res === "t") { // timeout
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Timeout!",
+						"value": "Random Digimon Run Away!"
+					}]
+				};
+				callback(content);
+			} else if (res === "n") { // not found
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Oops",
+						"value": "You have no digimon!"
+					}]
+				};
+				callback(content);
+			}
+		});
+	},
 }//end
