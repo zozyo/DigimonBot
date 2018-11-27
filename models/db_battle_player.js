@@ -70,14 +70,14 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		col.find({"_id": 0}).toArray(function(err, res) { // search battle field
 			if (err) throw err;
 			if (res === undefined || res.length == 0) {
-				callback(false)
+				callback(false);
 			} else {
 				col.deleteOne({"_id": 0}, function(err, res) {
 					if (err) throw err;
 					callback(true);
 				});
 			}
-		});
+		})
 	};
 
 
