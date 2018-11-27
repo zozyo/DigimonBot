@@ -51,7 +51,7 @@ module.exports = {
 					}]
 				};
 				callback(content);
-				dbBattlePlayer. 
+				//dbBattlePlayer. 
 			} else if (res === "t") { // timeout
 				var content = {
 					"color": 12345678,
