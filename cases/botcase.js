@@ -111,4 +111,8 @@ module.exports = {
 		Battle["br"](user, userID, callback);
 	},
 
+	attack: function(user, userID, channelID, args, callback) {
+		Battle["attack"](user, userID, callback);
+	},
+
 }// end of cases

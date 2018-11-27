@@ -13,7 +13,7 @@ module.exports = {
 					"color": 12345678,
 					"title": "Please accept battle in 100 seconds!",
 					"fields": [{
-						"name": "Player " + user + " wants to battle with you! ",
+						"name": "Player " + user + " wants to battle with you! Type d!accept to Accpet Battle!",
 						"value": "<@" + args[0].substring(2).replace(">", "") + ">"
 					}]
 				};
