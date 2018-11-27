@@ -51,7 +51,16 @@ module.exports = {
 					}]
 				};
 				callback(content);
-				//dbBattlePlayer. 
+				/*
+				dbBattlePlayer.calculateBattle(function(result){
+					var content = {
+						"color": 12345678,
+						"title": "BattleCalculating",
+						"description": result
+					};
+					callback(content)
+				})
+				*/
 			} else if (res === "t") { // timeout
 				var content = {
 					"color": 12345678,

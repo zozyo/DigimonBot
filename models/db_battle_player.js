@@ -80,6 +80,29 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		})
 	};
 
+	exports.calculateBattle = function (callback) {
+		col.find({"_id": 0}).toArray(function(err, field) { // search battle field
+			if (err) throw err;
+			//calculating
+			fight(field[0]["playerA"], field[0]["playerB"], function(res) {
 
+			})
+		})
+	};
+
+	var fight = function (A, B, callback) {
+		var HPRemain = parseInt(B["HP"]);
+		if ( Math.random() * 100 > parseFloat(B["Evade"]) ) { // if hit
+			if ( Math.random() * 100 < parseFloat(A["Critical"]) ) { // if critical
+				HPRemain = HPRemain + parseInt(B["Def"]) - parseInt(A["Atk"]) * 2; // HP Remain
+				callback(HPRemain);
+			} else { // if not critical
+				HPRemain = HPRemain + parseInt(B["Def"]) - parseInt(A["Atk"]); // HP Remain
+				callback(HPRemain);
+			}
+		} else { // not hit
+			callback(HPRemain);
+		}
+	};
 
 });// end
