@@ -181,7 +181,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		col.updateOne({"_id": 0}, {$set: setting}, function(err, res) {
 			if (err) throw err;
 			callback(true)
-		}
+		})
 	}
 
 });// end
