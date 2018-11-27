@@ -61,7 +61,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					callback(true);
 				});
 			}
-		}
+		});
 	}
 
 });// end
