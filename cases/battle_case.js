@@ -35,6 +35,15 @@ module.exports = {
 					}]
 				};
 				callback(content);
+			} else if (res === "o") { // if self
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Self Battle!",
+						"value": "You cannot fight with yourself!"
+					}]
+				};
+				callback(content);
 			}
 		});
 	},
@@ -51,16 +60,6 @@ module.exports = {
 					}]
 				};
 				callback(content);
-				/*
-				dbBattlePlayer.calculateBattle(function(result){
-					var content = {
-						"color": 12345678,
-						"title": "BattleCalculating",
-						"description": result
-					};
-					callback(content)
-				})
-				*/
 			} else if (res === "t") { // timeout
 				var content = {
 					"color": 12345678,
@@ -81,6 +80,74 @@ module.exports = {
 				callback(content);
 			}
 		});
+	},
+
+	attack: function(user, userID, callback) {
+		dbBattlePlayer.calculateBattle(userID, function(res){
+			if (res === "n") { // if not in battle
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Oops! " + user,
+						"value": "No battle for you!"
+					}]
+				};
+				callback(content);
+			} else if (res === "w") { // if not the round
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": user + " Please Wait!",
+						"value": "Wait your opponent!"
+					}]
+				};
+				callback(content);
+			} else { // success attack
+				if (res[2] != 1) {
+					if (res[0] === 1) {
+						var content = {
+							"color": 12345678,
+							"title": user + " Round",
+							"fields": [{
+								"name": "Hit!",
+								"value": "Hit! Your opponent HP remaining: " + res[1]
+							}]
+						};
+						callback(content);
+					} else if (res[0] === 2) {
+						var content = {
+							"color": 12345678,
+							"title": user + " Round",
+							"fields": [{
+								"name": "Critical!",
+								"value": "Critical Hit! Your opponent HP remaining: " + res[1]
+							}]
+						};
+						callback(content);
+					} else if (res[0] === 0) {
+						var content = {
+							"color": 12345678,
+							"title": user + " Round",
+							"fields": [{
+								"name": "Dodge!",
+								"value": "Your opponent dodged your attack! HP remaining: " + res[1]
+							}]
+						};
+						callback(content);
+					}
+				} else {
+					var content = {
+						"color": 12345678,
+						"title": user + " Win!",
+						"fields": [{
+							"name": "Congratulations!",
+							"value": "You defect your opponent!"
+						}]
+					};
+					callback(content);
+				}	
+			}
+		})
 	},
 
 

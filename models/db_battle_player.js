@@ -19,6 +19,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			"_id": 0,
 			"playerA": pA,
 			"playerB": pB,
+			"round": "A",
+			"available": true,
 			"time": new Date()
 		};
 		// insert player A & B into field
@@ -30,15 +32,19 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// startBattle
 	exports.startBattle = function (userID, args, callback) { 
-		dbPlayer.showPlayer(userID, function(resA){ // serach playerA
-			if (resA != null) { // if playerA exists
-				dbPlayer.showPlayer(args[0].substring(2).replace(">", ""), function(resB){ // search playerB
-					if (resB != null) { // if playerB exists
-						newPlayerBattle(resA, resB, function(result){ // create battle field
-							if(result){ // if create field successed
-								callback("s");
-							}
-						})
+		dbPlayer.showPlayer(userID, function(pA){ // serach playerA
+			if (pA != null) { // if playerA exists
+				dbPlayer.showPlayer(args[0].substring(2).replace(">", ""), function(pB){ // search playerB
+					if (pB != null) { // if playerB exists
+						if (pA["_id"] != pB["_id"]) { // if not self
+							newPlayerBattle(pA, pB, function(result){ // create battle field
+								if(result){ // if create field successed
+									callback("s");
+								}
+							})
+						} else {
+							callback("o")
+						}
 					} else {
 						callback("b") // if playerB not found
 					}
@@ -51,10 +57,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// acceptBattle
 	exports.acceptBattle = function (userID, callback) {
-		col.find({"_id": 0}).toArray(function(err, res) { // search battle field
-			if (err) throw err;
-			if (res[0]["playerB"]["_id"] === userID) { // found battle
-				if (new Date() - res[0]["time"] < 100000) { // if accept in 100 sec
+		searchBattle(function(res) { // search battle field
+			if (res["playerB"]["_id"] === userID) { // found battle
+				if (new Date() - res["time"] < 100000) { // if accept in 100 sec
 					callback("s"); // accepted
 				} else {
 					callback("t"); // timeout
@@ -67,9 +72,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// deleteBattle -admin
 	exports.deletePlayerBattle = function (callback) {
-		col.find({"_id": 0}).toArray(function(err, res) { // search battle field
-			if (err) throw err;
-			if (res === undefined || res.length == 0) {
+		searchBattle(function(res) { // search battle field
+			if (res != null) {
 				callback(false);
 			} else {
 				col.deleteOne({"_id": 0}, function(err, res) {
@@ -83,52 +87,65 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 
 	// temporary
 	// calculate Battle   
-	exports.calculateBattle = function (callback) {
-		col.find({"_id": 0}).toArray(function(err, field) { // search battle field
-			if (err) throw err;
-			//calculating
-			fight(field[0]["playerA"], field[0]["playerB"], function(res) {
-
-			})
+	exports.calculateBattle = function (userID, callback) {
+		searchBattle(function(Field) { // search battle field
+			if (Field["available" === true]) {
+				round(Field["playerA"], Field["playerB"], Field["round"], function(res) {
+					if (res instanceof Array) {
+						battleEnd(res, function(ifEnd) {
+							if (ifEnd) {
+								updateBattle({"available": false}, function(result){
+									if (result) {
+										callback([res[0], res[1], 1])
+									}
+								})
+							} else {
+								callback([res[0], res[1], 0])
+							}
+						})
+					} else {
+						callback(res)
+					}
+				})
+			} else {
+				callback("e")
+			}
 		})
 	};
 
-	var fight = function (A, B, callback) {
-		var round = true;
-		do {
-			if (round) {
-				attack(A, B, function(HPRemain) {
-					col.updateOne({"_id": 0}, {$set: {"playerB": {"HP": HPRemain[1]} } }, function(err, res) {
-						if (err) throw err;
-						if (HPRemain[0] === 1) {
-							callback("s");
-						} else if (HPRemain[0] === 2) {
-							callback("s");
-						} else {
-							callback("s");
+	var round = function (A, B, r, callback) {
+		if (A["_id"] === userID) {
+			if (r === "A") {
+				fight(A, B, function(HPRemain){
+					var setting = {"playerB": {"HP": HPRemain[1]}, "round": "B"};
+					updateBattle(setting, function(res){
+						if (res) {
+							callback(HPRemain)
 						}
-					}); 
-				});
-				round = false;
+					})
+				})
 			} else {
-				attack(B, A, function(HPRemain) {
-					col.updateOne({"_id": 0}, {$set: {"playerA": {"HP": HPRemain[1]} } }, function(err, res) {
-						if (err) throw err;
-						if (HPRemain[0] === 1) {
-							callback("s");
-						} else if (HPRemain[0] === 2) {
-							callback("s");
-						} else {
-							callback("s");
-						}
-					}); 
-				});
-				round = true;
+				callback("w")
 			}
-		} while ( A["HP"] > 0 && B["HP"] > 0); // loop when both HP > 0
+		} else if (B["_id"] === userID) { 
+			if (r === "B") {
+				fight(B, A, function(HPRemain){
+					var setting = {"playerA": {"HP": HPRemain[1]}, "round": "A"};
+					updateBattle(setting, function(res){
+						if (res) {
+							callback(HPRemain)
+						}
+					})
+				})
+			} else {
+				callback("w")
+			}
+		} else {
+			callback("n")
+		}
 	};
 
-	var attack = function (X, Y, callback) {
+	var fight = function (X, Y, callback) {
 		var HPRemain = parseInt(Y["HP"]);
 		if ( Math.random() * 100 > parseFloat(Y["Evade"]) ) { // if hit
 			if ( Math.random() * 100 < parseFloat(X["Critical"]) ) { // if critical
@@ -142,5 +159,29 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			callback([0, HPRemain]);
 		}
 	};
+
+	var battleEnd = function (HP, callback) {
+		if (HP[1] <= 0) {
+			callback(true)
+		} else {
+			callback(false)
+		}
+	};
+
+	// searchBattle
+	var searchBattle = function (callback){
+		col.find({"_id": 0}).toArray(function(err, res) { // search battle field
+			if (err) throw err;
+			callback(res[0]);
+		})
+	};
+
+	// updateBattle
+	var updateBattle = function (setting, callback) {
+		col.updateOne({"_id": 0}, {$set: setting}, function(err, res) {
+			if (err) throw err;
+			callback(true)
+		}
+	}
 
 });// end
