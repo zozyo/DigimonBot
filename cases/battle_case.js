@@ -54,10 +54,16 @@ module.exports = {
 			if (res === "s") { // success
 				var content = {
 					"color": 12345678,
-					"fields": [{
-						"name": "Accpet Battle",
-						"value": "Digimon Battle Start!"
-					}]
+					"fields": [
+						{
+							"name": "Accpet Battle",
+							"value": "Digimon Battle Start!"
+						},
+						{
+							"name": "Who calls the battle starts first!",
+							"value": "Type d!attack to fight!"
+						}
+					]
 				};
 				callback(content);
 			} else if (res === "t") { // timeout
