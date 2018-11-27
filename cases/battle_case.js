@@ -11,9 +11,10 @@ module.exports = {
 			if (res === "s") { // if field create success
 				var content = {
 					"color": 12345678,
+					"title": "Please accept battle in 100 seconds!",
 					"fields": [{
-						"name": "Player " + user + " wants to battle with you! " + "<@" + args[0].substring(2).replace(">", "") + ">",
-						"value": "Please accept battle in 100 seconds!"
+						"name": "Player " + user + " wants to battle with you! ",
+						"value": "<@" + args[0].substring(2).replace(">", "") + ">"
 					}]
 				};
 				callback(content);
