@@ -28,9 +28,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		});
 	};
 
-	//startBattle
+	// startBattle
 	exports.startBattle = function (userID, args, callback) { 
-		dbPlayer.showPlayer(userID, function(resA){ //serach playerA
+		dbPlayer.showPlayer(userID, function(resA){ // serach playerA
 			if (resA != null) { // if playerA exists
 				dbPlayer.showPlayer(args[0].substring(2).replace(">", ""), function(resB){ // search playerB
 					if (resB != null) { // if playerB exists
@@ -49,7 +49,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		});
 	};
 
-	//acceptBattle
+	// acceptBattle
 	exports.acceptBattle = function (userID, callback) {
 		col.find({"_id": 0}).toArray(function(err, res) { // search battle field
 			if (err) throw err;
@@ -64,5 +64,22 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			}
 		})
 	};
+
+	// deleteBattle -admin
+	exports.deletePlayerBattle = function (callback) {
+		col.find({"_id": 0}).toArray(function(err, res) { // search battle field
+			if (err) throw err;
+			if (res === undefined || res.length == 0) {
+				callback(false)
+			} else {
+				col.deleteOne({"_id": 0}, function(err, res) {
+					if (err) throw err;
+					callback(true);
+				});
+			}
+		}
+	};
+
+
 
 });// end

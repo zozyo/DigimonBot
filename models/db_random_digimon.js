@@ -10,7 +10,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	var db = database.db("digimon");
 	var col = db.collection("randomDigimon");
 
-	// temporary
 	// add digimon into collection "digimon"
 	exports.addDigimon = function (args, callback) { 
 		searchDigimon(args[0], function(result) {
@@ -48,7 +47,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				callback(null);
 			}
 		});
-	};//end of showdigimon
+	};// end of showdigimon
 
 	// list all digimon in collection "digimon"
 	exports.listDigimon = function (args, callback) {
@@ -60,9 +59,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				if (err) throw err;
 				callback(JSON.stringify( result ))
 		})
-	};//end of listPlayer
+	};// end of listPlayer
 
-	//delete digimon in collection "digimon"
+	// delete digimon in collection "digimon"
 	exports.deleteDigimon = function (args, callback) { 
 		searchDigimon(args[0], function(result) {
 			if (result) { // found
@@ -74,9 +73,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				callback(false);
 			}
 		});
-	};//end of deleteDigimon
+	};// end of deleteDigimon
 
-	//searchDigimon
+	// searchDigimon
 	var searchDigimon = function (digimonName, callback) {
 		col.find({"name": digimonName}).toArray(function(err, result) {
 			if (err) throw err;
@@ -86,9 +85,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				callback(true);
 			}
 		})
-	};//end of searchDigimon
+	};// end of searchDigimon
 
-	//random gen digimon
+	// random gen digimon
 	exports.randomGen = function (callback) {
 		col.find({}).count(function(err,count){
 			var randomNum = Math.floor(count * Math.random());

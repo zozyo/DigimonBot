@@ -1,6 +1,6 @@
 // requires
 var dbBattlePlayer = require('../models/db_battle_player.js')
-	,dbBattleRandom = require('../models/db_battle_random.js');;
+	,dbBattleRandom = require('../models/db_battle_random.js');
 
 // battle cases
 module.exports = {
@@ -51,6 +51,7 @@ module.exports = {
 					}]
 				};
 				callback(content);
+				dbBattlePlayer. 
 			} else if (res === "t") { // timeout
 				var content = {
 					"color": 12345678,

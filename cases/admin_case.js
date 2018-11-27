@@ -1,9 +1,11 @@
-//requires
-var randomGen = require('../models/random_gen.js');
+// requires
+var randomGen = require('../models/random_gen.js')
+	,dbBattlePlayer = require('../models/db_battle_player.js')
+	,dbBattleRandom = require('../models/db_battle_random.js');
 
-//admin cases
+// admin cases
 module.exports = {
-	//settimer
+	// settimer
 	settimer: function(userID, args, callback){
 		randomGen.setTime(userID, args, function(result){
 			var content = {
@@ -52,5 +54,47 @@ module.exports = {
 		});
 	},
 
-	//add admin
-}//end
+	// delete Player Battle
+	deleteplayerbattle: function(userID, callback){
+		dbBattlePlayer.deletePlayerBattle(function(result){
+			if (result) {
+				var content = {
+					"color": 14285739, 
+					"title": "Delete Player Battle",
+					"description": "Delete Player Battle Success!",
+				};
+				callback(content)
+			} else {
+				var content = {
+					"color": 14285739, 
+					"title": "Delete Player Battle",
+					"description": "Delete Player Battle Failed!",
+				};
+				callback(content)
+			}
+		})
+	},
+
+	// delete Random Battle
+	deleterandombattle: function(userID, callback){
+		dbBattleRandom.deleteRandomBattle(function(result){
+			if (result) {
+				var content = {
+					"color": 14285739, 
+					"title": "Delete Random Battle",
+					"description": "Delete Random Battle Success!",
+				};
+				callback(content)
+			} else {
+				var content = {
+					"color": 14285739, 
+					"title": "Delete Random Battle",
+					"description": "Delete Random Battle Failed!",
+				};
+				callback(content)
+			}
+		})
+	},
+
+	// add admin
+}// end

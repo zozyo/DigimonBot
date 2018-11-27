@@ -1,10 +1,10 @@
-//requires
+// requires
 var dbPlayer = require('../models/db_player.js')
 	,dbDigimon = require('../models/db_digimon.js');
 
-//player cases
+// player cases
 module.exports = {
-	//ping
+	// ping
 	ping: function(callback){
 		var content = {
 			"color": 12345678, 
@@ -16,7 +16,7 @@ module.exports = {
 		callback(content);
 	},
 
-	//start
+	// start
 	start: function(userID, callback){
 		dbPlayer.showPlayer(userID, function(result){
 			if(result == null){ // new player
@@ -38,7 +38,7 @@ module.exports = {
 					}
 				};
 				callback(content)
-			} else { //player exists
+			} else { // player exists
 				var content = {
 					"color": 12345678,
 					"description": "You have already chosen a digimon! Type d!myinfo to view it!"
@@ -48,7 +48,7 @@ module.exports = {
 		});
 	},
 
-	//myinfo
+	// myinfo
 	myInfo: function(user, userID, callback){
 		dbPlayer.showPlayer(userID, function(result){
 			if(result != null){ // player exists
@@ -104,7 +104,7 @@ module.exports = {
 		});
 	},
 
-	//help
+	// help
 	help: function(callback){
 		var content = {
 			"color": 12345678,
@@ -116,7 +116,7 @@ module.exports = {
 		callback(content);
 	},
 
-	//choose
+	// choose
 	choose: function(userID, args, callback){
 		dbDigimon.showDigimon(args, function(dResult){
 			if(dResult != null){ // digimon exists
@@ -166,7 +166,7 @@ module.exports = {
 		});
 	},
 
-	//deleteme
+	// deleteme
 	deleteme: function(userID, callback){
 		dbPlayer.deletePlayer(userID, function(res){
 			if(res){
@@ -187,8 +187,8 @@ module.exports = {
 		});
 	},
 
-	//top10
+	// top10
 	
 
-}//end
+} // end
 

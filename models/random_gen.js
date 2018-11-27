@@ -1,23 +1,23 @@
-//requires
+// requires
 var schedule = require('node-schedule')
 	, dbrandom = require('./db_random_digimon.js')
 	, dbBattleRandom = require('../models/db_battle_random.js');
 
-//new schedule
+// new schedule
 var rule = new schedule.RecurrenceRule();
 
-//set schedule time
+// set schedule time
 exports.setTime = function (userID, args, callback){
-	//set schedule minute
+	// set schedule minute
 	rule.minute = parseInt(args[0]);
-	//do functions
+	// do functions
 	schedule.scheduleJob(rule, function(){
-		//random gen a digimon
+		// random gen a digimon
 		dbrandom.randomGen(function(res){
-			//insert digimon into battle_random
+			// insert digimon into battle_random
 			dbBattleRandom.newRandom(res);
-			//print the digimon
+			// print the digimon
 			callback(res);
 		})
 	});
-};//end of setTime
+}; // end of setTime

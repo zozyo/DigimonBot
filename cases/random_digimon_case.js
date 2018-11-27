@@ -1,9 +1,9 @@
-//requires
+// requires
 var dbRandom = require('../models/db_random_digimon.js');
 
-//random digimon cases
+// random digimon cases
 module.exports = {
-	//radd name stage HP Atk Def Critical Evade picURL
+	// radd name stage HP Atk Def Critical Evade picURL
 	radd: function(userID, args, callback) {
 		dbRandom.addDigimon(args, function(res) {
 			if(res) {
@@ -24,7 +24,7 @@ module.exports = {
 		})
 	},
 
-	//rshow
+	// rshow
 	rshow: function(userID, args, callback) {
 		dbRandom.showDigimon(args, function(result) {
 			if(result != null) {
@@ -88,7 +88,7 @@ module.exports = {
 		})
 	},
 
-	//rdel
+	// rdel
 	rdel: function(userID, args, callback) {
 		dbRandom.deleteDigimon(args, function(res) {
 			if (res) {

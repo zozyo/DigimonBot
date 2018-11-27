@@ -10,7 +10,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	var db = database.db("digimon");
 	var col = db.collection("player");
 
-	// temporary
 	// add player into collection "player"
 	exports.addPlayer = function (userID, args, callback) { 
 		searchPlayer(userID, function(result) {
@@ -62,9 +61,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				if (err) throw err;
 				callback(JSON.stringify( result ))
 		})
-	};//end of listPlayer
+	};// end of listPlayer
 
-	//delete player in collection "player"
+	// delete player in collection "player"
 	exports.deletePlayer = function (userID, callback) { 
 		searchPlayer(userID, function(result) {
 			if (result) { // found
@@ -76,9 +75,9 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				callback(false);
 			}
 		});
-	};//end of deletePlayer
+	};// end of deletePlayer
 
-	//searchPlayer
+	// searchPlayer
 	var searchPlayer = function (userID, callback) {
 		col.find({"_id":userID}).toArray(function(err, result) {
 			if (err) throw err;
@@ -88,8 +87,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				callback(true);
 			}
 		})
-	};//end of searchPlayer
-
-	//add more
+	};// end of searchPlayer
 
 });// end of db_player

@@ -1,9 +1,9 @@
-//requires
+// requires
 var dbPlayer = require('../models/db_player.js')
 	, dbDigimon = require('../models/db_digimon.js')
 	, dbRandom = require('../models/db_random_digimon.js');
 
-//test cases
+// test cases
 module.exports = {
 	// listplayer
 	plist: function(userID, args, callback){
@@ -40,4 +40,4 @@ module.exports = {
 			callback(content)
 		});
 	},
-}//end
+}// end

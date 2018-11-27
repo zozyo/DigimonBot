@@ -1,9 +1,9 @@
-//requires
+// requires
 var dbDigimon = require('../models/db_digimon.js');
 
-//base digimon cases
+// base digimon cases
 module.exports = {
-	//adddigimon name next HP Atk Def picURL
+	// adddigimon name next HP Atk Def picURL
 	dadd: function(userID, args, callback){
 		dbDigimon.addDigimon(args, function(res){
 			if(res){
@@ -24,7 +24,7 @@ module.exports = {
 		})
 	},
 
-	//showdigimon name
+	// showdigimon name
 	dshow: function(userID, args, callback){
 		dbDigimon.showDigimon(args, function(result){
 			if(result != null){
@@ -84,7 +84,7 @@ module.exports = {
 		})
 	},
 
-	//deletedigimon name
+	// deletedigimon name
 	ddel: function(userID, args, callback){
 		dbDigimon.deleteDigimon(args, function(res){
 			if(res){
@@ -104,4 +104,4 @@ module.exports = {
 			}
 		});
 	},
-}
+} // end

@@ -1,4 +1,4 @@
-//requires
+// requires
 var Discord = require('discord.io');
 var auth = require('./auth.json');
 var Cases = require('./cases/botcase.js');
@@ -13,7 +13,7 @@ const logger = createLogger({
 		prettyPrint()
 	),
 	transports: [
-		new transports.Console(), //show logs in console
+		new transports.Console(), // show logs in console
 		new transports.File({ // save logs to file
 			json: true,
 			level:'debug',
@@ -39,7 +39,7 @@ bot.on('ready', function (evt) {
 // message listener
 bot.on('message', function (user, userID, channelID, message, evt) {
 	if (message.substring(0, 2) == 'd!') {
-		//logs
+		// logs
 		logger.info(user + " - " + userID + " in " + channelID);
 		logger.info(message);
 
@@ -65,10 +65,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 		}
 	}
-});//end of message on
+});// end of message on
 
 function splitMessage(message) {
-	//split message
+	// split message
 	const msg = message.substring(2).replace(/\s+/g, ",").split(',');
 	const cmd = msg[0];
 	const args = msg.splice(1);

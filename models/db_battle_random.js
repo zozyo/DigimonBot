@@ -49,4 +49,19 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		})
 	};
 
+	// deleteBattle -admin
+	exports.deleteRandomBattle = function (callback) {
+		col.find({"_id": 1}).toArray(function(err, res) { // search battle field
+			if (err) throw err;
+			if (res === undefined || res.length == 0) {
+				callback(false)
+			} else {
+				col.deleteOne({"_id": 0}, function(err, res) {
+					if (err) throw err;
+					callback(true);
+				});
+			}
+		}
+	}
+
 });// end
