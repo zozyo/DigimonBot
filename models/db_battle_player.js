@@ -79,7 +79,10 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			}
 		})
 	};
+	
 
+	// temporary
+	// calculate Battle   
 	exports.calculateBattle = function (callback) {
 		col.find({"_id": 0}).toArray(function(err, field) { // search battle field
 			if (err) throw err;
@@ -91,17 +94,52 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	var fight = function (A, B, callback) {
-		var HPRemain = parseInt(B["HP"]);
-		if ( Math.random() * 100 > parseFloat(B["Evade"]) ) { // if hit
-			if ( Math.random() * 100 < parseFloat(A["Critical"]) ) { // if critical
-				HPRemain = HPRemain + parseInt(B["Def"]) - parseInt(A["Atk"]) * 2; // HP Remain
-				callback(HPRemain);
+		var round = true;
+		do {
+			if (round) {
+				attack(A, B, function(HPRemain) {
+					col.updateOne({"_id": 0}, {$set: {"playerB": {"HP": HPRemain[1]} } }, function(err, res) {
+						if (err) throw err;
+						if (HPRemain[0] === 1) {
+							callback("s");
+						} else if (HPRemain[0] === 2) {
+							callback("s");
+						} else {
+							callback("s");
+						}
+					}); 
+				});
+				round = false;
+			} else {
+				attack(B, A, function(HPRemain) {
+					col.updateOne({"_id": 0}, {$set: {"playerA": {"HP": HPRemain[1]} } }, function(err, res) {
+						if (err) throw err;
+						if (HPRemain[0] === 1) {
+							callback("s");
+						} else if (HPRemain[0] === 2) {
+							callback("s");
+						} else {
+							callback("s");
+						}
+					}); 
+				});
+				round = true;
+			}
+		} while ( A["HP"] > 0 && B["HP"] > 0); // loop when both HP > 0
+	};
+
+	var attack = function (X, Y, callback) {
+		var HPRemain = parseInt(Y["HP"]);
+		if ( Math.random() * 100 > parseFloat(Y["Evade"]) ) { // if hit
+			if ( Math.random() * 100 < parseFloat(X["Critical"]) ) { // if critical
+				HPRemain = HPRemain + parseInt(Y["Def"]) - parseInt(X["Atk"]) * 2; // HP Remain
+				callback([2, HPRemain]);
 			} else { // if not critical
-				HPRemain = HPRemain + parseInt(B["Def"]) - parseInt(A["Atk"]); // HP Remain
-				callback(HPRemain);
+				HPRemain = HPRemain + parseInt(Y["Def"]) - parseInt(X["Atk"]); // HP Remain
+				callback([1, HPRemain]);
 			}
 		} else { // not hit
-			callback(HPRemain);
+			callback([0, HPRemain]);
 		}
 	};
 
