@@ -91,7 +91,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		searchBattle(function(Field) { // search battle field
 			if (Field["available"] === true) {
 				round(userID, Field["playerA"], Field["playerB"], Field["round"], function(res) {
-					console.log("---");
 					if (res instanceof Array) {
 						battleEnd(res, function(ifEnd) {
 							if (ifEnd) {
@@ -156,7 +155,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				HPRemain = HPRemain + parseInt(Y["Def"]) - parseInt(X["Atk"]); // HP Remain
 				callback([1, HPRemain]);
 			}
-		} else { // not hit
+		} else { // evade
 			callback([0, HPRemain]);
 		}
 	};
