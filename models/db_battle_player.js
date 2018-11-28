@@ -92,7 +92,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			console.log(Field);
 			console.log("===");
 			if (Field["available"] === true) {
-				round(Field["playerA"], Field["playerB"], Field["round"], function(res) {
+				round(userID, Field["playerA"], Field["playerB"], Field["round"], function(res) {
 					console.log(res);
 					console.log("---");
 					if (res instanceof Array) {
@@ -117,7 +117,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		})
 	};
 
-	var round = function (A, B, r, callback) {
+	var round = function (userID, A, B, r, callback) {
 		if (A["_id"] === userID) {
 			if (r === "A") {
 				fight(A, B, function(HPRemain){
