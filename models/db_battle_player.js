@@ -89,7 +89,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	// calculate Battle   
 	exports.calculateBattle = function (userID, callback) {
 		searchBattle(function(Field) { // search battle field
-			if (Field["available"] === true) {
+			if (Field["available"] === true) { 
 				round(userID, Field["playerA"], Field["playerB"], Field["round"], function(res) {
 					if (res instanceof Array) {
 						battleEnd(res, function(ifEnd) {
