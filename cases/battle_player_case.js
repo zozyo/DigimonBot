@@ -108,6 +108,15 @@ module.exports = {
 					}]
 				};
 				callback(content);
+			} else if (res === "e") { //if battle end
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Battle Ended!",
+						"value": "Battle had ended!"
+					}]
+				};
+				callback(content);
 			} else { // success attack
 				if (res[2] != 1) { // if battle nnot end
 					if (res[0] === 1) { // hit
