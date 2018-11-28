@@ -96,7 +96,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 							if (ifEnd) {
 								updateBattle({"available": false}, function(result){
 									if (result) {
-										callback([res[0], res[1], 1])
+										callback([res[0], 0, 1])
 										// give xp
 									}
 								})
