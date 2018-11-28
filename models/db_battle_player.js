@@ -91,7 +91,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		searchBattle(function(Field) { // search battle field
 			console.log(Field);
 			console.log("===");
-			if (Field["available" === true]) {
+			if (Field["available"] === true) {
 				round(Field["playerA"], Field["playerB"], Field["round"], function(res) {
 					console.log(res);
 					console.log("---");
