@@ -1,10 +1,8 @@
 // requires
-var dbBattlePlayer = require('../models/db_battle_player.js')
-	,dbBattleRandom = require('../models/db_battle_random.js');
+var dbBattlePlayer = require('../models/db_battle_player.js');
 
-// battle cases
+// battle player cases
 module.exports = {
-// with player
 	// bp
 	bp: function(user, userID, args, callback) {
 		dbBattlePlayer.startBattle(userID, args, function(res){
@@ -157,39 +155,4 @@ module.exports = {
 		})
 	},
 
-
-// with random digimon
-	// br
-	br: function(user, userID, callback) {
-		dbBattleRandom.startBattle(userID, function(res){
-			if (res === "s") { // success
-				var content = {
-					"color": 12345678,
-					"fields": [{
-						"name": "Accpet Battle",
-						"value": "Random Digimon Battle Start!"
-					}]
-				};
-				callback(content);
-			} else if (res === "t") { // timeout
-				var content = {
-					"color": 12345678,
-					"fields": [{
-						"name": "Timeout!",
-						"value": "Random Digimon Run Away!"
-					}]
-				};
-				callback(content);
-			} else if (res === "n") { // not found
-				var content = {
-					"color": 12345678,
-					"fields": [{
-						"name": "Oops",
-						"value": "You have no digimon!"
-					}]
-				};
-				callback(content);
-			}
-		});
-	},
 }//end

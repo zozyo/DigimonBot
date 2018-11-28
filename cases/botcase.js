@@ -4,7 +4,8 @@ var Player = require('./player_case.js')
 	,Test  = require('./test_case.js')
 	,BaseDigimon = require('./base_digimon_case.js')
 	,RandomDigimon = require('./random_digimon_case.js')
-	,Battle = require('./battle_case.js');
+	,BattlePlayer = require('./battle_player_case.js')
+	,BattleRandom = require('./battle_random_case.js');
 
 // Our bot needs to know if it will execute a command
 // It will listen for messages that will start with `d!`
@@ -106,21 +107,22 @@ module.exports = {
 // battle player cases
 	// bp
 	bp: function(user, userID, channelID, args, callback) {
-		Battle["bp"](user, userID, args, callback);
+		BattlePlayer["bp"](user, userID, args, callback);
 	},
 
 	// accept
 	accept: function(user, userID, channelID, args, callback) {
-		Battle["accept"](user, userID, callback);
-	},
-
-	// br
-	br: function(user, userID, channelID, args, callback) {
-		Battle["br"](user, userID, callback);
+		BattlePlayer["accept"](user, userID, callback);
 	},
 
 	attack: function(user, userID, channelID, args, callback) {
-		Battle["attack"](user, userID, callback);
+		BattlePlayer["attack"](user, userID, callback);
+	},
+
+// battle random cases
+	// br
+	br: function(user, userID, channelID, args, callback) {
+		BattleRandom["br"](user, userID, callback);
 	},
 
 }// end of cases
