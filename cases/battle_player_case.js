@@ -151,15 +151,55 @@ module.exports = {
 						callback(content);
 					}
 				} else { // if battle end
-					var content = {
-						"color": 12345678,
-						"title": user + " Win!",
-						"fields": [{
-							"name": "Congratulations!",
-							"value": "You defect your opponent!"
-						}]
-					};
-					callback(content);
+					if (res[0] === 1) { // hit
+						var content = {
+							"color": 12345678,
+							"title": user + " Win!",
+							"fields": [
+								{
+									"name": "Hit!",
+									"value": "Hit! Your opponent HP remaining: " + res[1]
+								},
+								{
+									"name": "Congratulations!",
+									"value": "You defeated your opponent!"
+								}
+							]
+						};
+						callback(content);
+					} else if (res[0] === 2) { // critical
+						var content = {
+							"color": 12345678,
+							"title": user + " Win!",
+							"fields": [
+								{
+									"name": "Critical!",
+									"value": "Critical Hit! Your opponent HP remaining: " + res[1]
+								},
+								{
+									"name": "Congratulations!",
+									"value": "You defeated your opponent!"
+								}
+							]
+						};
+						callback(content);
+					} else if (res[0] === 0) { // evade
+						var content = {
+							"color": 12345678,
+							"title": user + " Win!",
+							"fields": [
+								{
+									"name": "Dodge!",
+									"value": "Your opponent dodged your attack! HP remaining: " + res[1]
+								},
+								{
+									"name": "Congratulations!",
+									"value": "You defeated your opponent!"
+								}
+							]
+						};
+						callback(content);
+					}
 				}	
 			}
 		})
