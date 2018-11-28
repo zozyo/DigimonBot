@@ -36,15 +36,15 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			if (pA != null) { // if playerA exists
 				dbPlayer.showPlayer(args[0].substring(2).replace(">", ""), function(pB){ // search playerB
 					if (pB != null) { // if playerB exists
-						if (pA["_id"] != pB["_id"]) { // if not self
+						//if (pA["_id"] != pB["_id"]) { // if not self
 							newPlayerBattle(pA, pB, function(result){ // create battle field
 								if(result){ // if create field successed
 									callback("s");
 								}
 							})
-						} else {
-							callback("o")
-						}
+						//} else {
+						//	callback("o")
+						//}
 					} else {
 						callback("b") // if playerB not found
 					}

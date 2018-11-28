@@ -108,8 +108,8 @@ module.exports = {
 				};
 				callback(content);
 			} else { // success attack
-				if (res[2] != 1) {
-					if (res[0] === 1) {
+				if (res[2] != 1) { // if battle nnot end
+					if (res[0] === 1) { // hit
 						var content = {
 							"color": 12345678,
 							"title": user + " Round",
@@ -119,7 +119,7 @@ module.exports = {
 							}]
 						};
 						callback(content);
-					} else if (res[0] === 2) {
+					} else if (res[0] === 2) { // critical
 						var content = {
 							"color": 12345678,
 							"title": user + " Round",
@@ -129,7 +129,7 @@ module.exports = {
 							}]
 						};
 						callback(content);
-					} else if (res[0] === 0) {
+					} else if (res[0] === 0) { // evade
 						var content = {
 							"color": 12345678,
 							"title": user + " Round",
@@ -140,7 +140,7 @@ module.exports = {
 						};
 						callback(content);
 					}
-				} else {
+				} else { // if battle end
 					var content = {
 						"color": 12345678,
 						"title": user + " Win!",
