@@ -118,8 +118,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	var round = function (userID, A, B, r, callback) {
-		if (A["_id"] === userID) {
-			if (r === "A") {
+		if (r === "A") {
+			if (A["_id"] === userID) {
 				fight(A, B, function(HPRemain){
 					var setting = {"playerB": {"HP": HPRemain[1]}, "round": "B"};
 					updateBattle(setting, function(res){
@@ -131,8 +131,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			} else {
 				callback("w")
 			}
-		} else if (B["_id"] === userID) { 
-			if (r === "B") {
+		} else if (r === "B") { 
+			if (B["_id"] === userID) {
 				fight(B, A, function(HPRemain){
 					var setting = {"playerA": {"HP": HPRemain[1]}, "round": "A"};
 					updateBattle(setting, function(res){
