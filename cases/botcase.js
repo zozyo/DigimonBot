@@ -95,6 +95,14 @@ module.exports = {
 		Admin["settimer"](userID, args, callback);
 	},
 
+	deleteplayerbattle: function(user, userID, channelID, args, callback) {
+		Admin["deleteplayerbattle"](userID, callback);
+	},
+
+	deleterandombattle: function(user, userID, channelID, args, callback) {
+		Admin["deleterandombattle"](userID, callback);
+	},
+
 // battle player cases
 	// bp
 	bp: function(user, userID, channelID, args, callback) {
