@@ -59,7 +59,7 @@ module.exports = {
 							"value": "Digimon Battle Start!"
 						},
 						{
-							"name": "Who calls the battle starts first!",
+							"name": "Player who calls the battle starts first!",
 							"value": "Type d!attack to fight!"
 						}
 					]
@@ -89,7 +89,6 @@ module.exports = {
 
 	attack: function(user, userID, callback) {
 		dbBattlePlayer.calculateBattle(userID, function(res){
-			console.log(res);
 			if (res === "n") { // if not in battle
 				var content = {
 					"color": 12345678,
