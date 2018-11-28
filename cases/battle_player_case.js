@@ -89,6 +89,7 @@ module.exports = {
 
 	attack: function(user, userID, callback) {
 		dbBattlePlayer.calculateBattle(userID, function(res){
+			console.log(res);
 			if (res === "n") { // if not in battle
 				var content = {
 					"color": 12345678,
