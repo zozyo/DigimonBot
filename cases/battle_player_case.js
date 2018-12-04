@@ -236,7 +236,7 @@ module.exports = {
 				};
 				callback(content);
 			}
-		}
+		})
 	},
 
 }//end
