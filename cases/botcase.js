@@ -115,8 +115,14 @@ module.exports = {
 		BattlePlayer["accept"](user, userID, callback);
 	},
 
+	// attack
 	attack: function(user, userID, channelID, args, callback) {
 		BattlePlayer["attack"](user, userID, callback);
+	},
+
+	// surrender
+	surrender: function(user, userID, channelID, args, callback) {
+		BattlePlayer["surrender"](user, userID, callback);
 	},
 
 // battle random cases

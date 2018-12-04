@@ -204,4 +204,39 @@ module.exports = {
 		})
 	},
 
+	// surrender
+	surrender: function(user, userID, callback) {
+		dbBattlePlayer.surrender(userID, function(res){
+			if (res === "n") { // if not in battle
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Oops! " + user,
+						"value": "No battle for you!"
+					}]
+				};
+				callback(content);
+			} else if (res === "e") { //if battle end
+				var content = {
+					"color": 12345678,
+					"fields": [{
+						"name": "Battle Ended!",
+						"value": "Battle had ended!"
+					}]
+				};
+				callback(content);
+			} else if (res === "s") { // surrendered
+				var content = {
+					"color": 12345678,
+					"title": user + " Surrendered!",
+					"fields": [{
+						"name": "Surrendered!",
+						"value": "Your Surrendered! Your opponent Win!"
+					}]
+				};
+				callback(content);
+			}
+		}
+	},
+
 }//end

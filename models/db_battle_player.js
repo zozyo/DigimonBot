@@ -183,6 +183,33 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 			if (err) throw err;
 			callback(true)
 		})
-	}
+	};
+
+	// surrender
+	exports.surrender = function (userID, callback) {
+		searchBattle(function(Field) { // search battle field
+			if (Field["available"] === true) { 
+				if (Field["playerA"] === userID) {
+					updateBattle({"available": false}, function(result){
+						if (result) {
+							callback("s")
+							// give xp to B
+						}
+					})
+				} else if (Field["playerB"] === userID) {
+					updateBattle({"available": false}, function(result){
+						if (result) {
+							callback("s")
+							// give xp to A
+						}
+					})
+				} else {
+					callback("n")
+				}
+			} else {
+				callback("e")
+			}
+		})
+	};
 
 });// end
