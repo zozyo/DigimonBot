@@ -117,7 +117,7 @@ module.exports = {
 				};
 				callback(content);
 			} else { // success attack
-				if (res[2] != 1) { // if battle nnot end
+				if (res[2] != 1) { // if battle not end
 					if (res[0] === 1) { // hit
 						var content = {
 							"color": 12345678,
