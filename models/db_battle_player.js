@@ -89,12 +89,12 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	// calculate Battle   
 	exports.calculateBattle = function (userID, callback) {
 		searchBattle(function(Field) { // search battle field
-			if (Field["available"] === true) { 
-				round(userID, Field["playerA"], Field["playerB"], Field["round"], function(res) {
-					if (res instanceof Array) {
-						battleEnd(res, function(ifEnd) {
+			if (Field["available"] === true) { // if battle not end
+				round(userID, Field["playerA"], Field["playerB"], Field["round"], function(res) { // start round
+					if (res instanceof Array) { 
+						battleEnd(res, function(ifEnd) { // check if battle end
 							if (ifEnd) {
-								updateBattle({"available": false}, function(result){
+								updateBattle({"available": false}, function(result){ // end the battle
 									if (result) {
 										callback([res[0], 0, 1])
 										// give xp to winner
