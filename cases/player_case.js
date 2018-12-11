@@ -108,10 +108,16 @@ module.exports = {
 	help: function(callback){
 		var content = {
 			"color": 12345678,
-			"fields": [{
-				"name": "Help",
-				"value": "Under Construction!"
-			}]
+			"fields": [
+				{
+					"name": "Help",
+					"value": "Under Construction!"
+				},
+				{
+					"name": "ping",
+					"value": "Pong!"
+				}
+			]
 		};
 		callback(content);
 	},
