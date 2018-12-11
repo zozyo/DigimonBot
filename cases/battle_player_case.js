@@ -87,6 +87,7 @@ module.exports = {
 		});
 	},
 
+	// attack
 	attack: function(user, userID, callback) {
 		dbBattlePlayer.calculateBattle(userID, function(res){
 			if (res === "n") { // if not in battle
