@@ -18,7 +18,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 		var field = { 
 			"_id": 1,
 			"randomDigimon": res,
-			"player": {},
+			"player": "p",
 			"available": true,
 			"time": new Date()
 		};
