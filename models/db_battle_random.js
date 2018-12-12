@@ -29,7 +29,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	};
 
 	// startBattle
-	exports.startBattle = function (userID, args, callback) { 
+	exports.startBattle = function (userID, callback) { 
 		col.find({"_id": 1}).toArray(function(err, res) { // search battle field
 			if (err) throw err;
 			if (new Date() - res[0]["time"] < 100000) { // if accept in 100 sec
