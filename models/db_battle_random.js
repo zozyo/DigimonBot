@@ -103,14 +103,18 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					}
 				})
 			});
-				fight(R, P, function(HPRemain){
-					var setting = {"player.HP": HPRemain[1]};
-					updateBattle(setting, function(res){
-						if (res) {
-							callback(HPRemain, "R")
-						}
+			searchBattle(function(Field) {
+				if (Field["randomDigimon.HP"] > 0) {
+					fight(R, P, function(HPRemain){
+						var setting = {"player.HP": HPRemain[1]};
+						updateBattle(setting, function(res){
+							if (res) {
+								callback(HPRemain, "R")
+							}
+						})
 					})
-				})
+				}
+			}
 		} else {
 			callback("n")
 		}
