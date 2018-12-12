@@ -109,7 +109,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 						var setting = {"player.HP": HPRemain[1]};
 						updateBattle(setting, function(res){
 							if (res) {
-								callback(HPRemain, "R")
+								setTimeout(callback(HPRemain, "R"), 1000)
 							}
 						})
 					})
