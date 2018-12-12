@@ -103,7 +103,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 					}
 				})
 			});
-			setTimeout(
 				fight(R, P, function(HPRemain){
 					var setting = {"player.HP": HPRemain[1]};
 					updateBattle(setting, function(res){
@@ -112,7 +111,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 						}
 					})
 				})
-				, 2000);
 		} else {
 			callback("n")
 		}
