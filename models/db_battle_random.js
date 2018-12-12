@@ -100,6 +100,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				updateBattle(setting, function(res){
 					if (res) {
 						callback(HPRemain, "P")
+						// random round
 						searchBattle(function(Field) {
 							if (Field["randomDigimon"]["HP"] > 0) {
 								fight(R, P, function(HPRemain){
