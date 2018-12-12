@@ -108,14 +108,43 @@ module.exports = {
 	help: function(callback){
 		var content = {
 			"color": 12345678,
+			"title": "Help Menu",
 			"fields": [
 				{
-					"name": "Help",
-					"value": "Under Construction!"
+					"name": "d!start",
+					"value": "This starts the Digimon bot"
 				},
 				{
-					"name": "ping",
-					"value": "Pong!"
+					"name": "d!myinfo",
+					"value": "This show the user the information about the user Digimon status"
+				},
+				{
+					"name": "d!bp @someone",
+					"value": "This allow the user to challenge another user to battle"
+				},
+				{
+					"name": "d!accept",
+					"value": "This allow the player to accept challenges from another user"
+				},
+				{
+					"name": "d!attack",
+					"value": "This allow the user to attack in the player battle"
+				},
+				{
+					"name": "d!surrender",
+					"value": "This is when the player battle is no going well, and the user wants to surrender"
+				},
+				{
+					"name": "d!br",
+					"value": "This will let the user battle the random Digimon that appear randomly"
+				},
+				{
+					"name": "d!rattack",
+					"value": "This allow the user to attack in the random digimon battle"
+				},
+				{
+					"name": "d!rsurrender",
+					"value": "This is when the random digimon battle is no going well, and the user wants to surrender"
 				}
 			]
 		};
