@@ -36,7 +36,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				dbPlayer.showPlayer(userID, function(player){ // search player
 					if (player != null) { // if player exists
 						// insert player into field
-						updateBattle({$set: {"player": player}}, function(err, res) {
+						updateBattle({"player": player}, function(err, res) {
 							if (err) throw err;
 							callback("s"); // accepted
 						}); 
