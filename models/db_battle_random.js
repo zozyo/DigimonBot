@@ -114,7 +114,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 						})
 					})
 				}
-			}
+			})
 		} else {
 			callback("n")
 		}
