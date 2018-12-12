@@ -104,7 +104,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 				})
 			});
 			searchBattle(function(Field) {
-				if (Field["randomDigimon.HP"] > 0) {
+				if (Field["randomDigimon"]["HP"] > 0) {
 					fight(R, P, function(HPRemain){
 						var setting = {"player.HP": HPRemain[1]};
 						updateBattle(setting, function(res){
