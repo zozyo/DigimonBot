@@ -32,18 +32,15 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.startBattle = function (userID, callback) { 
 		col.find({"_id": 1}).toArray(function(err, res) { // search battle field
 			if (err) throw err;
-			console.log("1")
 			if (new Date() - res[0]["time"] < 100000) { // if accept in 100 sec
-				console.log("2")
 				dbPlayer.showPlayer(userID, function(player){ // search player
-					console.log("3")
 					if (player != null) { // if player exists
-						console.log("4")
 						// insert player into field
 						updateBattle({"player": player}, function(err, res) {
-							console.log("5")
 							if (err) throw err;
 							callback("s"); // accepted
+							console.log("222")
+							console.log(res)
 						}); 
 					} else {
 						callback("n"); // if player not found

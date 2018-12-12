@@ -6,6 +6,7 @@ module.exports = {
 	// br
 	br: function(user, userID, callback) {
 		dbBattleRandom.startBattle(userID, function(res){
+			console.log("23")
 			if (res === "s") { // success
 				var content = {
 					"color": 12345678,
