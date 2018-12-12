@@ -131,4 +131,14 @@ module.exports = {
 		BattleRandom["br"](user, userID, callback);
 	},
 
+	// attack
+	rattack: function(user, userID, channelID, args, callback) {
+		BattleRandom["rattack"](user, userID, callback);
+	},
+
+	// surrender
+	rsurrender: function(user, userID, channelID, args, callback) {
+		BattleRandom["rsurrender"](user, userID, callback);
+	},
+
 }// end of cases

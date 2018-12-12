@@ -183,22 +183,6 @@ module.exports = {
 							]
 						};
 						callback(content);
-					} else if (res[0] === 0) { // evade
-						var content = {
-							"color": 12345678,
-							"title": user + " Win!",
-							"fields": [
-								{
-									"name": "Dodge!",
-									"value": "Your opponent dodged your attack! HP remaining: " + res[1]
-								},
-								{
-									"name": "Congratulations!",
-									"value": "You defeated your opponent!"
-								}
-							]
-						};
-						callback(content);
 					}
 				}	
 			}
