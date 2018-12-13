@@ -31,7 +31,7 @@ module.exports = {
 
 	// listrandomdigimon
 	rlist: function(userID, args, callback){
-		dbRandom.listDigimon(userID, args, function(result){
+		dbRandom.listDigimon(args, function(result){
 			var content = {
 				"color": 14285739, 
 				"title": "list random digimon page " + args[0],

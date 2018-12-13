@@ -189,14 +189,14 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, database) {
 	exports.surrender = function (userID, callback) {
 		searchBattle(function(Field) { // search battle field
 			if (Field["available"] === true) { 
-				if (Field["playerA"] === userID) {
+				if (Field["playerA"]["_id"] === userID) {
 					updateBattle({"available": false}, function(result){
 						if (result) {
 							callback("s")
 							// give xp to B
 						}
 					})
-				} else if (Field["playerB"] === userID) {
+				} else if (Field["playerB"]["_id"] === userID) {
 					updateBattle({"available": false}, function(result){
 						if (result) {
 							callback("s")
